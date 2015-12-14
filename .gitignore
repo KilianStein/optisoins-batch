@@ -1,0 +1,18 @@
+DE #
+#######
+.classpath
+.project
+.settings
+.idea
+.metadata
+*.iml
+*.ipr
+
+# Rapport #
+###########
+.surefire*
+
+# Fichier generes #
+###################
+**/target/*
+

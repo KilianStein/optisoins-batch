@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="java" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="29a1a777-682d-4066-bb5a-973301091243">
+	<property name="ireport.zoom" value="1.0245201830476058"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="reglementNomPrenom" class="java.lang.String"/>
+	<field name="nomBanque" class="java.lang.String"/>
+	<field name="numeroCompte" class="java.lang.String"/>
+	<background>
+		<band height="842">
+			<image>
+				<reportElement uuid="2fc7202c-92ab-4962-a204-64f6d11103b0" x="0" y="0" width="595" height="840"/>
+				<imageExpression><![CDATA["C:\\Users\\steink\\Pictures\\FS.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="714d7f27-ebd8-4304-9ae7-0efacb052eec" x="248" y="336" width="192" height="17"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reglementNomPrenom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f08d2fa4-6c5c-4ed1-ab75-755b9c02493f" x="214" y="373" width="226" height="17"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomBanque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="18f8e4b0-07be-445b-b823-680cafe14e10" x="85" y="390" width="327" height="24"/>
+				<textElement>
+					<font size="17" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroCompte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</background>
+</jasperReport>
