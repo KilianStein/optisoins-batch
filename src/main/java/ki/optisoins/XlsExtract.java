@@ -1,12 +1,16 @@
 package ki.optisoins;
 
+import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.*;
 
 
 public class XlsExtract {
@@ -15,8 +19,8 @@ public class XlsExtract {
 
     public List<FeuilleSoins> extract() {
         try {
-            FileInputStream file = new FileInputStream(new File("src/main/resources/donnees.xls"));
-            HSSFWorkbook workbook = new HSSFWorkbook(file);
+            InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("donnees.xls");
+            HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
             HSSFSheet sheet = workbook.getSheetAt(0);
             int numberTotalColumn = sheet.getRow(0).getPhysicalNumberOfCells();
             int numberTotalRow = sheet.getPhysicalNumberOfRows();
@@ -34,7 +38,8 @@ public class XlsExtract {
                 donneesExtraites.add(map);
             }
             printDonneesExtraite();
-            file.close();
+            inputStream.close();
+            workbook.close();
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -68,6 +73,6 @@ public class XlsExtract {
                 return cell.getStringCellValue();
 
         }
-        throw new RuntimeException("type non géré");
+        throw new RuntimeException("type non gÃ©rÃ©");
     }
 }

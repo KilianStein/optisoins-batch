@@ -6,6 +6,7 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,12 +20,13 @@ public class OptiSoins {
     public static JasperDesign jasperDesign;
     public static JasperPrint jasperPrint;
     public static JasperReport jasperReport;
-    public static String reportTemplateUrl = "src/main/resources/FeuilleSoinsAuxiliaireMedicale.jrxml";
+    public static String reportTemplateUrl = "FeuilleSoinsAuxiliaireMedicale.jrxml";
 
     public static void main(String[] args) throws IOException {
         try {
-            InputStream resourceAsStream = new FileInputStream(reportTemplateUrl);
-            jasperDesign = JRXmlLoader.load(resourceAsStream);
+        	InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(reportTemplateUrl);
+            //InputStream resourceAsStream = new FileInputStream(reportTemplateUrl.replace("/",File.separator));
+            jasperDesign = JRXmlLoader.load(inputStream);
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
             jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JRBeanCollectionDataSource(findFeuillesSoinsAuxiliaireMedicale()));
             JasperViewer.viewReport(jasperPrint);
