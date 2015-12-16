@@ -1,6 +1,8 @@
 package ki.optisoins;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -19,7 +21,7 @@ public class XlsExtract {
 
     public List<FeuilleSoins> extract() {
         try {
-            InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("donnees.xls");
+            InputStream inputStream = Files.newInputStream(Paths.get("donnees/donnees2.xls"));
             HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
             HSSFSheet sheet = workbook.getSheetAt(0);
             int numberTotalColumn = sheet.getRow(0).getPhysicalNumberOfCells();
