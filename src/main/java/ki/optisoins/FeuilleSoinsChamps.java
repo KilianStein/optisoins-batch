@@ -16,7 +16,11 @@ public interface FeuilleSoinsChamps {
     String NUMEROCAFAT_CHAMP = "numeroCafat";
     String NOMASSURE_CHAMP = "nomAssure";
     String PRENOMASSURE_CHAMP = "prenomAssure";
-    String ADRESSE_CHAMP = "adresse";
+    String APPARTEMENT_CHAMP = "appartement";
+    String BATIMENT_CHAMP = "batiment";
+    String RUE_CHAMP = "rue";
+    String CODEPOSTAL_CHAMP = "codePostal";
+    String COMMUNE_CHAMP = "commune";
     String ACCIDENT_CHAMP = "accident";
     String NOMMALADE_CHAMP = "nomMalade";
     String PRENOMMALADE_CHAMP = "prenomMalade";

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="29a1a777-682d-4066-bb5a-973301091243">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="309"/>
-	<property name="ireport.y" value="176"/>
+	<property name="ireport.x" value="72"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -18,7 +18,7 @@
 	<field name="numeroCafat" class="java.lang.String"/>
 	<field name="nomAssure" class="java.lang.String"/>
 	<field name="prenomAssure" class="java.lang.String"/>
-	<field name="adresse" class="java.lang.String"/>
+	<field name="rue" class="java.lang.String"/>
 	<field name="accident" class="java.lang.String"/>
 	<field name="nomMalade" class="java.lang.String"/>
 	<field name="prenomMalade" class="java.lang.String"/>
@@ -28,14 +28,21 @@
 	<field name="debutValiditeAM" class="java.lang.String"/>
 	<field name="finValiditeAM" class="java.lang.String"/>
 	<field name="numeroAM" class="java.lang.String"/>
+	<field name="afficherFond" class="java.lang.Boolean"/>
+	<field name="appartement" class="java.lang.String"/>
+	<field name="batiment" class="java.lang.String"/>
+	<field name="codePostal" class="java.lang.String"/>
+	<field name="commune" class="java.lang.String"/>
 	<background>
 		<band height="842">
 			<image>
-				<reportElement uuid="2fc7202c-92ab-4962-a204-64f6d11103b0" x="0" y="0" width="595" height="840"/>
+				<reportElement uuid="2fc7202c-92ab-4962-a204-64f6d11103b0" x="1" y="0" width="595" height="840">
+					<printWhenExpression><![CDATA[$F{afficherFond}]]></printWhenExpression>
+				</reportElement>
 				<imageExpression><![CDATA["FeuilleSoinsAuxiliaireMedicale.jpg"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement uuid="714d7f27-ebd8-4304-9ae7-0efacb052eec" x="248" y="336" width="192" height="17"/>
+				<reportElement uuid="714d7f27-ebd8-4304-9ae7-0efacb052eec" x="249" y="337" width="192" height="17"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
@@ -49,7 +56,7 @@
 				<textFieldExpression><![CDATA[$F{nomBanque}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="18f8e4b0-07be-445b-b823-680cafe14e10" x="85" y="390" width="355" height="24"/>
+				<reportElement uuid="18f8e4b0-07be-445b-b823-680cafe14e10" x="87" y="390" width="355" height="24"/>
 				<textElement>
 					<font size="17" isStrikeThrough="false"/>
 				</textElement>
@@ -78,7 +85,7 @@
 				<textFieldExpression><![CDATA[$F{numeroACP}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="a06cc2fd-1fd1-4039-8f3a-3ae16ddd611c" x="139" y="530" width="273" height="20"/>
+				<reportElement uuid="a06cc2fd-1fd1-4039-8f3a-3ae16ddd611c" x="141" y="530" width="273" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{nomEtPrenomMalade}]]></textFieldExpression>
 			</textField>
@@ -88,7 +95,7 @@
 				<textFieldExpression><![CDATA[$F{identificationAuxiliaireMedical}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="720a2969-4fb3-468b-8d32-a3ec6919db0a" x="38" y="73" width="100" height="23"/>
+				<reportElement uuid="720a2969-4fb3-468b-8d32-a3ec6919db0a" x="39" y="73" width="100" height="23"/>
 				<textElement>
 					<font size="13"/>
 				</textElement>
@@ -105,9 +112,9 @@
 				<textFieldExpression><![CDATA[$F{prenomAssure}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="82ff63b7-84f8-4e1d-925e-0018c046071c" x="139" y="258" width="100" height="20"/>
+				<reportElement uuid="82ff63b7-84f8-4e1d-925e-0018c046071c" x="143" y="257" width="26" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{accident}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{accident}.toLowerCase().contains("oui") || $F{accident}.toLowerCase().contains("yes") ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="c437ea6e-ad4f-444e-8d16-4fc129e84972" x="57" y="288" width="100" height="20"/>
@@ -119,28 +126,28 @@
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{prenomMalade}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement uuid="093932a7-7c2e-4230-b94a-cfb8ca281cbf" x="479" y="287" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{datedenaissance}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="734731cf-2512-4855-aa1b-f32b652e001a" x="174" y="304" width="100" height="20"/>
+				<reportElement uuid="734731cf-2512-4855-aa1b-f32b652e001a" x="178" y="301" width="63" height="16"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{lienAssure}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["concubin".equals($F{lienAssure}.toLowerCase()) || "concubine".equals($F{lienAssure}.toLowerCase()) ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="c9886162-b94d-481b-94ff-9d7399cbb5be" x="354" y="317" width="100" height="20"/>
+				<reportElement uuid="c9886162-b94d-481b-94ff-9d7399cbb5be" x="212" y="317" width="32" height="15"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{situationMalade}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{situationMalade}.toLowerCase().contains("salarié") || $F{situationMalade}.toLowerCase().contains("salarie") ? "x" : ""]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="b116e0d4-62f8-4c95-859d-cc360460e530" x="513" y="58" width="74" height="16"/>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="b116e0d4-62f8-4c95-859d-cc360460e530" x="516" y="58" width="74" height="16"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{debutValiditeAM}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement uuid="5a67dde8-7420-40c0-9fa3-83455cda04a3" x="513" y="73" width="84" height="20"/>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="5a67dde8-7420-40c0-9fa3-83455cda04a3" x="516" y="73" width="84" height="20"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{finValiditeAM}]]></textFieldExpression>
 			</textField>
@@ -150,9 +157,86 @@
 				<textFieldExpression><![CDATA[$F{numeroAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="eab98054-a8ff-4158-9555-13c56dd6ff55" x="44" y="135" width="100" height="20"/>
+				<reportElement uuid="eab98054-a8ff-4158-9555-13c56dd6ff55" x="45" y="136" width="133" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{adresse}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rue}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d8e03935-1d15-4c43-b19e-896e8fd5f4ab" x="114" y="301" width="63" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["conjoint".equals($F{lienAssure}.toLowerCase()) ? "x" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fc26fff9-bfec-4e77-94c0-242dd1a64bdb" x="253" y="301" width="63" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA["enfant".equals($F{lienAssure}.toLowerCase()) ? "x" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="76e047dd-0b1d-40ec-a7a2-7976b8654794" x="307" y="301" width="34" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[($F{lienAssure}.length() >= 5 && "autre".equals($F{lienAssure}.substring(0,5).toLowerCase())) ? "x" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fd4a5400-84bd-4210-a81c-e8f795504835" x="351" y="302" width="61" height="16"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[($F{lienAssure}.length() >= 6 && "autre".equals($F{lienAssure}.substring(0,5).toLowerCase())) ? $F{lienAssure}.substring(6) : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5383a565-7195-4573-b8ab-ebcf31ace39e" x="257" y="316" width="32" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{situationMalade}.toLowerCase().contains("travailleur") || $F{situationMalade}.toLowerCase().contains("indépendant") || $F{situationMalade}.toLowerCase().contains("independant") ? "x" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="da707890-6dce-4318-a819-bc0b754586bc" x="356" y="316" width="32" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{situationMalade}.toLowerCase().contains("fonctionnaire") ? "x" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="61cf95f4-8361-4b27-89cd-93bb1cc664c1" x="433" y="316" width="32" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{situationMalade}.toLowerCase().contains("retraite") || $F{situationMalade}.toLowerCase().contains("retraité") ? "x" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6832889e-b80f-48c6-9949-c48660048a50" x="483" y="315" width="32" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{situationMalade}.toLowerCase().contains("scolaire") ? "x" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5ac80ed0-2fee-44a3-ae2b-efe09bef00ea" x="534" y="315" width="32" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{situationMalade}.toLowerCase().contains("inactif") ? "x" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="953ca66f-cf6f-4286-813a-0c24c974c157" x="180" y="257" width="38" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{accident}.toLowerCase().contains("no") ? "x" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9e2a61b9-e71b-4f27-b30c-e278d039178a" x="25" y="375" width="22" height="17"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[!"".equals($F{nomBanque}) ? "x" : ""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="478fd802-11ca-496f-bf18-34834915bfca" x="82" y="118" width="129" height="17"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{appartement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d0e4d1dc-6460-4c73-9687-35ba3f0c584e" x="257" y="118" width="277" height="17"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{batiment}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7825462c-91e8-40ae-82b0-59a840ed5f12" x="231" y="135" width="65" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{codePostal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3d867c8a-2629-4e32-a168-7276b33c10be" x="465" y="134" width="114" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{commune}]]></textFieldExpression>
 			</textField>
 		</band>
 	</background>

@@ -10,6 +10,7 @@ import static ki.optisoins.PriseEnCharge.*;
  */
 public class FeuilleSoins {
 
+    private boolean afficherFond = true;
     private final Set<PriseEnCharge> prisesEnCharge = new HashSet<>();
 
     @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
@@ -49,7 +50,19 @@ public class FeuilleSoins {
     private String prenomAssure = "";
 
     @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
-    private String adresse = "";
+    private String appartement = "";
+
+    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
+    private String batiment = "";
+
+    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
+    private String rue = "";
+
+    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
+    private String codePostal = "";
+
+    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
+    private String commune = "";
 
     @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String accident = "";
@@ -182,14 +195,6 @@ public class FeuilleSoins {
         this.prenomAssure = prenomAssure;
     }
 
-    public String getAdresse() {
-        return this.adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
     public String getAccident() {
         return accident;
     }
@@ -260,5 +265,53 @@ public class FeuilleSoins {
 
     public void setNumeroAM(String numeroAM) {
         this.numeroAM = numeroAM;
+    }
+
+    public boolean isAfficherFond() {
+        return afficherFond;
+    }
+
+    public void setAfficherFond(boolean afficherFond) {
+        this.afficherFond = afficherFond;
+    }
+
+    public String getAppartement() {
+        return appartement;
+    }
+
+    public void setAppartement(String appartement) {
+        this.appartement = appartement;
+    }
+
+    public String getBatiment() {
+        return batiment;
+    }
+
+    public void setBatiment(String batiment) {
+        this.batiment = batiment;
+    }
+
+    public String getRue() {
+        return rue;
+    }
+
+    public void setRue(String rue) {
+        this.rue = rue;
+    }
+
+    public String getCodePostal() {
+        return codePostal;
+    }
+
+    public void setCodePostal(String codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public String getCommune() {
+        return commune;
+    }
+
+    public void setCommune(String commune) {
+        this.commune = commune;
     }
 }

@@ -21,7 +21,7 @@ public class XlsExtract {
 
     public List<FeuilleSoins> extract() {
         try {
-            InputStream inputStream = Files.newInputStream(Paths.get("donnees/donnees2.xls"));
+            InputStream inputStream = Files.newInputStream(Paths.get("donnees/donnees.xls"));
             HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
             HSSFSheet sheet = workbook.getSheetAt(0);
             int numberTotalColumn = sheet.getRow(0).getPhysicalNumberOfCells();

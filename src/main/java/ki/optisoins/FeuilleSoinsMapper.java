@@ -50,9 +50,17 @@ public class FeuilleSoinsMapper {
                 return mapChampNomAssure(feuille, donnees);
             case FeuilleSoinsChamps.PRENOMASSURE_CHAMP:
                 return mapChampPrenomAssure(feuille, donnees);
-            case FeuilleSoinsChamps.ADRESSE_CHAMP:
-                return mapChampAdresse(feuille, donnees);
-            case FeuilleSoinsChamps.ACCIDENT_CHAMP:
+            case FeuilleSoinsChamps.APPARTEMENT_CHAMP:
+                return mapChampAppartement(feuille, donnees);
+            case FeuilleSoinsChamps.BATIMENT_CHAMP:
+                return mapChampBatiment(feuille, donnees);
+            case FeuilleSoinsChamps.RUE_CHAMP:
+                return mapChampRue(feuille, donnees);
+            case FeuilleSoinsChamps.CODEPOSTAL_CHAMP:
+                return mapChampCodePostal(feuille, donnees);
+            case FeuilleSoinsChamps.COMMUNE_CHAMP:
+                return mapChampCommune(feuille, donnees);
+              case FeuilleSoinsChamps.ACCIDENT_CHAMP:
                 return mapChampAccident(feuille, donnees);
             case FeuilleSoinsChamps.NOMMALADE_CHAMP:
                 return mapChampNomMalade(feuille, donnees);
@@ -120,8 +128,29 @@ public class FeuilleSoinsMapper {
         return feuille;
     }
 
-    private FeuilleSoins mapChampAdresse(FeuilleSoins feuille, Object donnees) {
-        feuille.setAdresse(convertToString(donnees));
+    private FeuilleSoins mapChampBatiment(FeuilleSoins feuille, Object donnees) {
+        feuille.setBatiment(convertToString(donnees));
+        return feuille;
+    }
+
+
+    private FeuilleSoins mapChampAppartement(FeuilleSoins feuille, Object donnees) {
+        feuille.setAppartement(convertToString(donnees));
+        return feuille;
+    }
+
+    private FeuilleSoins mapChampRue(FeuilleSoins feuille, Object donnees) {
+        feuille.setRue(convertToString(donnees));
+        return feuille;
+    }
+
+    private FeuilleSoins mapChampCodePostal(FeuilleSoins feuille, Object donnees) {
+        feuille.setCodePostal(convertToString(donnees));
+        return feuille;
+    }
+
+    private FeuilleSoins mapChampCommune(FeuilleSoins feuille, Object donnees) {
+        feuille.setCommune(convertToString(donnees));
         return feuille;
     }
 

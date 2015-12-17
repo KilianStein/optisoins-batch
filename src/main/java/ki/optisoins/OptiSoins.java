@@ -25,7 +25,6 @@ public class OptiSoins {
     public static void main(String[] args) throws IOException {
         try {
         	InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(reportTemplateUrl);
-            //InputStream resourceAsStream = new FileInputStream(reportTemplateUrl.replace("/",File.separator));
             jasperDesign = JRXmlLoader.load(inputStream);
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
             jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JRBeanCollectionDataSource(findFeuillesSoinsAuxiliaireMedicale()));
