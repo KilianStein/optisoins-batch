@@ -53,7 +53,7 @@ public class XlsExtract {
         for (Map<String, Object> map : donneesExtraites) {
             System.out.println("---------------------------");
             for (String key : map.keySet()) {
-                System.out.println(key + " " + String.valueOf(map.get(key)));
+                System.out.println(key + ": " + String.valueOf(map.get(key)));
             }
             System.out.println("---------------------------");
         }

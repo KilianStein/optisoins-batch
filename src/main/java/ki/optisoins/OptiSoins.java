@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,6 +18,8 @@ import java.util.List;
  * Classe de lancement du projet ki.optisoins.OptiSoins
  */
 public class OptiSoins {
+    public final static boolean AFFICHER_FOND = true;
+
     public static JasperDesign jasperDesign;
     public static JasperPrint jasperPrint;
     public static JasperReport jasperReport;
@@ -24,17 +27,20 @@ public class OptiSoins {
 
     public static void main(String[] args) throws IOException {
         try {
-        	InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(reportTemplateUrl);
+            InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(reportTemplateUrl);
             jasperDesign = JRXmlLoader.load(inputStream);
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
-            jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JRBeanCollectionDataSource(findFeuillesSoinsAuxiliaireMedicale()));
-            JasperViewer.viewReport(jasperPrint);
-            //JasperExportManager.exportReportToPdfFile(jasperPrint, "classic.pdf");
+            for (FeuilleSoins feuilleSoins : findFeuillesSoinsAuxiliaireMedicale()) {
+                jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JRBeanCollectionDataSource(Arrays.asList(feuilleSoins)));
+                JasperViewer.viewReport(jasperPrint);
+                JasperExportManager.exportReportToPdfFile(jasperPrint, "fichiersGeneres/" + feuilleSoins.getNomAssure() + "-" + feuilleSoins.getPrenomAssure() + ".pdf");
+            }
         } catch (JRException e) {
             e.printStackTrace();
         }
     }
-    private static Collection findFeuillesSoinsAuxiliaireMedicale(){
+
+    private static List<FeuilleSoins> findFeuillesSoinsAuxiliaireMedicale() {
         List<FeuilleSoins> feuilleSoins = new XlsExtract().extract();
         new FeuilleSoinsFormat().format(feuilleSoins);
         return feuilleSoins;

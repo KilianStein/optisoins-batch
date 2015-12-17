@@ -10,7 +10,7 @@ import static ki.optisoins.PriseEnCharge.*;
  */
 public class FeuilleSoins {
 
-    private boolean afficherFond = true;
+    private boolean afficherFond = OptiSoins.AFFICHER_FOND;
     private final Set<PriseEnCharge> prisesEnCharge = new HashSet<>();
 
     @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
