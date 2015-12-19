@@ -18,7 +18,7 @@ import java.util.List;
  * Classe de lancement du projet ki.optisoins.OptiSoins
  */
 public class OptiSoins {
-    public final static boolean AFFICHER_FOND = true;
+    public final static boolean AFFICHER_FOND = false;
 
     public static JasperDesign jasperDesign;
     public static JasperPrint jasperPrint;
@@ -31,9 +31,10 @@ public class OptiSoins {
             jasperDesign = JRXmlLoader.load(inputStream);
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
             for (FeuilleSoins feuilleSoins : findFeuillesSoinsAuxiliaireMedicale()) {
-                jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JRBeanCollectionDataSource(Arrays.asList(feuilleSoins)));
-                JasperViewer.viewReport(jasperPrint);
-                JasperExportManager.exportReportToPdfFile(jasperPrint, "fichiersGeneres/" + feuilleSoins.getNomAssure() + "-" + feuilleSoins.getPrenomAssure() + ".pdf");
+                    jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JRBeanCollectionDataSource(Arrays.asList(feuilleSoins)));
+                    //JasperViewer.viewReport(jasperPrint);
+                    JasperExportManager.exportReportToPdfFile(jasperPrint, "fichiersGeneres/" + feuilleSoins.getNomAssure() + "-" + feuilleSoins.getPrenomAssure() + ".pdf");
+                    //JasperPrintManager.printReport(jasperPrint, false);
             }
         } catch (JRException e) {
             e.printStackTrace();

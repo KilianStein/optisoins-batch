@@ -73,6 +73,8 @@ public class XlsExtract {
                 return cell.getNumericCellValue();
             case Cell.CELL_TYPE_STRING:
                 return cell.getStringCellValue();
+            case Cell.CELL_TYPE_BLANK:
+                return "";
 
         }
         throw new RuntimeException("type non géré");
