@@ -33,7 +33,7 @@ public class OptiSoins {
             for (FeuilleSoins feuilleSoins : findFeuillesSoinsAuxiliaireMedicale()) {
                     jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JRBeanCollectionDataSource(Arrays.asList(feuilleSoins)));
                     //JasperViewer.viewReport(jasperPrint);
-                    JasperExportManager.exportReportToPdfFile(jasperPrint, "fichiersGeneres/" + feuilleSoins.getNomAssure() + "-" + feuilleSoins.getPrenomAssure() + ".pdf");
+                    JasperExportManager.exportReportToPdfFile(jasperPrint, "fichiersGeneres/" + feuilleSoins.getNomEtPrenomMalade().replace(" ", "-") + ".pdf");
                     //JasperPrintManager.printReport(jasperPrint, false);
             }
         } catch (JRException e) {
