@@ -1,4 +1,4 @@
-DE #
+# IDE #
 #######
 .classpath
 .project
@@ -15,5 +15,11 @@ DE #
 # Fichier generes #
 ###################
 **/target/*
-
 /target/
+
+**/fichiersGeneres/*
+/fichiersGeneres/
+
+# Donnees test #
+################
+donnees/
