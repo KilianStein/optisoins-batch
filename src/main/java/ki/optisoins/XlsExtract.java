@@ -23,7 +23,10 @@ public class XlsExtract {
 	    try(DirectoryStream<Path> dirStream = Files.newDirectoryStream(Paths.get("donnees"))) {
 	    	for(Path path : dirStream){
 	    		if (path.toString().endsWith(".xls")){
-	    			feuilleSoins.addAll(extract(path));
+					List<FeuilleSoins> feuillesSoins = extract(path);
+					if (!feuillesSoins.isEmpty()){
+						feuilleSoins.addAll(feuillesSoins);
+					}
 	    		}
 	    	}
 	    } catch (IOException e) {
@@ -39,25 +42,31 @@ public class XlsExtract {
 			HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
 			for (Sheet basicSheet : workbook) {
 				HSSFSheet sheet = (HSSFSheet) basicSheet;
-
-				int numberTotalColumn = sheet.getRow(0).getPhysicalNumberOfCells();
 				int numberTotalRow = sheet.getPhysicalNumberOfRows();
+				if (numberTotalRow != 0){
+					int numberTotalColumn = sheet.getRow(0).getPhysicalNumberOfCells();
 
-				List<String> nomColumn = new ArrayList<>();
-				for (Cell row : sheet.getRow(0)) {
-					nomColumn.add(toStringCell(row));
-				}
-
-				for (int rowNumber = 1; rowNumber < numberTotalRow; rowNumber++) {
-					Map<String, Object> map = new HashMap<>();
-					for (int columnNumber = 0; columnNumber < numberTotalColumn; columnNumber++) {
-						map.put(nomColumn.get(columnNumber), toObjectCell(sheet.getRow(rowNumber).getCell(columnNumber)));
+					List<String> nomColumn = new ArrayList<>();
+					for (Cell row : sheet.getRow(0)) {
+						nomColumn.add(toStringCell(row));
 					}
-					donneesExtraites.add(map);
+
+					for (int rowNumber = 1; rowNumber < numberTotalRow; rowNumber++) {
+						Map<String, Object> map = new HashMap<>();
+						for (int columnNumber = 0; columnNumber < numberTotalColumn; columnNumber++) {
+							Object objectCell  = toObjectCell(sheet.getRow(rowNumber).getCell(columnNumber));
+							if (isNotEmpty(objectCell)){
+								map.put(nomColumn.get(columnNumber), objectCell);
+							}
+						}
+						if (!map.isEmpty()){
+							donneesExtraites.add(map);
+						}
+					}
+					printDonneesExtraite(donneesExtraites);
+					inputStream.close();
+					workbook.close();
 				}
-				printDonneesExtraite(donneesExtraites);
-				inputStream.close();
-				workbook.close();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,7 +74,11 @@ public class XlsExtract {
 		}
 		return new FeuilleSoinsMapper().map(donneesExtraites);
 	}
-	
+
+	private boolean isNotEmpty(Object objectCell) {
+		return objectCell != null && !"".equals(objectCell);
+	}
+
 
 	public void printDonneesExtraite(List<Map<String, Object>> donneesExtraites) {
 		for (Map<String, Object> map : donneesExtraites) {
