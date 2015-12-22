@@ -35,7 +35,7 @@ public class XlsExtract {
 	    return feuilleSoins;
 	}
 
-	public List<FeuilleSoins> extract(Path dataExcel) {
+	private List<FeuilleSoins> extract(Path dataExcel) {
 		List<Map<String, Object>> donneesExtraites = new ArrayList<>();
 		try {
 			InputStream inputStream = Files.newInputStream(dataExcel);
