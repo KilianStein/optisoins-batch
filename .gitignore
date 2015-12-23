@@ -11,6 +11,7 @@
 # Rapport #
 ###########
 .surefire*
+*.log
 
 # Fichier generes #
 ###################

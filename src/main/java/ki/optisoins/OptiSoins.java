@@ -1,13 +1,11 @@
 package ki.optisoins;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.CopyOption;
-import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,13 +35,21 @@ public class OptiSoins {
     	
         try {
             InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(OptiSoinsConfiguration.reportTemplateUrl);
-   
+            OptiSoinsProperties.initProperties();
             jasperDesign = JRXmlLoader.load(inputStream);
+            if (OptiSoinsProperties.isConfigurationPresente(OptiSoinsPropertiesValue.IMPRESSION_MARGE_GAUCHE)){
+                jasperDesign.setLeftMargin(OptiSoinsProperties.getConfigurationInteger(OptiSoinsPropertiesValue.IMPRESSION_MARGE_GAUCHE));
+            }
+
+            if (OptiSoinsProperties.isConfigurationPresente(OptiSoinsPropertiesValue.IMPRESSION_MARGE_HAUT)){
+                jasperDesign.setTopMargin(OptiSoinsProperties.getConfigurationInteger(OptiSoinsPropertiesValue.IMPRESSION_MARGE_HAUT));
+            }
+
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
             for (FeuilleSoins feuilleSoins : findFeuillesSoinsAuxiliaireMedicale()) {
                     jasperPrint = JasperFillManager.fillReport(jasperReport, null, new JRBeanCollectionDataSource(Arrays.asList(feuilleSoins)));
                     //JasperViewer.viewReport(jasperPrint);
-                    JasperExportManager.exportReportToPdfFile(jasperPrint, "fichiersGeneres/" + feuilleSoins.getNomEtPrenomMalade().replace(" ", "-") + ".pdf");
+                    JasperExportManager.exportReportToPdfFile(jasperPrint, createDirIfNotExist("fichiersGeneres/" + getDossierExcel(feuilleSoins)) + File.separator + feuilleSoins.getNomEtPrenomMalade().replace(" ", "-") + ".pdf");
                     //JasperPrintManager.printReport(jasperPrint, false);
             }
         } catch (JRException e) {
@@ -51,8 +57,15 @@ public class OptiSoins {
         }
     }
 
+    private static String getDossierExcel(FeuilleSoins feuilleSoins) {
+        if (OptiSoinsProperties.getConfigurationBoolean(OptiSoinsPropertiesValue.UN_DOSSIER_PAR_EXCEL)){
+            return feuilleSoins.getNomDossier();
+        }
+        return "";
+    }
 
-	private static List<FeuilleSoins> findFeuillesSoinsAuxiliaireMedicale() {
+
+    private static List<FeuilleSoins> findFeuillesSoinsAuxiliaireMedicale() {
         List<FeuilleSoins> feuilleSoins = new XlsExtract().extract();
         new FeuilleSoinsFormat().format(feuilleSoins);
         return feuilleSoins;
@@ -67,11 +80,12 @@ public class OptiSoins {
 		createDirIfNotExist(OptiSoinsConfiguration.outputDirectory);
 	}
 	
-	private static void createDirIfNotExist(String dir) throws IOException {
+	private static String createDirIfNotExist(String dir) throws IOException {
 		Path path = Paths.get(dir);
 		if(!Files.isReadable(path) || !Files.isDirectory(path)){
 			Files.createDirectory(path);
 		}
+        return dir;
 	}
 
 	private static void initData() throws IOException {

@@ -1,5 +1,6 @@
 package ki.optisoins;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.DirectoryStream;
@@ -60,6 +61,9 @@ public class XlsExtract {
 							}
 						}
 						if (!map.isEmpty()){
+							if (OptiSoinsProperties.getConfigurationBoolean(OptiSoinsPropertiesValue.UN_DOSSIER_PAR_EXCEL)){
+								map.put(FeuilleSoinsChamps.NOMDOSSIER_CHAMP, getSubstring(dataExcel));
+							}
 							donneesExtraites.add(map);
 						}
 					}
@@ -73,6 +77,11 @@ public class XlsExtract {
 			throw new RuntimeException(e);
 		}
 		return new FeuilleSoinsMapper().map(donneesExtraites);
+	}
+
+	private String getSubstring(Path dataExcel) {
+		String fileName = dataExcel.getFileName().toString();
+		return fileName.substring(0, fileName.length() - 4);
 	}
 
 	private boolean isNotEmpty(Object objectCell) {

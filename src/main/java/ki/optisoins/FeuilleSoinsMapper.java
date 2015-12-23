@@ -78,9 +78,16 @@ public class FeuilleSoinsMapper {
                 return mapChampFinValiditeAM(feuille, donnees);
             case FeuilleSoinsChamps.NUMEROAM_CHAMP:
                 return mapChampNumeroAM(feuille, donnees);
+            case FeuilleSoinsChamps.NOMDOSSIER_CHAMP:
+                return mapChampNomDossier(feuille, donnees);
             default:
                 return feuille;
         }
+    }
+
+    private FeuilleSoins mapChampNomDossier(FeuilleSoins feuille, Object donnees) {
+        feuille.setNomDossier(convertToString(donnees));
+        return feuille;
     }
 
     private FeuilleSoins mapChampNumeroAM(FeuilleSoins feuille, Object donnees) {

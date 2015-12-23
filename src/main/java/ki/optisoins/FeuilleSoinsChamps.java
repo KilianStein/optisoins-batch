@@ -30,5 +30,6 @@ public interface FeuilleSoinsChamps {
     String DEBUTVALIDITEAM_CHAMP = "debutValiditeAM";
     String FINVALIDITEAM_CHAMP = "finValiditeAM";
     String NUMEROAM_CHAMP = "numeroAM";
+    String NOMDOSSIER_CHAMP = "nomDossier";
 
 }

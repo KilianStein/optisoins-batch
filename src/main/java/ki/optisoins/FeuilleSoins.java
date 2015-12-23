@@ -11,6 +11,7 @@ import static ki.optisoins.PriseEnCharge.*;
 public class FeuilleSoins {
 
     private boolean afficherFond = OptiSoins.AFFICHER_FOND;
+    private String nomDossier = "";
     private final Set<PriseEnCharge> prisesEnCharge = new HashSet<>();
 
     @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
@@ -90,6 +91,14 @@ public class FeuilleSoins {
 
     @Condition(priseEnCharge = {AIDE_MEDICALE})
     private String numeroAM = "";
+
+    public String getNomDossier() {
+        return nomDossier;
+    }
+
+    public void setNomDossier(String nomDossier) {
+        this.nomDossier = nomDossier;
+    }
 
     public Set<PriseEnCharge> getPrisesEnCharge() {
         return prisesEnCharge;
