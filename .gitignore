@@ -21,6 +21,8 @@
 **/fichiersGeneres/*
 /fichiersGeneres/
 
+*.exe
+
 # Donnees test #
 ################
 **/donnees/*
