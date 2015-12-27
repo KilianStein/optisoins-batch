@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="584" leftMargin="11" rightMargin="0" topMargin="34" bottomMargin="0" uuid="29a1a777-682d-4066-bb5a-973301091243">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="580" leftMargin="15" rightMargin="0" topMargin="33" bottomMargin="0" uuid="29a1a777-682d-4066-bb5a-973301091243">
 	<property name="ireport.zoom" value="3.0"/>
-	<property name="ireport.x" value="729"/>
-	<property name="ireport.y" value="985"/>
+	<property name="ireport.x" value="582"/>
+	<property name="ireport.y" value="816"/>
 	<property name="ireport.background.image.properties" value="true,true,0.25,-8,-8,0,0,843,1185"/>
 	<subDataset name="dataset1" uuid="f866c7ce-e963-4f59-b774-0fb3af623e1b"/>
 	<queryString>
@@ -65,11 +65,11 @@
 				<textFieldExpression><![CDATA[$F{numeroCompte}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="475" y="414" width="91" height="20" uuid="da2f53fe-3204-482b-a2f2-7fb88c927b90"/>
+				<reportElement x="475" y="414" width="84" height="20" uuid="da2f53fe-3204-482b-a2f2-7fb88c927b90"/>
 				<textFieldExpression><![CDATA[$F{dateOrdonnance}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="482" y="438" width="100" height="20" uuid="40bf1e65-8ce1-47d7-96fc-2cd08e7bd196"/>
+				<reportElement x="482" y="438" width="76" height="20" uuid="40bf1e65-8ce1-47d7-96fc-2cd08e7bd196"/>
 				<textFieldExpression><![CDATA[$F{nomMedecin}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -80,7 +80,7 @@
 				<textFieldExpression><![CDATA[$F{numeroMedecin}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="466" y="514" width="100" height="20" uuid="bd079396-17f3-4aea-a7a5-fc85d4defc17"/>
+				<reportElement x="466" y="514" width="92" height="20" uuid="bd079396-17f3-4aea-a7a5-fc85d4defc17"/>
 				<textFieldExpression><![CDATA[$F{numeroACP}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -132,11 +132,11 @@
 				<textFieldExpression><![CDATA[$F{situationMalade}.toLowerCase().contains("salarié") || $F{situationMalade}.toLowerCase().contains("salarie") ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="497" y="27" width="74" height="16" uuid="b116e0d4-62f8-4c95-859d-cc360460e530"/>
+				<reportElement x="497" y="27" width="61" height="16" uuid="b116e0d4-62f8-4c95-859d-cc360460e530"/>
 				<textFieldExpression><![CDATA[$F{debutValiditeAM}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="497" y="42" width="84" height="20" uuid="5a67dde8-7420-40c0-9fa3-83455cda04a3"/>
+				<reportElement x="497" y="42" width="61" height="20" uuid="5a67dde8-7420-40c0-9fa3-83455cda04a3"/>
 				<textFieldExpression><![CDATA[$F{finValiditeAM}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -180,7 +180,7 @@
 				<textFieldExpression><![CDATA[$F{situationMalade}.toLowerCase().contains("scolaire") ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="502" y="285" width="32" height="15" uuid="5ac80ed0-2fee-44a3-ae2b-efe09bef00ea"/>
+				<reportElement x="503" y="285" width="32" height="15" uuid="5ac80ed0-2fee-44a3-ae2b-efe09bef00ea"/>
 				<textFieldExpression><![CDATA[$F{situationMalade}.toLowerCase().contains("inactif") ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField>
