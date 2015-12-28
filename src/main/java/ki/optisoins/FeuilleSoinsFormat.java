@@ -15,7 +15,27 @@ public class FeuilleSoinsFormat {
     private FeuilleSoinsJasper format(FeuilleSoinsJasper feuilleSoinsJasper) {
         formatNumeroCafat(feuilleSoinsJasper);
         formatNumeroCompte(feuilleSoinsJasper);
+        formatActes(feuilleSoinsJasper);
+        formatTotal(feuilleSoinsJasper);
         return feuilleSoinsJasper;
+    }
+
+    private void formatTotal(FeuilleSoinsJasper feuilleSoinsJasper) {
+        feuilleSoinsJasper.setTotal(JasperUtils.formatXPF(JasperUtils.formatAttribute(feuilleSoinsJasper.calculerTotal())));
+    }
+
+    private void formatActes(FeuilleSoinsJasper feuilleSoinsJasper) {
+        feuilleSoinsJasper.setActe1(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(1)));
+        feuilleSoinsJasper.setActe2(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(2)));
+        feuilleSoinsJasper.setActe3(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(3)));
+        feuilleSoinsJasper.setActe4(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(4)));
+        feuilleSoinsJasper.setActe5(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(5)));
+        feuilleSoinsJasper.setActe6(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(6)));
+        feuilleSoinsJasper.setActe7(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(7)));
+        feuilleSoinsJasper.setActe8(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(8)));
+        feuilleSoinsJasper.setActe9(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(9)));
+        feuilleSoinsJasper.setActe10(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(10)));
+        feuilleSoinsJasper.setActe11(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(11)));
     }
 
     private FeuilleSoinsJasper formatNumeroCompte(FeuilleSoinsJasper feuilleSoinsJasper) {

@@ -36,6 +36,7 @@ public class OptiSoins {
         initData();
         initOuput();
         OptiSoinsProperties.initProperties();
+        AMOProperties.initProperties();
         OptiSoinsLogger.initLogger();
     }
 

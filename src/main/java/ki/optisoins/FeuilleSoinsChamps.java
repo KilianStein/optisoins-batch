@@ -42,6 +42,5 @@ public interface FeuilleSoinsChamps {
     String ACTE9_CHAMP = "acte9";
     String ACTE10_CHAMP = "acte10";
     String ACTE11_CHAMP = "acte11";
-    String TOTAL_CHAMP = "total";
 
 }

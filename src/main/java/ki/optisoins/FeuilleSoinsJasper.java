@@ -1,8 +1,5 @@
 package ki.optisoins;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * Classe représentant la feuille de soins d'auxiliaire médicale
  */
@@ -37,22 +34,35 @@ public class FeuilleSoinsJasper {
     private String finValiditeAM = "";
     private String numeroAM = "";
 
-    private String acte1 = " ; ; ; ; ; ; ; ; ";
-    private String acte2 = " ; ; ; ; ; ; ; ; ";
-    private String acte3 = " ; ; ; ; ; ; ; ; ";
-    private String acte4 = " ; ; ; ; ; ; ; ; ";
-    private String acte5 = " ; ; ; ; ; ; ; ; ";
-    private String acte6 = " ; ; ; ; ; ; ; ; ";
-    private String acte7 = " ; ; ; ; ; ; ; ; ";
-    private String acte8 = " ; ; ; ; ; ; ; ; ";
-    private String acte9 = " ; ; ; ; ; ; ; ; ";
-    private String acte10 = " ; ; ; ; ; ; ; ; ";
-    private String acte11 = " ; ; ; ; ; ; ; ; ";
+    private Actes actes = new Actes();
+    private String acte1 = JasperUtils.ACTE_DEFAULT_FORMAT;
+    private String acte2 = JasperUtils.ACTE_DEFAULT_FORMAT;
+    private String acte3 = JasperUtils.ACTE_DEFAULT_FORMAT;
+    private String acte4 = JasperUtils.ACTE_DEFAULT_FORMAT;
+    private String acte5 = JasperUtils.ACTE_DEFAULT_FORMAT;
+    private String acte6 = JasperUtils.ACTE_DEFAULT_FORMAT;
+    private String acte7 = JasperUtils.ACTE_DEFAULT_FORMAT;
+    private String acte8 = JasperUtils.ACTE_DEFAULT_FORMAT;
+    private String acte9 = JasperUtils.ACTE_DEFAULT_FORMAT;
+    private String acte10 = JasperUtils.ACTE_DEFAULT_FORMAT;
+    private String acte11 = JasperUtils.ACTE_DEFAULT_FORMAT;
 
     private String total = "";
 
     private boolean afficherFond = OptiSoinsProperties.getConfigurationBoolean(OptiSoinsPropertiesValue.AFFICHER_FOND);
     private boolean debugBordures = OptiSoinsProperties.getConfigurationBoolean(OptiSoinsPropertiesValue.AFFICHER_BORDURES);
+
+    public int calculerTotal() {
+        return actes.calculerTotal();
+    }
+
+    public Acte getActe(int numeroLigne) {
+        return actes.getActe(numeroLigne);
+    }
+
+    public void addToActes(int numeroLigne, Acte acte) {
+        actes.setToActes(numeroLigne, acte);
+    }
 
     public boolean isAfficherFond() {
         return afficherFond;
@@ -381,4 +391,5 @@ public class FeuilleSoinsJasper {
     public void setTotal(String total) {
         this.total = total;
     }
+
 }

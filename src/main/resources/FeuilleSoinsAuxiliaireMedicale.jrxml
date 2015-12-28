@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="20" rightMargin="0" topMargin="35" bottomMargin="0" uuid="29a1a777-682d-4066-bb5a-973301091243">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="786"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="347"/>
+	<property name="ireport.y" value="1268"/>
 	<property name="ireport.background.image.properties" value="true,true,0.25,-8,-8,0,0,843,1185"/>
 	<subDataset name="dataset1" uuid="f866c7ce-e963-4f59-b774-0fb3af623e1b"/>
 	<subDataset name="Table Dataset 1" uuid="fd61bd5d-2ac6-4540-9787-9ba8cb3b2583"/>
@@ -723,7 +723,7 @@
 				<textFieldExpression><![CDATA[$F{acte10}.split(";")[6]]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="74" y="710" width="42" height="14" uuid="0adc2550-2895-4c55-a1e9-0389f06c6ec3"/>
+				<reportElement x="77" y="710" width="42" height="14" uuid="0adc2550-2895-4c55-a1e9-0389f06c6ec3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{acte10}.split(";")[1]]]></textFieldExpression>
 			</textField>
@@ -750,12 +750,12 @@
 				<textFieldExpression><![CDATA[$F{acte10}.split(";")[5]]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="116" y="710" width="88" height="14" uuid="9ab11a75-e14c-497d-a41c-bd69462486d3"/>
+				<reportElement x="119" y="710" width="88" height="14" uuid="9ab11a75-e14c-497d-a41c-bd69462486d3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{acte10}.split(";")[2]]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="-4" y="710" width="78" height="14" uuid="e5688c09-bdab-4e72-a644-ce432b98edda"/>
+				<reportElement x="-1" y="710" width="78" height="14" uuid="e5688c09-bdab-4e72-a644-ce432b98edda"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{acte10}.split(";")[0]]]></textFieldExpression>
 			</textField>
@@ -772,7 +772,7 @@
 				<textFieldExpression><![CDATA[$F{acte11}.split(";")[6]]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="74" y="724" width="42" height="14" uuid="00c52d9b-2198-4d39-8407-e91d1d48c9a2"/>
+				<reportElement x="77" y="724" width="42" height="14" uuid="00c52d9b-2198-4d39-8407-e91d1d48c9a2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{acte11}.split(";")[1]]]></textFieldExpression>
 			</textField>
@@ -799,17 +799,17 @@
 				<textFieldExpression><![CDATA[$F{acte11}.split(";")[5]]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="116" y="724" width="88" height="14" uuid="3ddfb275-8815-4c44-8718-5881043eaa29"/>
+				<reportElement x="119" y="724" width="88" height="14" uuid="3ddfb275-8815-4c44-8718-5881043eaa29"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{acte11}.split(";")[2]]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="-4" y="724" width="78" height="14" uuid="203ae107-7c8d-496e-a0f3-5bb25f293940"/>
+				<reportElement x="-1" y="724" width="78" height="14" uuid="203ae107-7c8d-496e-a0f3-5bb25f293940"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{acte11}.split(";")[0]]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="759" width="100" height="20" uuid="66c98355-214c-48de-9f0b-e15c418b46f6"/>
+				<reportElement x="152" y="757" width="107" height="20" uuid="66c98355-214c-48de-9f0b-e15c418b46f6"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>

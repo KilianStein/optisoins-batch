@@ -102,70 +102,63 @@ public class FeuilleSoinsMapper {
                 return mapActe10(feuille, donnees);
             case FeuilleSoinsChamps.ACTE11_CHAMP:
                 return mapActe11(feuille, donnees);
-            case FeuilleSoinsChamps.TOTAL_CHAMP:
-                return mapTotal(feuille, donnees);
-            default:
+             default:
                 return feuille;
         }
     }
 
-    private FeuilleSoinsJasper mapTotal(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setTotal(convertToString(donnees));
-        return feuille;
-    }
-
     private FeuilleSoinsJasper mapActe11(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setActe11(convertToActe(convertToString(donnees)));
+        feuille.addToActes(11, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
 
     private FeuilleSoinsJasper mapActe10(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setActe10(convertToActe(convertToString(donnees)));
+        feuille.addToActes(10, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
 
     private FeuilleSoinsJasper mapActe9(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setActe9(convertToActe(convertToString(donnees)));
+        feuille.addToActes(9, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
 
     private FeuilleSoinsJasper mapActe8(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setActe8(convertToActe(convertToString(donnees)));
+        feuille.addToActes(8, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
 
     private FeuilleSoinsJasper mapActe7(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setActe7(convertToActe(convertToString(donnees)));
+        feuille.addToActes(7, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
 
     private FeuilleSoinsJasper mapActe6(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setActe6(convertToActe(convertToString(donnees)));
+        feuille.addToActes(6, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
 
     private FeuilleSoinsJasper mapActe5(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setActe5(convertToActe(convertToString(donnees)));
+        feuille.addToActes(5, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
 
     private FeuilleSoinsJasper mapActe4(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setActe4(convertToActe(convertToString(donnees)));
+        feuille.addToActes(4, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
 
     private FeuilleSoinsJasper mapActe3(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setActe3(convertToActe(convertToString(donnees)));
+        feuille.addToActes(3, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
 
     private FeuilleSoinsJasper mapActe2(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setActe2(convertToActe(convertToString(donnees)));
+        feuille.addToActes(2, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
 
     private FeuilleSoinsJasper mapActe1(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setActe1(convertToActe(convertToString(donnees)));
+        feuille.addToActes(1, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
 
@@ -316,25 +309,4 @@ public class FeuilleSoinsMapper {
         return convertToString(donnees);
     }
 
-
-    private String convertToActe(String acte) {
-        String acteFormatte = acte;
-        for(int i = acte.split(";").length; i <= 8; i++){
-            acteFormatte +=";";
-        }
-
-        String acteFormatte2 = "";
-        char lastC = ';';
-        for(char c : acteFormatte.toCharArray()){
-            if (c == ';' && lastC == ';'){
-                acteFormatte2 += " ";
-            }
-            acteFormatte2 += c;
-            lastC=c;
-        }
-        if (acteFormatte2.lastIndexOf(';') == acteFormatte2.length()-1){
-            acteFormatte2+=" ";
-        }
-        return acteFormatte2;
-    }
 }
