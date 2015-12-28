@@ -3,94 +3,72 @@ package ki.optisoins;
 import java.util.HashSet;
 import java.util.Set;
 
-import static ki.optisoins.PriseEnCharge.*;
-
 /**
  * Classe représentant la feuille de soins d'auxiliaire médicale
  */
-public class FeuilleSoins {
+public class FeuilleSoinsJasper {
 
-    private boolean afficherFond = OptiSoins.AFFICHER_FOND;
     private String nomDossier = "";
-    private final Set<PriseEnCharge> prisesEnCharge = new HashSet<>();
 
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String reglementNomPrenom = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String nomBanque = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String numeroCompte = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT, CINQUANTE_POURCENT})
     private String identificationAuxiliaireMedical = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT, CINQUANTE_POURCENT})
     private String dateOrdonnance = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT, CINQUANTE_POURCENT})
     private String nomMedecin = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT, CINQUANTE_POURCENT})
     private String numeroMedecin = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT, CINQUANTE_POURCENT})
     private String numeroACP = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT, CINQUANTE_POURCENT})
     private String nomEtPrenomMalade = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String numeroCafat = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String nomAssure = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String prenomAssure = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String appartement = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String batiment = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String rue = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String codePostal = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String commune = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String accident = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String nomMalade = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String prenomMalade = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String datedenaissance = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String lienAssure = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE, CENT_POURCENT})
     private String situationMalade = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE})
     private String debutValiditeAM = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE})
     private String finValiditeAM = "";
-
-    @Condition(priseEnCharge = {AIDE_MEDICALE})
     private String numeroAM = "";
+
+    private String acte1 = " ; ; ; ; ; ; ; ; ";
+    private String acte2 = " ; ; ; ; ; ; ; ; ";
+    private String acte3 = " ; ; ; ; ; ; ; ; ";
+    private String acte4 = " ; ; ; ; ; ; ; ; ";
+    private String acte5 = " ; ; ; ; ; ; ; ; ";
+    private String acte6 = " ; ; ; ; ; ; ; ; ";
+    private String acte7 = " ; ; ; ; ; ; ; ; ";
+    private String acte8 = " ; ; ; ; ; ; ; ; ";
+    private String acte9 = " ; ; ; ; ; ; ; ; ";
+    private String acte10 = " ; ; ; ; ; ; ; ; ";
+    private String acte11 = " ; ; ; ; ; ; ; ; ";
+
+    private String total = "";
+
+    private boolean afficherFond = OptiSoinsProperties.getConfigurationBoolean(OptiSoinsPropertiesValue.AFFICHER_FOND);
+    private boolean debugBordures = OptiSoinsProperties.getConfigurationBoolean(OptiSoinsPropertiesValue.AFFICHER_BORDURES);
+
+    public boolean isAfficherFond() {
+        return afficherFond;
+    }
+
+    public void setAfficherFond(boolean afficherFond) {
+        this.afficherFond = afficherFond;
+    }
+
+    public boolean isDebugBordures() {
+        return debugBordures;
+    }
+
+    public void setDebugBordures(boolean debugBordures) {
+        this.debugBordures = debugBordures;
+    }
 
     public String getNomDossier() {
         return nomDossier;
@@ -98,14 +76,6 @@ public class FeuilleSoins {
 
     public void setNomDossier(String nomDossier) {
         this.nomDossier = nomDossier;
-    }
-
-    public Set<PriseEnCharge> getPrisesEnCharge() {
-        return prisesEnCharge;
-    }
-
-    public void addToPriseEnCharge(PriseEnCharge priseEnCharge) {
-        this.prisesEnCharge.add(priseEnCharge);
     }
 
     public String getReglementNomPrenom() {
@@ -204,6 +174,46 @@ public class FeuilleSoins {
         this.prenomAssure = prenomAssure;
     }
 
+    public String getAppartement() {
+        return appartement;
+    }
+
+    public void setAppartement(String appartement) {
+        this.appartement = appartement;
+    }
+
+    public String getBatiment() {
+        return batiment;
+    }
+
+    public void setBatiment(String batiment) {
+        this.batiment = batiment;
+    }
+
+    public String getRue() {
+        return rue;
+    }
+
+    public void setRue(String rue) {
+        this.rue = rue;
+    }
+
+    public String getCodePostal() {
+        return codePostal;
+    }
+
+    public void setCodePostal(String codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public String getCommune() {
+        return commune;
+    }
+
+    public void setCommune(String commune) {
+        this.commune = commune;
+    }
+
     public String getAccident() {
         return accident;
     }
@@ -276,51 +286,99 @@ public class FeuilleSoins {
         this.numeroAM = numeroAM;
     }
 
-    public boolean isAfficherFond() {
-        return afficherFond;
+    public String getActe1() {
+        return acte1;
     }
 
-    public void setAfficherFond(boolean afficherFond) {
-        this.afficherFond = afficherFond;
+    public void setActe1(String acte1) {
+        this.acte1 = acte1;
     }
 
-    public String getAppartement() {
-        return appartement;
+    public String getActe2() {
+        return acte2;
     }
 
-    public void setAppartement(String appartement) {
-        this.appartement = appartement;
+    public void setActe2(String acte2) {
+        this.acte2 = acte2;
     }
 
-    public String getBatiment() {
-        return batiment;
+    public String getActe3() {
+        return acte3;
     }
 
-    public void setBatiment(String batiment) {
-        this.batiment = batiment;
+    public void setActe3(String acte3) {
+        this.acte3 = acte3;
     }
 
-    public String getRue() {
-        return rue;
+    public String getActe4() {
+        return acte4;
     }
 
-    public void setRue(String rue) {
-        this.rue = rue;
+    public void setActe4(String acte4) {
+        this.acte4 = acte4;
     }
 
-    public String getCodePostal() {
-        return codePostal;
+    public String getActe5() {
+        return acte5;
     }
 
-    public void setCodePostal(String codePostal) {
-        this.codePostal = codePostal;
+    public void setActe5(String acte5) {
+        this.acte5 = acte5;
     }
 
-    public String getCommune() {
-        return commune;
+    public String getActe6() {
+        return acte6;
     }
 
-    public void setCommune(String commune) {
-        this.commune = commune;
+    public void setActe6(String acte6) {
+        this.acte6 = acte6;
+    }
+
+    public String getActe7() {
+        return acte7;
+    }
+
+    public void setActe7(String acte7) {
+        this.acte7 = acte7;
+    }
+
+    public String getActe8() {
+        return acte8;
+    }
+
+    public void setActe8(String acte8) {
+        this.acte8 = acte8;
+    }
+
+    public String getActe9() {
+        return acte9;
+    }
+
+    public void setActe9(String acte9) {
+        this.acte9 = acte9;
+    }
+
+    public String getActe10() {
+        return acte10;
+    }
+
+    public void setActe10(String acte10) {
+        this.acte10 = acte10;
+    }
+
+    public String getActe11() {
+        return acte11;
+    }
+
+    public void setActe11(String acte11) {
+        this.acte11 = acte11;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
     }
 }

@@ -18,24 +18,24 @@ import java.util.Map;
 
 public class XlsExtract {
 
-    public List<FeuilleSoins> extract() {
-        List<FeuilleSoins> feuilleSoins = new ArrayList<>();
+    public List<FeuilleSoinsJasper> extract() {
+        List<FeuilleSoinsJasper> feuilleSoinJaspers = new ArrayList<>();
         try (DirectoryStream<Path> dirStream = Files.newDirectoryStream(Paths.get("donnees"))) {
             for (Path path : dirStream) {
                 if (path.toString().endsWith(".xls")) {
-                    List<FeuilleSoins> feuillesSoins = extract(path);
+                    List<FeuilleSoinsJasper> feuillesSoins = extract(path);
                     if (!feuillesSoins.isEmpty()) {
-                        feuilleSoins.addAll(feuillesSoins);
+                        feuilleSoinJaspers.addAll(feuillesSoins);
                     }
                 }
             }
         } catch (IOException e) {
             OptiSoinsLogger.printError(e);
         }
-        return feuilleSoins;
+        return feuilleSoinJaspers;
     }
 
-    private List<FeuilleSoins> extract(Path dataExcel) {
+    private List<FeuilleSoinsJasper> extract(Path dataExcel) {
         List<Map<String, Object>> donneesExtraites = new ArrayList<>();
         try {
             InputStream inputStream = Files.newInputStream(dataExcel);

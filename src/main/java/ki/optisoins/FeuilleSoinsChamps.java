@@ -31,5 +31,17 @@ public interface FeuilleSoinsChamps {
     String FINVALIDITEAM_CHAMP = "finValiditeAM";
     String NUMEROAM_CHAMP = "numeroAM";
     String NOMDOSSIER_CHAMP = "nomDossier";
+    String ACTE1_CHAMP = "acte1";
+    String ACTE2_CHAMP = "acte2";
+    String ACTE3_CHAMP = "acte3";
+    String ACTE4_CHAMP = "acte4";
+    String ACTE5_CHAMP = "acte5";
+    String ACTE6_CHAMP = "acte6";
+    String ACTE7_CHAMP = "acte7";
+    String ACTE8_CHAMP = "acte8";
+    String ACTE9_CHAMP = "acte9";
+    String ACTE10_CHAMP = "acte10";
+    String ACTE11_CHAMP = "acte11";
+    String TOTAL_CHAMP = "total";
 
 }

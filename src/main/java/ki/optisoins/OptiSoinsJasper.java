@@ -11,8 +11,8 @@ import java.util.Arrays;
 
 public class OptiSoinsJasper {
 
-    public static JasperPrint fillReport(JasperReport jasperReport, FeuilleSoins feuilleSoins) throws JRException {
-        return JasperFillManager.fillReport(jasperReport, null, new JRBeanCollectionDataSource(Arrays.asList(feuilleSoins)));
+    public static JasperPrint fillReport(JasperReport jasperReport, FeuilleSoinsJasper feuilleSoinsJasper) throws JRException {
+        return JasperFillManager.fillReport(jasperReport, null, new JRBeanCollectionDataSource(Arrays.asList(feuilleSoinsJasper)));
     }
 
     public static JasperReport compileReport() throws JRException {
@@ -32,29 +32,29 @@ public class OptiSoinsJasper {
     }
 
 
-    public static void printReport(JasperReport jasperReport, FeuilleSoins feuilleSoins) throws JRException, IOException {
-        JasperPrint jasperPrint = OptiSoinsJasper.fillReport(jasperReport, feuilleSoins);
+    public static void printReport(JasperReport jasperReport, FeuilleSoinsJasper feuilleSoinsJasper) throws JRException, IOException {
+        JasperPrint jasperPrint = OptiSoinsJasper.fillReport(jasperReport, feuilleSoinsJasper);
 
-        JasperExportManager.exportReportToPdfFile(jasperPrint, getPathExportPDF(feuilleSoins));
+        JasperExportManager.exportReportToPdfFile(jasperPrint, getPathExportPDF(feuilleSoinsJasper));
         //JasperViewer.viewReport(jasperPrint);
         //JasperPrintManager.printReport(jasperPrint, false);
     }
 
-    private static String getPathExportPDF(FeuilleSoins feuilleSoins) throws IOException {
-        return getDossierExportPDF(feuilleSoins) + getFileNamePDF(feuilleSoins);
+    private static String getPathExportPDF(FeuilleSoinsJasper feuilleSoinsJasper) throws IOException {
+        return getDossierExportPDF(feuilleSoinsJasper) + getFileNamePDF(feuilleSoinsJasper);
     }
 
-    private static String getFileNamePDF(FeuilleSoins feuilleSoins) {
-        return feuilleSoins.getNomEtPrenomMalade().replace(" ", "-") + ".pdf";
+    private static String getFileNamePDF(FeuilleSoinsJasper feuilleSoinsJasper) {
+        return feuilleSoinsJasper.getNomEtPrenomMalade().replace(" ", "-") + ".pdf";
     }
 
-    private static String getDossierExportPDF(FeuilleSoins feuilleSoins) throws IOException {
-        return FileUtils.createDirIfNotExist(OptiSoinsConfiguration.outputDirectory + File.separator + getDossierExcel(feuilleSoins)) + File.separator;
+    private static String getDossierExportPDF(FeuilleSoinsJasper feuilleSoinsJasper) throws IOException {
+        return FileUtils.createDirIfNotExist(OptiSoinsConfiguration.outputDirectory + File.separator + getDossierExcel(feuilleSoinsJasper)) + File.separator;
     }
 
-    private static String getDossierExcel(FeuilleSoins feuilleSoins) {
+    private static String getDossierExcel(FeuilleSoinsJasper feuilleSoinsJasper) {
         if (OptiSoinsProperties.getConfigurationBoolean(OptiSoinsPropertiesValue.UN_DOSSIER_PAR_EXCEL)) {
-            return feuilleSoins.getNomDossier();
+            return feuilleSoinsJasper.getNomDossier();
         }
         return "";
     }

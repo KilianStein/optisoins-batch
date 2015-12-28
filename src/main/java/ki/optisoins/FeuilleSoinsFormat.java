@@ -5,31 +5,31 @@ import java.util.List;
 
 public class FeuilleSoinsFormat {
 
-    public List<FeuilleSoins> format(List<FeuilleSoins> feuillesSoins) {
-        for (FeuilleSoins feuilleSoins : feuillesSoins){
-            format(feuilleSoins);
+    public List<FeuilleSoinsJasper> format(List<FeuilleSoinsJasper> feuillesSoins) {
+        for (FeuilleSoinsJasper feuilleSoinsJasper : feuillesSoins){
+            format(feuilleSoinsJasper);
         }
         return feuillesSoins;
     }
 
-    private FeuilleSoins format(FeuilleSoins feuilleSoins) {
-        formatNumeroCafat(feuilleSoins);
-        formatNumeroCompte(feuilleSoins);
-        return feuilleSoins;
+    private FeuilleSoinsJasper format(FeuilleSoinsJasper feuilleSoinsJasper) {
+        formatNumeroCafat(feuilleSoinsJasper);
+        formatNumeroCompte(feuilleSoinsJasper);
+        return feuilleSoinsJasper;
     }
 
-    private FeuilleSoins formatNumeroCompte(FeuilleSoins feuilleSoins) {
-        if (!"".equals(feuilleSoins.getNumeroCompte())){
-            feuilleSoins.setNumeroCompte(splitSpace(feuilleSoins.getNumeroCompte(), " "));
+    private FeuilleSoinsJasper formatNumeroCompte(FeuilleSoinsJasper feuilleSoinsJasper) {
+        if (!"".equals(feuilleSoinsJasper.getNumeroCompte())){
+            feuilleSoinsJasper.setNumeroCompte(splitSpace(feuilleSoinsJasper.getNumeroCompte(), " "));
         }
-        return feuilleSoins;
+        return feuilleSoinsJasper;
     }
 
-    private FeuilleSoins formatNumeroCafat(FeuilleSoins feuilleSoins) {
-        if (!"".equals(feuilleSoins.getNumeroCafat())){
-            feuilleSoins.setNumeroCafat(splitSpace(feuilleSoins.getNumeroCafat(), "  "));
+    private FeuilleSoinsJasper formatNumeroCafat(FeuilleSoinsJasper feuilleSoinsJasper) {
+        if (!"".equals(feuilleSoinsJasper.getNumeroCafat())){
+            feuilleSoinsJasper.setNumeroCafat(splitSpace(feuilleSoinsJasper.getNumeroCafat(), "  "));
         }
-        return feuilleSoins;
+        return feuilleSoinsJasper;
     }
 
     private String splitSpace(String s, String space){

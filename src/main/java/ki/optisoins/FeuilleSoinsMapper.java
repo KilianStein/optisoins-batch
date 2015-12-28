@@ -7,24 +7,24 @@ import java.util.Map;
 
 public class FeuilleSoinsMapper {
 
-    public List<FeuilleSoins> map(List<Map<String, Object>> donneesExtraites) {
-        List<FeuilleSoins> feuillesSoinsAuxiliaireMediales = new ArrayList<>();
+    public List<FeuilleSoinsJasper> map(List<Map<String, Object>> donneesExtraites) {
+        List<FeuilleSoinsJasper> feuillesSoinsAuxiliaireMediales = new ArrayList<>();
         for (Map<String, Object> donneesFeuille : donneesExtraites) {
             feuillesSoinsAuxiliaireMediales.add(map(donneesFeuille));
         }
         return feuillesSoinsAuxiliaireMediales;
     }
 
-    private FeuilleSoins map(Map<String, Object> donneesFeuille) {
-        FeuilleSoins feuilleSoinsAuxiliaireMediale = new FeuilleSoins();
+    private FeuilleSoinsJasper map(Map<String, Object> donneesFeuille) {
+        FeuilleSoinsJasper feuilleSoinsJasperAuxiliaireMediale = new FeuilleSoinsJasper();
 
         for (String nomChamp : donneesFeuille.keySet()) {
-            map(feuilleSoinsAuxiliaireMediale, nomChamp, donneesFeuille.get(nomChamp));
+            map(feuilleSoinsJasperAuxiliaireMediale, nomChamp, donneesFeuille.get(nomChamp));
         }
-        return feuilleSoinsAuxiliaireMediale;
+        return feuilleSoinsJasperAuxiliaireMediale;
     }
 
-    private FeuilleSoins map(FeuilleSoins feuille, String nomChamp, Object donnees) {
+    private FeuilleSoinsJasper map(FeuilleSoinsJasper feuille, String nomChamp, Object donnees) {
         switch (nomChamp) {
             case FeuilleSoinsChamps.NOMBANQUE_CHAMP:
                 return mapChampNomBanque(feuille, donnees);
@@ -80,143 +80,227 @@ public class FeuilleSoinsMapper {
                 return mapChampNumeroAM(feuille, donnees);
             case FeuilleSoinsChamps.NOMDOSSIER_CHAMP:
                 return mapChampNomDossier(feuille, donnees);
+            case FeuilleSoinsChamps.ACTE1_CHAMP:
+                return mapActe1(feuille, donnees);
+            case FeuilleSoinsChamps.ACTE2_CHAMP:
+                return mapActe2(feuille, donnees);
+            case FeuilleSoinsChamps.ACTE3_CHAMP:
+                return mapActe3(feuille, donnees);
+            case FeuilleSoinsChamps.ACTE4_CHAMP:
+                return mapActe4(feuille, donnees);
+            case FeuilleSoinsChamps.ACTE5_CHAMP:
+                return mapActe5(feuille, donnees);
+            case FeuilleSoinsChamps.ACTE6_CHAMP:
+                return mapActe6(feuille, donnees);
+            case FeuilleSoinsChamps.ACTE7_CHAMP:
+                return mapActe7(feuille, donnees);
+            case FeuilleSoinsChamps.ACTE8_CHAMP:
+                return mapActe8(feuille, donnees);
+            case FeuilleSoinsChamps.ACTE9_CHAMP:
+                return mapActe9(feuille, donnees);
+            case FeuilleSoinsChamps.ACTE10_CHAMP:
+                return mapActe10(feuille, donnees);
+            case FeuilleSoinsChamps.ACTE11_CHAMP:
+                return mapActe11(feuille, donnees);
+            case FeuilleSoinsChamps.TOTAL_CHAMP:
+                return mapTotal(feuille, donnees);
             default:
                 return feuille;
         }
     }
 
-    private FeuilleSoins mapChampNomDossier(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapTotal(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setTotal(convertToString(donnees));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapActe11(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setActe11(convertToActe(convertToString(donnees)));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapActe10(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setActe10(convertToActe(convertToString(donnees)));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapActe9(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setActe9(convertToActe(convertToString(donnees)));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapActe8(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setActe8(convertToActe(convertToString(donnees)));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapActe7(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setActe7(convertToActe(convertToString(donnees)));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapActe6(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setActe6(convertToActe(convertToString(donnees)));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapActe5(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setActe5(convertToActe(convertToString(donnees)));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapActe4(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setActe4(convertToActe(convertToString(donnees)));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapActe3(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setActe3(convertToActe(convertToString(donnees)));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapActe2(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setActe2(convertToActe(convertToString(donnees)));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapActe1(FeuilleSoinsJasper feuille, Object donnees) {
+        feuille.setActe1(convertToActe(convertToString(donnees)));
+        return feuille;
+    }
+
+    private FeuilleSoinsJasper mapChampNomDossier(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNomDossier(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampNumeroAM(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampNumeroAM(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNumeroAM(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampFinValiditeAM(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampFinValiditeAM(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setFinValiditeAM(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampDebutValiditeAM(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampDebutValiditeAM(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setDebutValiditeAM(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampSituationMalade(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampSituationMalade(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setSituationMalade(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampLienAssure(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampLienAssure(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setLienAssure(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampDatedenaissance(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampDatedenaissance(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setDatedenaissance(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampPrenomMalade(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampPrenomMalade(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setPrenomMalade(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampNomMalade(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampNomMalade(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNomMalade(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampAccident(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampAccident(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setAccident(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampBatiment(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampBatiment(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setBatiment(convertToString(donnees));
         return feuille;
     }
 
 
-    private FeuilleSoins mapChampAppartement(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampAppartement(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setAppartement(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampRue(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampRue(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setRue(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampCodePostal(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampCodePostal(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setCodePostal(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampCommune(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampCommune(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setCommune(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampPrenomAssure(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampPrenomAssure(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setPrenomAssure(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampNomAssure(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampNomAssure(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNomAssure(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampNumeroCafat(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampNumeroCafat(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNumeroCafat(String.valueOf(convertNumberToIntegerString(donnees)));
         return feuille;
     }
 
-    private FeuilleSoins mapChampNomEtPrenomMalade(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampNomEtPrenomMalade(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNomEtPrenomMalade(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampNumeroACP(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampNumeroACP(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNumeroACP(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampNumeroMedecin(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampNumeroMedecin(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNumeroMedecin(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampNomMedecin(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampNomMedecin(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNomMedecin(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampDateOrdonnance(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampDateOrdonnance(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setDateOrdonnance(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampIdentificationAuxiliaireMedical(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampIdentificationAuxiliaireMedical(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setIdentificationAuxiliaireMedical(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapChampNumeroCompte(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampNumeroCompte(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNumeroCompte(convertToString(donnees));
         return feuille;
     }
 
-    private FeuilleSoins mapReglementNomPrenom(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapReglementNomPrenom(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setReglementNomPrenom(donnees != null ? convertToString(donnees) : "");
         return feuille;
     }
 
-    private FeuilleSoins mapChampNomBanque(FeuilleSoins feuille, Object donnees) {
+    private FeuilleSoinsJasper mapChampNomBanque(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNomBanque(convertToString(donnees));
         return feuille;
     }
@@ -230,5 +314,27 @@ public class FeuilleSoinsMapper {
             donnees = ((Number) donnees).intValue();
         }
         return convertToString(donnees);
+    }
+
+
+    private String convertToActe(String acte) {
+        String acteFormatte = acte;
+        for(int i = acte.split(";").length; i <= 8; i++){
+            acteFormatte +=";";
+        }
+
+        String acteFormatte2 = "";
+        char lastC = ';';
+        for(char c : acteFormatte.toCharArray()){
+            if (c == ';' && lastC == ';'){
+                acteFormatte2 += " ";
+            }
+            acteFormatte2 += c;
+            lastC=c;
+        }
+        if (acteFormatte2.lastIndexOf(';') == acteFormatte2.length()-1){
+            acteFormatte2+=" ";
+        }
+        return acteFormatte2;
     }
 }

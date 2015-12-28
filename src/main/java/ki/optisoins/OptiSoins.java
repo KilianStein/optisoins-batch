@@ -10,25 +10,26 @@ import java.util.List;
  * Classe de lancement du projet ki.optisoins.OptiSoins
  */
 public class OptiSoins {
-    public final static boolean AFFICHER_FOND = false;
 
 
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args) throws Exception {
         try {
             initRessources();
             JasperReport jasperReport = OptiSoinsJasper.compileReport();
-            for (FeuilleSoins feuilleSoins : findFeuillesSoinsAuxiliaireMedicale()) {
-                OptiSoinsJasper.printReport(jasperReport, feuilleSoins);
+            for (FeuilleSoinsJasper feuilleSoinsJasper : findFeuillesSoinsAuxiliaireMedicale()) {
+                OptiSoinsJasper.printReport(jasperReport, feuilleSoinsJasper);
             }
         } catch (Throwable e) {
             OptiSoinsLogger.printError(e);
+            throw e;
         }
     }
 
-    private static List<FeuilleSoins> findFeuillesSoinsAuxiliaireMedicale() {
-        List<FeuilleSoins> feuilleSoins = new XlsExtract().extract();
-        new FeuilleSoinsFormat().format(feuilleSoins);
-        return feuilleSoins;
+    private static List<FeuilleSoinsJasper> findFeuillesSoinsAuxiliaireMedicale() {
+        List<FeuilleSoinsJasper> feuilleSoinJaspers = new XlsExtract().extract();
+        new FeuilleSoinsFormat().format(feuilleSoinJaspers);
+        return feuilleSoinJaspers;
     }
 
     private static void initRessources() throws IOException {

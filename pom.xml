@@ -4,11 +4,12 @@
 
     <groupId>ki.optisoins</groupId>
     <artifactId>optisoins</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
 
     <properties>
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jasperreports.version>6.2.0</jasperreports.version>
+        <itext.version>2.1.7</itext.version>
         <poi.version>3.13</poi.version>
         <junit.version>4.12</junit.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
@@ -24,6 +25,11 @@
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
             <version>${jasperreports.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>${itext.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>

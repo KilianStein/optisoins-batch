@@ -23,6 +23,8 @@
 
 *.exe
 
+*.jasper
+
 # Donnees test #
 ################
 **/donnees/*
