@@ -7,7 +7,7 @@ public class Acte {
 
     private String date = "";
     private String origine = "";
-    private String designation = "";
+    private String amo = "";
     private int fraisDeplacement = 0;
     private String ticketModerateur = "";
 
@@ -16,7 +16,7 @@ public class Acte {
     }
 
     public int getMontantHonoraire() {
-        return  AMOProperties.getAMOValue(getNombreAMO(designation));
+        return  AMOProperties.getAMOValue(getNombreAMO(amo));
     }
 
     private String getNombreAMO(String designation){
@@ -39,12 +39,12 @@ public class Acte {
         this.origine = origine;
     }
 
-    public String getDesignation() {
-        return designation;
+    public String getAmo() {
+        return amo;
     }
 
-    public void setDesignation(String designation) {
-        this.designation = designation;
+    public void setAmo(String amo) {
+        this.amo = amo;
     }
 
     public int getFraisDeplacement() {

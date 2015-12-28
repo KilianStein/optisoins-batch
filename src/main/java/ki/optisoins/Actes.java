@@ -10,6 +10,7 @@ import java.util.List;
 public class Actes {
 
     public static final int NOMBRE_ACTES_PAR_FEUILLE_DE_SOINS = 11;
+    public static final int MONTANT_FRAIS_DEPLACEMENT_DEFAULT = 320;
 
     private List<Acte> actes = new ArrayList<>(NOMBRE_ACTES_PAR_FEUILLE_DE_SOINS - 1);
 
@@ -27,6 +28,18 @@ public class Actes {
             }
         }
         return total;
+    }
+    
+    public void update(String amo, String ticketModerateur, boolean isDeplacement){
+        for (Acte acte : actes) {
+            if (acte != null){
+                acte.setAmo(amo);
+                acte.setTicketModerateur(ticketModerateur);
+                if (isDeplacement){
+                	acte.setFraisDeplacement(MONTANT_FRAIS_DEPLACEMENT_DEFAULT);
+                }
+            }
+        }
     }
 
     public void setToActes(int numeroLigne, Acte acte){

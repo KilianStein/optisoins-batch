@@ -19,6 +19,7 @@ public class FeuilleSoinsJasper {
     private String numeroCafat = "";
     private String nomAssure = "";
     private String prenomAssure = "";
+    private String datedenaissanceAssure = "";
     private String appartement = "";
     private String batiment = "";
     private String rue = "";
@@ -27,12 +28,14 @@ public class FeuilleSoinsJasper {
     private String accident = "";
     private String nomMalade = "";
     private String prenomMalade = "";
-    private String datedenaissance = "";
+    private String datedenaissanceMalade = "";
     private String lienAssure = "";
     private String situationMalade = "";
     private String debutValiditeAM = "";
     private String finValiditeAM = "";
     private String numeroAM = "";
+    private String amo = "";
+    private String ticketModerateur = "";
 
     private Actes actes = new Actes();
     private String acte1 = JasperUtils.ACTE_DEFAULT_FORMAT;
@@ -56,12 +59,20 @@ public class FeuilleSoinsJasper {
         return actes.calculerTotal();
     }
 
+    public void updateActes(){
+    	actes.update(getAmo(), getTicketModerateur(), isDeplacement());
+    }
+    
     public Acte getActe(int numeroLigne) {
         return actes.getActe(numeroLigne);
     }
 
     public void addToActes(int numeroLigne, Acte acte) {
         actes.setToActes(numeroLigne, acte);
+    }
+    
+    public boolean isDeplacement(){
+    	return !"".equals(appartement) || !"".equals(batiment) || !"".equals(rue) || !"".equals(codePostal) || !"".equals(commune);
     }
 
     public boolean isAfficherFond() {
@@ -248,12 +259,12 @@ public class FeuilleSoinsJasper {
         this.prenomMalade = prenomMalade;
     }
 
-    public String getDatedenaissance() {
-        return datedenaissance;
+    public String getDatedenaissanceMalade() {
+        return datedenaissanceMalade;
     }
 
-    public void setDatedenaissance(String datedenaissance) {
-        this.datedenaissance = datedenaissance;
+    public void setDatedenaissanceMalade(String datedenaissanceMalade) {
+        this.datedenaissanceMalade = datedenaissanceMalade;
     }
 
     public String getLienAssure() {
@@ -391,5 +402,29 @@ public class FeuilleSoinsJasper {
     public void setTotal(String total) {
         this.total = total;
     }
+
+	public String getDatedenaissanceAssure() {
+		return datedenaissanceAssure;
+	}
+
+	public void setDatedenaissanceAssure(String datedenaissanceAssure) {
+		this.datedenaissanceAssure = datedenaissanceAssure;
+	}
+
+	public String getAmo() {
+		return amo;
+	}
+
+	public void setAmo(String amo) {
+		this.amo = amo;
+	}
+
+	public String getTicketModerateur() {
+		return ticketModerateur;
+	}
+
+	public void setTicketModerateur(String ticketModerateur) {
+		this.ticketModerateur = ticketModerateur;
+	}
 
 }

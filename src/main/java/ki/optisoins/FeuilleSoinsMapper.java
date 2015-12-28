@@ -50,6 +50,8 @@ public class FeuilleSoinsMapper {
                 return mapChampNomAssure(feuille, donnees);
             case FeuilleSoinsChamps.PRENOMASSURE_CHAMP:
                 return mapChampPrenomAssure(feuille, donnees);
+            case FeuilleSoinsChamps.DATEDENAISSANCEASSURE_CHAMP:
+                return mapChampDatedenaissanceAssure(feuille, donnees);
             case FeuilleSoinsChamps.APPARTEMENT_CHAMP:
                 return mapChampAppartement(feuille, donnees);
             case FeuilleSoinsChamps.BATIMENT_CHAMP:
@@ -66,7 +68,7 @@ public class FeuilleSoinsMapper {
                 return mapChampNomMalade(feuille, donnees);
             case FeuilleSoinsChamps.PRENOMMALADE_CHAMP:
                 return mapChampPrenomMalade(feuille, donnees);
-            case FeuilleSoinsChamps.DATEDENAISSANCE_CHAMP:
+            case FeuilleSoinsChamps.DATEDENAISSANCEMALADE_CHAMP:
                 return mapChampDatedenaissance(feuille, donnees);
             case FeuilleSoinsChamps.LIENASSURE_CHAMP:
                 return mapChampLienAssure(feuille, donnees);
@@ -80,6 +82,10 @@ public class FeuilleSoinsMapper {
                 return mapChampNumeroAM(feuille, donnees);
             case FeuilleSoinsChamps.NOMDOSSIER_CHAMP:
                 return mapChampNomDossier(feuille, donnees);
+            case FeuilleSoinsChamps.AMO_CHAMP:
+                return mapChampAMO(feuille, donnees);
+            case FeuilleSoinsChamps.TICKETMODERATEUR_CHAMP:
+                return mapChampTicketModerateur(feuille, donnees);
             case FeuilleSoinsChamps.ACTE1_CHAMP:
                 return mapActe1(feuille, donnees);
             case FeuilleSoinsChamps.ACTE2_CHAMP:
@@ -107,7 +113,8 @@ public class FeuilleSoinsMapper {
         }
     }
 
-    private FeuilleSoinsJasper mapActe11(FeuilleSoinsJasper feuille, Object donnees) {
+
+	private FeuilleSoinsJasper mapActe11(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.addToActes(11, JasperUtils.createActe(convertToString(donnees)));
         return feuille;
     }
@@ -162,6 +169,17 @@ public class FeuilleSoinsMapper {
         return feuille;
     }
 
+
+	private FeuilleSoinsJasper mapChampTicketModerateur(FeuilleSoinsJasper feuille, Object donnees) {
+		feuille.setTicketModerateur(convertToString(donnees));
+		return feuille;
+	}
+
+	private FeuilleSoinsJasper mapChampAMO(FeuilleSoinsJasper feuille,Object donnees) {
+		feuille.setAmo(convertToString(donnees));
+		return feuille;
+	}
+    
     private FeuilleSoinsJasper mapChampNomDossier(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNomDossier(convertToString(donnees));
         return feuille;
@@ -193,7 +211,7 @@ public class FeuilleSoinsMapper {
     }
 
     private FeuilleSoinsJasper mapChampDatedenaissance(FeuilleSoinsJasper feuille, Object donnees) {
-        feuille.setDatedenaissance(convertToString(donnees));
+        feuille.setDatedenaissanceMalade(convertToString(donnees));
         return feuille;
     }
 
@@ -247,6 +265,13 @@ public class FeuilleSoinsMapper {
         feuille.setNomAssure(convertToString(donnees));
         return feuille;
     }
+    
+
+    private FeuilleSoinsJasper mapChampDatedenaissanceAssure(FeuilleSoinsJasper feuille, Object donnees) {
+    	feuille.setDatedenaissanceAssure(convertToString(donnees));
+		return feuille;
+	}
+
 
     private FeuilleSoinsJasper mapChampNumeroCafat(FeuilleSoinsJasper feuille, Object donnees) {
         feuille.setNumeroCafat(String.valueOf(convertNumberToIntegerString(donnees)));

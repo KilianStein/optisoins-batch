@@ -14,17 +14,30 @@ public class FeuilleSoinsFormat {
 
     private FeuilleSoinsJasper format(FeuilleSoinsJasper feuilleSoinsJasper) {
         formatNumeroCafat(feuilleSoinsJasper);
+        formatNomEtPrenomMalade(feuilleSoinsJasper);
         formatNumeroCompte(feuilleSoinsJasper);
         formatActes(feuilleSoinsJasper);
         formatTotal(feuilleSoinsJasper);
         return feuilleSoinsJasper;
     }
 
-    private void formatTotal(FeuilleSoinsJasper feuilleSoinsJasper) {
+    private void formatNomEtPrenomMalade(FeuilleSoinsJasper feuilleSoinsJasper) {
+    	String nomEtPrenomMalade = feuilleSoinsJasper.getNomEtPrenomMalade();
+    	if ("".equals(nomEtPrenomMalade.trim())){
+    		nomEtPrenomMalade = feuilleSoinsJasper.getNomMalade() + " " + feuilleSoinsJasper.getPrenomMalade();
+    	}
+    	if ("".equals(nomEtPrenomMalade.trim())){
+    		nomEtPrenomMalade = feuilleSoinsJasper.getNomAssure() + " " + feuilleSoinsJasper.getPrenomAssure();
+    	}
+		feuilleSoinsJasper.setNomEtPrenomMalade(nomEtPrenomMalade);
+	}
+
+	private void formatTotal(FeuilleSoinsJasper feuilleSoinsJasper) {
         feuilleSoinsJasper.setTotal(JasperUtils.formatXPF(JasperUtils.formatAttribute(feuilleSoinsJasper.calculerTotal())));
     }
 
     private void formatActes(FeuilleSoinsJasper feuilleSoinsJasper) {
+    	feuilleSoinsJasper.updateActes();
         feuilleSoinsJasper.setActe1(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(1)));
         feuilleSoinsJasper.setActe2(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(2)));
         feuilleSoinsJasper.setActe3(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(3)));
@@ -38,7 +51,7 @@ public class FeuilleSoinsFormat {
         feuilleSoinsJasper.setActe11(JasperUtils.toJasperFormat(feuilleSoinsJasper.getActe(11)));
     }
 
-    private FeuilleSoinsJasper formatNumeroCompte(FeuilleSoinsJasper feuilleSoinsJasper) {
+	private FeuilleSoinsJasper formatNumeroCompte(FeuilleSoinsJasper feuilleSoinsJasper) {
         if (!"".equals(feuilleSoinsJasper.getNumeroCompte())){
             feuilleSoinsJasper.setNumeroCompte(splitSpace(feuilleSoinsJasper.getNumeroCompte(), " "));
         }

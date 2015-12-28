@@ -16,6 +16,7 @@ public interface FeuilleSoinsChamps {
     String NUMEROCAFAT_CHAMP = "numeroCafat";
     String NOMASSURE_CHAMP = "nomAssure";
     String PRENOMASSURE_CHAMP = "prenomAssure";
+    String DATEDENAISSANCEASSURE_CHAMP = "datedenaissanceAssure";
     String APPARTEMENT_CHAMP = "appartement";
     String BATIMENT_CHAMP = "batiment";
     String RUE_CHAMP = "rue";
@@ -24,13 +25,15 @@ public interface FeuilleSoinsChamps {
     String ACCIDENT_CHAMP = "accident";
     String NOMMALADE_CHAMP = "nomMalade";
     String PRENOMMALADE_CHAMP = "prenomMalade";
-    String DATEDENAISSANCE_CHAMP = "datedenaissance";
+    String DATEDENAISSANCEMALADE_CHAMP = "datedenaissanceMalade";
     String LIENASSURE_CHAMP = "lienAssure";
     String SITUATIONMALADE_CHAMP = "situationMalade";
     String DEBUTVALIDITEAM_CHAMP = "debutValiditeAM";
     String FINVALIDITEAM_CHAMP = "finValiditeAM";
     String NUMEROAM_CHAMP = "numeroAM";
     String NOMDOSSIER_CHAMP = "nomDossier";
+    String TICKETMODERATEUR_CHAMP = "ticketModerateur";
+    String AMO_CHAMP = "amo";
     String ACTE1_CHAMP = "acte1";
     String ACTE2_CHAMP = "acte2";
     String ACTE3_CHAMP = "acte3";

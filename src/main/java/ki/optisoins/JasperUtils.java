@@ -14,7 +14,7 @@ public class JasperUtils {
         String[] s = new String[9];
         s[0] = formatAttribute(acte.getDate());
         s[1] = formatAttribute(acte.getOrigine());
-        s[2] = formatAttribute(acte.getDesignation());
+        s[2] = formatAMO(acte.getAmo());
         s[3] = formatAttribute(acte.getMontantHonoraire());
         s[4] = formatAttribute(acte.getFraisDeplacement());
         s[5] = " ";
@@ -28,13 +28,25 @@ public class JasperUtils {
         String[] s = sJasperFormat.split(";");
         Acte acte = new Acte();
         acte.setDate(s[0]);
-        acte.setOrigine(s[1]);
-        acte.setDesignation(s[2]);
-        acte.setFraisDeplacement(Integer.parseInt(s[3]));
-        acte.setTicketModerateur(s[4]);
+        if (s.length>1){
+            acte.setOrigine(s[1]);
+            if (s.length>2){
+            	acte.setAmo(s[2]);
+            }
+            if (s.length>3){
+            	acte.setFraisDeplacement(Integer.parseInt(s[3]));
+            }
+            if (s.length>4){
+            	acte.setTicketModerateur(s[4]);
+            }
+        }
         return  acte;
     }
 
+    private static String formatAMO(String s){
+        return s == null || "".equals(s) ? " " : "AMO " + s;
+    }
+    
     private static String formatAttribute(String s){
         return s == null || "".equals(s) ? " " : s;
     }
