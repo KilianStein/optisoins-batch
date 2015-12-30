@@ -5,6 +5,7 @@ public class OrdonnanceMedecin {
   private String nomMedecin = "";
   private String identifiantMedecin = "";
   private String numeroACP = "";
+  private String nomEtPrenomMalade = "";
 
   public String getDatePrescription() {
     return datePrescription;
@@ -36,5 +37,13 @@ public class OrdonnanceMedecin {
 
   public void setNumeroACP(String numeroACP) {
     this.numeroACP = numeroACP;
+  }
+
+  public String getNomEtPrenomMalade() {
+  	return nomEtPrenomMalade;
+  }
+  
+  public void setNomEtPrenomMalade(String nomEtPrenomMalade) {
+  	this.nomEtPrenomMalade = nomEtPrenomMalade;
   }
 }

@@ -10,7 +10,7 @@ public class Acte {
     private String date = "";
     private String origine = "";
     private String amo = "";
-    private int fraisDeplacement = 0;
+    private boolean domicile = false;
     private String ticketModerateur = "";
 
     public int getTotal() {
@@ -25,6 +25,11 @@ public class Acte {
         return designation.toLowerCase().replace("amo", "").trim();
     }
 
+    public int getFraisDeplacement() {
+      return isDomicile() ? 320 : 0;
+  }
+
+    
     public String getDate() {
         return date;
     }
@@ -49,19 +54,19 @@ public class Acte {
         this.amo = amo;
     }
 
-    public int getFraisDeplacement() {
-        return fraisDeplacement;
-    }
-
-    public void setFraisDeplacement(int fraisDeplacement) {
-        this.fraisDeplacement = fraisDeplacement;
-    }
-
-    public String getTicketModerateur() {
-        return ticketModerateur;
-    }
-
     public void setTicketModerateur(String ticketModerateur) {
         this.ticketModerateur = ticketModerateur;
+    }
+    
+    public String getTicketModerateur(){
+      return ticketModerateur;
+    }
+
+    public boolean isDomicile() {
+      return domicile;
+    }
+
+    public void setDomicile(boolean domicile) {
+      this.domicile = domicile;
     }
 }

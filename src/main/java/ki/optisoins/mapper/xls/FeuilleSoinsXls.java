@@ -9,84 +9,100 @@ import java.util.List;
 
 public class FeuilleSoinsXls {
 
-  @AttributTechnique
+  @AAttributTechnique
   private String nomFichier = "";
 
-  @AttributTechnique
+  @AAttributTechnique
   private String nomFeuille = "";
 
-  @AttributTechnique
+  @AAttributTechnique
   private String numeroLigne = "";
 
-  private String nomBanque = "";
-  private String identificationAuxiliaireMedical = "";
-  private String nomMedecin = "";
-  private String dateOrdonnance = "";
-  private String numeroMedecin = "";
-  private String numeroACP = "";
-  private String nomEtPrenomMalade = "";
-  private String numeroCafat = "";
+  @AOrthophoniste
   private String reglementNomPrenom = "";
+  @AOrthophoniste
+  private String nomBanque = "";
+  @AOrthophoniste
   private String numeroCompte = "";
+  @AOrthophoniste
+  private String identificationAuxiliaireMedical = "";
+  
+  @AOrdonnanceMedecin
+  private String nomMedecin = "";
+  @AOrdonnanceMedecin
+  private String dateOrdonnance = "";
+  @AOrdonnanceMedecin
+  private String numeroMedecin = "";
+  @AOrdonnanceMedecin
+  private String numeroACP = "";
+  @AOrdonnanceMedecin
+  private String nomEtPrenomMalade = "";
 
-  @Assure
+  @AAssure
+  private String numeroCafat = "";
+  @AAssure
   private String nomAssure = "";
-  @Assure
+  @AAssure
   private String prenomAssure = "";
-  @Assure
+  @AAssure
   private String datedenaissanceAssure = "";
 
-  @Assure @Adresse
+  @AAssure @AAdresse
   private String appartement = "";
-  @Assure @Adresse
+  @AAssure @AAdresse
   private String batiment = "";
-  @Assure @Adresse
+  @AAssure @AAdresse
   private String rue = "";
-  @Assure @Adresse
+  @AAssure @AAdresse
   private String codePostal = "";
-  @Assure @Adresse
+  @AAssure @AAdresse
   private String commune = "";
 
-  @Assure @AideMedicale
+  @AAssure @AAideMedicale
   private String debutValiditeAM = "";
-  @Assure @AideMedicale
+  @AAssure @AAideMedicale
   private String finValiditeAM = "";
-  @Assure @AideMedicale
+  @AAssure @AAideMedicale
   private String numeroAM = "";
 
+  @AMalade
   private String accident = "";
+  @AMalade
   private String nomMalade = "";
+  @AMalade
   private String prenomMalade = "";
+  @AMalade
   private String datedenaissanceMalade = "";
+  @AMalade
   private String lienAssure = "";
-  @Malade
+  @AMalade
   private String situationMalade = "";
 
 
   private String ticketModerateur = "";
   private String amo = "";
 
-  @Actes
+  @AActes
   private String acte1 = "";
-  @Actes
+  @AActes
   private String acte2 = "";
-  @Actes
+  @AActes
   private String acte3 = "";
-  @Actes
+  @AActes
   private String acte4 = "";
-  @Actes
+  @AActes
   private String acte5 = "";
-  @Actes
+  @AActes
   private String acte6 = "";
-  @Actes
+  @AActes
   private String acte7 = "";
-  @Actes
+  @AActes
   private String acte8 = "";
-  @Actes
+  @AActes
   private String acte9 = "";
-  @Actes
+  @AActes
   private String acte10 = "";
-  @Actes
+  @AActes
   private String acte11 = "";
 
   public String getNomFeuille() {
@@ -451,10 +467,10 @@ public class FeuilleSoinsXls {
   }
 
   public static List<String> getAttributsTechniques() {
-    return AnnotationsUtils.getFieldsNameWithAnnotation(FeuilleSoinsXls.class, AttributTechnique.class);
+    return AnnotationsUtils.getFieldsNameWithAnnotation(FeuilleSoinsXls.class, AAttributTechnique.class);
   }
 
   public static List<String> getAttributsMetier() {
-    return AnnotationsUtils.getFieldsNameWithoutAnnotation(FeuilleSoinsXls.class, AttributTechnique.class);
+    return AnnotationsUtils.getFieldsNameWithoutAnnotation(FeuilleSoinsXls.class, AAttributTechnique.class);
   }
 }

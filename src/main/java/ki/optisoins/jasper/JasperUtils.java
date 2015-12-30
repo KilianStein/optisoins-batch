@@ -29,18 +29,6 @@ public class JasperUtils {
         String[] s = sJasperFormat.split(";");
         Acte acte = new Acte();
         acte.setDate(s[0]);
-        if (s.length>1){
-            acte.setOrigine(s[1]);
-            if (s.length>2){
-            	acte.setAmo(s[2]);
-            }
-            if (s.length>3){
-            	acte.setFraisDeplacement(Integer.parseInt(s[3]));
-            }
-            if (s.length>4){
-            	acte.setTicketModerateur(s[4]);
-            }
-        }
         return  acte;
     }
 

@@ -7,6 +7,10 @@ public class FeuilleSoins {
   private OrdonnanceMedecin ordonnanceMedecin = null;
   private Actes actes = null;
 
+  public boolean isDomicile(){
+    return getAssure() != null  && getAssure().getAdresse() != null;
+  }
+
   public Assure getAssure() {
     return assure;
   }

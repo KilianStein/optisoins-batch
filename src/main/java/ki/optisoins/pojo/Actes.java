@@ -34,9 +34,7 @@ public class Actes {
             if (acte != null){
                 acte.setAmo(amo);
                 acte.setTicketModerateur(ticketModerateur);
-                if (isDeplacement){
-                	acte.setFraisDeplacement(MONTANT_FRAIS_DEPLACEMENT_DEFAULT);
-                }
+               	acte.setDomicile(isDeplacement);
             }
         }
     }

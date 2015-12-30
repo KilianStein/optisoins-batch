@@ -1,10 +1,8 @@
 package ki.optisoins.mapper.xls;
 
-import org.junit.Test;
-
 import java.util.List;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class FeuilleSoinsXlsExtractTest {
 
@@ -14,6 +12,7 @@ public class FeuilleSoinsXlsExtractTest {
     for (FeuilleSoinsXls feuilleSoinsXls : feuillesSoinsXls){
       System.out.println(feuilleSoinsXls.toString());
       System.out.println("--------------");
+      new FeuilleSoinsXlsMapper().map(feuilleSoinsXls);
     }
 
   }
