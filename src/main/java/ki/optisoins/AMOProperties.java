@@ -31,6 +31,9 @@ public class AMOProperties {
     }
 
     public static int getAMOValue(String amo){
+        if (amo == null || "".equals(amo)){
+            return 0;
+        }
         controleInitialisationConfiguration();
         String amoValue = amoProperties.getProperties().getProperty(amo);
         if (amoValue == null){

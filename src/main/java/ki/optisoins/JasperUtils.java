@@ -12,15 +12,15 @@ public class JasperUtils {
             return ACTE_DEFAULT_FORMAT;
         }
         String[] s = new String[9];
-        s[0] = formatAttribute(acte.getDate());
-        s[1] = formatAttribute(acte.getOrigine());
+        s[0] = formatActeAttribute(acte.getDate());
+        s[1] = formatActeAttribute(acte.getOrigine());
         s[2] = formatAMO(acte.getAmo());
-        s[3] = formatAttribute(acte.getMontantHonoraire());
-        s[4] = formatAttribute(acte.getFraisDeplacement());
+        s[3] = formatActeAttribute(acte.getMontantHonoraire());
+        s[4] = formatActeAttribute(acte.getFraisDeplacement());
         s[5] = " ";
         s[6] = " ";
-        s[7] = formatAttribute(acte.getTicketModerateur());
-        s[8] = formatAttribute(acte.getTotal());
+        s[7] = formatActeAttribute(acte.getTicketModerateur());
+        s[8] = formatActeAttribute(acte.getTotal());
         return  StringUtils.join(s, ";");
     }
 
@@ -47,12 +47,16 @@ public class JasperUtils {
         return s == null || "".equals(s) ? " " : "AMO " + s;
     }
     
-    private static String formatAttribute(String s){
+    private static String formatActeAttribute(String s){
         return s == null || "".equals(s) ? " " : s;
     }
 
-    public static String formatAttribute(int i){
+    private static String formatActeAttribute(int i){
         return i == 0 ? " " : String.valueOf(i);
+    }
+
+    public static String formatAttribute(int i){
+        return i == 0 ? "" : String.valueOf(i);
     }
 
     public static String formatXPF(String montant){

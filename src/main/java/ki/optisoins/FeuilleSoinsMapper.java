@@ -324,7 +324,7 @@ public class FeuilleSoinsMapper {
     }
 
     private String convertToString(Object donnees) {
-        return donnees != null ? String.valueOf(donnees) : "";
+        return donnees != null ? String.valueOf(donnees).trim() : "";
     }
 
     private Object convertNumberToIntegerString(Object donnees) {

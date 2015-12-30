@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="20" rightMargin="0" topMargin="35" bottomMargin="0" uuid="29a1a777-682d-4066-bb5a-973301091243">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2104"/>
+	<property name="ireport.y" value="1217"/>
 	<property name="ireport.background.image.properties" value="true,true,0.25,-8,-8,0,0,843,1185"/>
 	<subDataset name="dataset1" uuid="f866c7ce-e963-4f59-b774-0fb3af623e1b"/>
 	<subDataset name="Table Dataset 1" uuid="fd61bd5d-2ac6-4540-9787-9ba8cb3b2583"/>
@@ -73,7 +73,7 @@
 				<textFieldExpression><![CDATA[$F{nomBanque}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="67" y="357" width="355" height="24" uuid="18f8e4b0-07be-445b-b823-680cafe14e10"/>
+				<reportElement x="65" y="357" width="355" height="24" uuid="18f8e4b0-07be-445b-b823-680cafe14e10"/>
 				<textElement>
 					<font size="17" isStrikeThrough="false"/>
 				</textElement>
