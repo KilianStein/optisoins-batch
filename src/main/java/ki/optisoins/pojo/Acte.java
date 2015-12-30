@@ -1,4 +1,6 @@
-package ki.optisoins;
+package ki.optisoins.pojo;
+
+import ki.optisoins.properties.AMOProperties;
 
 /**
  * Classe décrivant un acte

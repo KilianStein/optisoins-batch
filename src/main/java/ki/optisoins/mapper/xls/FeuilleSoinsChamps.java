@@ -1,4 +1,4 @@
-package ki.optisoins;
+package ki.optisoins.mapper.xls;
 
 /**
  * Liste des champs de la feuille de soin auxiliaire médicale.

@@ -1,5 +1,8 @@
-package ki.optisoins;
+package ki.optisoins.mapper.xls;
 
+
+import ki.optisoins.jasper.FeuilleSoinsJasper;
+import ki.optisoins.jasper.JasperUtils;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,9 @@
-package ki.optisoins;
+package ki.optisoins.jasper;
 
+import ki.optisoins.utils.FileUtils;
+import ki.optisoins.OptiSoinsConfiguration;
+import ki.optisoins.properties.ConfigurationProperties;
+import ki.optisoins.properties.ConfigurationPropertiesValue;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -21,12 +25,12 @@ public class OptiSoinsJasper {
 
     private static JasperDesign initJasperDesign() throws JRException {
         JasperDesign jasperDesign = JRXmlLoader.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(OptiSoinsConfiguration.reportTemplateUrl));
-        if (OptiSoinsProperties.isConfigurationPresente(OptiSoinsPropertiesValue.IMPRESSION_MARGE_GAUCHE)) {
-            jasperDesign.setLeftMargin(OptiSoinsProperties.getConfigurationInteger(OptiSoinsPropertiesValue.IMPRESSION_MARGE_GAUCHE));
+        if (ConfigurationProperties.isConfigurationPresente(ConfigurationPropertiesValue.IMPRESSION_MARGE_GAUCHE)) {
+            jasperDesign.setLeftMargin(ConfigurationProperties.getConfigurationInteger(ConfigurationPropertiesValue.IMPRESSION_MARGE_GAUCHE));
         }
 
-        if (OptiSoinsProperties.isConfigurationPresente(OptiSoinsPropertiesValue.IMPRESSION_MARGE_HAUT)) {
-            jasperDesign.setTopMargin(OptiSoinsProperties.getConfigurationInteger(OptiSoinsPropertiesValue.IMPRESSION_MARGE_HAUT));
+        if (ConfigurationProperties.isConfigurationPresente(ConfigurationPropertiesValue.IMPRESSION_MARGE_HAUT)) {
+            jasperDesign.setTopMargin(ConfigurationProperties.getConfigurationInteger(ConfigurationPropertiesValue.IMPRESSION_MARGE_HAUT));
         }
         return jasperDesign;
     }
@@ -53,7 +57,7 @@ public class OptiSoinsJasper {
     }
 
     private static String getDossierExcel(FeuilleSoinsJasper feuilleSoinsJasper) {
-        if (OptiSoinsProperties.getConfigurationBoolean(OptiSoinsPropertiesValue.UN_DOSSIER_PAR_EXCEL)) {
+        if (ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.UN_DOSSIER_PAR_EXCEL)) {
             return feuilleSoinsJasper.getNomDossier();
         }
         return "";

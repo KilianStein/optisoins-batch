@@ -1,6 +1,6 @@
-package ki.optisoins;
+package ki.optisoins.properties;
 
-public enum OptiSoinsPropertiesValue {
+public enum ConfigurationPropertiesValue {
     UN_DOSSIER_PAR_EXCEL("UN_DOSSIER_PAR_EXCEL", Boolean.class),
     IMPRESSION_MARGE_GAUCHE("IMPRESSION_MARGE_GAUCHE", Integer.class),
     IMPRESSION_MARGE_HAUT("IMPRESSION_MARGE_HAUT", Integer.class),
@@ -11,7 +11,7 @@ public enum OptiSoinsPropertiesValue {
     private String nomConfiguration;
     private Class classeAttendue;
 
-    OptiSoinsPropertiesValue(String nomConfiguration, Class classeAttendue){
+    ConfigurationPropertiesValue(String nomConfiguration, Class classeAttendue){
         this.nomConfiguration = nomConfiguration;
         this.classeAttendue = classeAttendue;
     }

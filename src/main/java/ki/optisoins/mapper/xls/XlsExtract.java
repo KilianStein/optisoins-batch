@@ -1,5 +1,10 @@
-package ki.optisoins;
+package ki.optisoins.mapper.xls;
 
+import ki.optisoins.OptiSoinsConfiguration;
+import ki.optisoins.jasper.FeuilleSoinsJasper;
+import ki.optisoins.log.OptiSoinsLogger;
+import ki.optisoins.properties.ConfigurationProperties;
+import ki.optisoins.properties.ConfigurationPropertiesValue;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -18,11 +23,13 @@ import java.util.Map;
 
 public class XlsExtract {
 
+    private final static String XLS_EXTENSION = ".xls";
+
     public List<FeuilleSoinsJasper> extract() {
         List<FeuilleSoinsJasper> feuilleSoinJaspers = new ArrayList<>();
-        try (DirectoryStream<Path> dirStream = Files.newDirectoryStream(Paths.get("donnees"))) {
+        try (DirectoryStream<Path> dirStream = Files.newDirectoryStream(Paths.get(OptiSoinsConfiguration.dataDirectory))) {
             for (Path path : dirStream) {
-                if (path.toString().endsWith(".xls")) {
+                if (path.toString().endsWith(XLS_EXTENSION)) {
                     List<FeuilleSoinsJasper> feuillesSoins = extract(path);
                     if (!feuillesSoins.isEmpty()) {
                         feuilleSoinJaspers.addAll(feuillesSoins);
@@ -60,7 +67,7 @@ public class XlsExtract {
                             }
                         }
                         if (!map.isEmpty()) {
-                            if (OptiSoinsProperties.getConfigurationBoolean(OptiSoinsPropertiesValue.UN_DOSSIER_PAR_EXCEL)) {
+                            if (ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.UN_DOSSIER_PAR_EXCEL)) {
                                 map.put(FeuilleSoinsChamps.NOMDOSSIER_CHAMP, getSubstring(dataExcel));
                             }
                             donneesExtraites.add(map);

@@ -1,6 +1,7 @@
-package ki.optisoins;
+package ki.optisoins.jasper;
 
 
+import ki.optisoins.pojo.Acte;
 import org.apache.commons.lang.StringUtils;
 
 public class JasperUtils {

@@ -1,4 +1,9 @@
-package ki.optisoins;
+package ki.optisoins.jasper;
+
+import ki.optisoins.pojo.Acte;
+import ki.optisoins.pojo.Actes;
+import ki.optisoins.properties.ConfigurationProperties;
+import ki.optisoins.properties.ConfigurationPropertiesValue;
 
 /**
  * Classe représentant la feuille de soins d'auxiliaire médicale
@@ -52,8 +57,8 @@ public class FeuilleSoinsJasper {
 
     private String total = "";
 
-    private boolean afficherFond = OptiSoinsProperties.getConfigurationBoolean(OptiSoinsPropertiesValue.AFFICHER_FOND);
-    private boolean debugBordures = OptiSoinsProperties.getConfigurationBoolean(OptiSoinsPropertiesValue.AFFICHER_BORDURES);
+    private boolean afficherFond = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.AFFICHER_FOND);
+    private boolean debugBordures = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.AFFICHER_BORDURES);
 
     public int calculerTotal() {
         return actes.calculerTotal();

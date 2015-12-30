@@ -1,7 +1,6 @@
-package ki.optisoins;
+package ki.optisoins.pojo;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**

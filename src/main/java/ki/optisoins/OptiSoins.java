@@ -1,5 +1,13 @@
 package ki.optisoins;
 
+import ki.optisoins.jasper.FeuilleSoinsFormat;
+import ki.optisoins.jasper.FeuilleSoinsJasper;
+import ki.optisoins.jasper.OptiSoinsJasper;
+import ki.optisoins.log.OptiSoinsLogger;
+import ki.optisoins.mapper.xls.XlsExtract;
+import ki.optisoins.properties.AMOProperties;
+import ki.optisoins.properties.ConfigurationProperties;
+import ki.optisoins.utils.FileUtils;
 import net.sf.jasperreports.engine.JasperReport;
 
 import java.io.IOException;
@@ -10,8 +18,6 @@ import java.util.List;
  * Classe de lancement du projet ki.optisoins.OptiSoins
  */
 public class OptiSoins {
-
-
 
     public static void main(String[] args) throws Exception {
         try {
@@ -35,9 +41,7 @@ public class OptiSoins {
     private static void initRessources() throws IOException {
         initData();
         initOuput();
-        OptiSoinsProperties.initProperties();
         AMOProperties.initProperties();
-        OptiSoinsLogger.initLogger();
     }
 
     private static void initOuput() throws IOException {

@@ -1,5 +1,8 @@
-package ki.optisoins;
+package ki.optisoins.jasper;
 
+
+import ki.optisoins.jasper.FeuilleSoinsJasper;
+import ki.optisoins.jasper.JasperUtils;
 
 import java.util.List;
 
