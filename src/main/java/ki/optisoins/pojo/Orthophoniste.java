@@ -3,7 +3,7 @@ package ki.optisoins.pojo;
 public class Orthophoniste {
   private String nomEtPrenom = "";
   private String identification = "";
-  private CompteBancaire banque = null;
+  private CompteBancaire compteBancaire = null;
 
   public String getNomEtPrenom() {
     return nomEtPrenom;
@@ -21,11 +21,11 @@ public class Orthophoniste {
     this.identification = identification;
   }
 
-  public CompteBancaire getBanque() {
-    return banque;
+  public CompteBancaire getCompteBancaire() {
+    return compteBancaire;
   }
 
-  public void setBanque(CompteBancaire banque) {
-    this.banque = banque;
+  public void setCompteBancaire(CompteBancaire compteBancaire) {
+    this.compteBancaire = compteBancaire;
   }
 }

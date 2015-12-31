@@ -1,20 +1,23 @@
 package ki.optisoins.mapper.xls;
 
-import ki.optisoins.mapper.xls.annotations.AActes;
-import ki.optisoins.mapper.xls.annotations.AAdresse;
-import ki.optisoins.mapper.xls.annotations.AAideMedicale;
-import ki.optisoins.mapper.xls.annotations.AAssure;
-import ki.optisoins.mapper.xls.annotations.AMalade;
-import ki.optisoins.mapper.xls.annotations.AOrdonnanceMedecin;
-import ki.optisoins.mapper.xls.annotations.AOrthophoniste;
+import ki.optisoins.mapper.xls.annotations.*;
 import ki.optisoins.pojo.*;
 import ki.optisoins.utils.AnnotationsUtils;
 import ki.optisoins.utils.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class FeuilleSoinsXlsMapper {
 
-  public FeuilleSoins map(FeuilleSoinsXls feuilleSoinsXls) {
+  public List<FeuilleSoins> map(List<FeuilleSoinsXls> feuillesSoinsXls) {
+    return feuillesSoinsXls.stream().map(this::map).collect(Collectors.toList());
+  }
+
+  private FeuilleSoins map(FeuilleSoinsXls feuilleSoinsXls) {
     FeuilleSoins feuilleSoins = new FeuilleSoins();
+    feuilleSoins.setAttributsTechnique(mapAttributsTechnique(feuilleSoinsXls));
     feuilleSoins.setAssure(mapAssure(feuilleSoinsXls));
     feuilleSoins.setMalade(mapMalade(feuilleSoinsXls));
     feuilleSoins.setOrthophoniste(mapOrthophoniste(feuilleSoinsXls));
@@ -23,8 +26,18 @@ public class FeuilleSoinsXlsMapper {
     return feuilleSoins;
   }
 
+  private AttributsTechnique mapAttributsTechnique(FeuilleSoinsXls fsXls) {
+    if (AnnotationsUtils.isFieldNotEmpty(fsXls, ATechnique.class)) {
+      AttributsTechnique attributsTechnique = new AttributsTechnique();
+      attributsTechnique.setId(StringUtils.concat("-", fsXls.getNomFichier(), fsXls.getNomFeuille(), fsXls.getNumeroLigne()));
+      attributsTechnique.setDossierExport(fsXls.getNomFichier().replace(FeuilleSoinsXlsExtract.XLS_EXTENSION, ""));
+      return attributsTechnique;
+    }
+    throw new RuntimeException("un problème technique est survenu, la feuille de soins n'a pas d'attribut technique");
+  }
+
   private Assure mapAssure(FeuilleSoinsXls fsXls) {
-    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AAssure.class)){
+    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AAssure.class)) {
       Assure assure = new Assure();
       assure.setNom(fsXls.getNomAssure());
       assure.setPrenom(fsXls.getPrenomAssure());
@@ -40,9 +53,8 @@ public class FeuilleSoinsXlsMapper {
     return null;
   }
 
-
   private AideMedicale mapAideMedicale(FeuilleSoinsXls fsXls) {
-    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AAideMedicale.class)){
+    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AAideMedicale.class)) {
       AideMedicale aideMedicale = new AideMedicale();
       aideMedicale.setDateDebutValidite(toDate(fsXls.getDebutValiditeAM()));
       aideMedicale.setNumero(fsXls.getNumeroAM());
@@ -53,7 +65,7 @@ public class FeuilleSoinsXlsMapper {
   }
 
   private Adresse mapAdresse(FeuilleSoinsXls fsXls) {
-    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AAdresse.class)){
+    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AAdresse.class)) {
       Adresse adresse = new Adresse();
       adresse.setAppartement(fsXls.getAppartement());
       adresse.setBatiment(fsXls.getBatiment());
@@ -67,12 +79,12 @@ public class FeuilleSoinsXlsMapper {
   }
 
   private Malade mapMalade(FeuilleSoinsXls fsXls) {
-    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AMalade.class)){
+    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AMalade.class)) {
       Malade malade = new Malade();
       malade.setAccident(mapAccident(fsXls));
       malade.setDateNaissance(toDate(fsXls.getDatedenaissanceMalade()));
       malade.setEmployeur("");
-      malade.setLienAvecAssure(fsXls.getLienAssure());
+      malade.setLienAvecAssure(LienAssure.get(fsXls.getLienAssure()));
       malade.setNom(fsXls.getNomMalade());
       malade.setPrenom(fsXls.getPrenomMalade());
       malade.setSituationMalade(fsXls.getSituationMalade());
@@ -82,7 +94,7 @@ public class FeuilleSoinsXlsMapper {
   }
 
   private Accident mapAccident(FeuilleSoinsXls fsXls) {
-    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AMalade.class)){
+    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AMalade.class) && isAccident(fsXls.getAccident())) {
       Accident accident = new Accident();
       accident.setDateAccident("");
       accident.setNomTierImpliqueAccident("");
@@ -91,20 +103,34 @@ public class FeuilleSoinsXlsMapper {
     return null;
   }
 
+  private boolean isAccident(String accident) {
+    return StringUtils.toBoolean(accident);
+  }
+
   private Orthophoniste mapOrthophoniste(FeuilleSoinsXls fsXls) {
-    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AOrthophoniste.class)){
+    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AOrthophoniste.class)) {
       Orthophoniste orthophoniste = new Orthophoniste();
+      orthophoniste.setNomEtPrenom(fsXls.getReglementNomPrenom());
+      orthophoniste.setIdentification(fsXls.getIdentificationAuxiliaireMedical());
+      orthophoniste.setCompteBancaire(mapCompteBancaire(fsXls));
       return orthophoniste;
     }
     return null;
   }
 
+  private CompteBancaire mapCompteBancaire(FeuilleSoinsXls fsXls) {
+    CompteBancaire compteBancaire = new CompteBancaire();
+    compteBancaire.setNomBanque(fsXls.getNomBanque());
+    compteBancaire.setNumeroCompte(fsXls.getNumeroCompte());
+    return compteBancaire;
+  }
+
   private OrdonnanceMedecin mapOrdonnanceMedecin(FeuilleSoinsXls fsXls) {
-    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AOrdonnanceMedecin.class)){
+    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AOrdonnanceMedecin.class)) {
       OrdonnanceMedecin ordonnanceMedecin = new OrdonnanceMedecin();
       ordonnanceMedecin.setDatePrescription(toDate(fsXls.getDateOrdonnance()));
       ordonnanceMedecin.setIdentifiantMedecin(fsXls.getNumeroMedecin());
-      ordonnanceMedecin.setNomEtPrenomMalade(fsXls.getNomEtPrenomMalade());
+      ordonnanceMedecin.setNomEtPrenomMalade(getNomEtPrenomMalade(fsXls));
       ordonnanceMedecin.setNumeroACP(fsXls.getNumeroACP());
       ordonnanceMedecin.setNomMedecin(fsXls.getNomMedecin());
       return ordonnanceMedecin;
@@ -112,8 +138,19 @@ public class FeuilleSoinsXlsMapper {
     return null;
   }
 
+  private String getNomEtPrenomMalade(FeuilleSoinsXls fsXls) {
+    if (StringUtils.isNotEmpty(fsXls.getNomEtPrenomMalade())) {
+      return fsXls.getNomEtPrenomMalade();
+    } else if (StringUtils.isNotEmpty(fsXls.getNomMalade() + fsXls.getPrenomMalade())) {
+      return fsXls.getPrenomMalade() + " " + fsXls.getNomMalade();
+    } else if (StringUtils.isNotEmpty(fsXls.getNomAssure() + fsXls.getPrenomAssure())) {
+      return fsXls.getPrenomAssure() + " " + fsXls.getNomAssure();
+    }
+    return "";
+  }
+
   private Actes mapActes(FeuilleSoins feuilleSoins, FeuilleSoinsXls fsXls) {
-    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AActes.class)){
+    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AActes.class)) {
       Actes actes = new Actes();
       actes.setToActes(1, mapActe(feuilleSoins, fsXls, fsXls.getActe1()));
       actes.setToActes(2, mapActe(feuilleSoins, fsXls, fsXls.getActe2()));
@@ -130,16 +167,16 @@ public class FeuilleSoinsXlsMapper {
     }
     return null;
   }
-  
 
   private Acte mapActe(FeuilleSoins feuilleSoins, FeuilleSoinsXls fsXls, String dateActe) {
-    if (StringUtils.isNotEmpty(dateActe)){
+    if (StringUtils.isNotEmpty(dateActe)) {
       Acte acte = new Acte();
       acte.setAmo(fsXls.getAmo());
       acte.setDate(toDate(dateActe));
       acte.setDomicile(feuilleSoins.isDomicile());
       acte.setTicketModerateur(fsXls.getTicketModerateur());
       acte.setOrigine("");
+      return acte;
     }
     return null;
   }

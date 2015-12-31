@@ -2,6 +2,7 @@ package ki.optisoins.mapper.xls;
 
 import java.util.List;
 
+import ki.optisoins.pojo.FeuilleSoins;
 import org.junit.Test;
 
 public class FeuilleSoinsXlsExtractTest {
@@ -12,7 +13,6 @@ public class FeuilleSoinsXlsExtractTest {
     for (FeuilleSoinsXls feuilleSoinsXls : feuillesSoinsXls){
       System.out.println(feuilleSoinsXls.toString());
       System.out.println("--------------");
-      new FeuilleSoinsXlsMapper().map(feuilleSoinsXls);
     }
 
   }

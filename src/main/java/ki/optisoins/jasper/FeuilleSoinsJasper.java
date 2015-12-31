@@ -30,7 +30,7 @@ public class FeuilleSoinsJasper {
     private String rue = "";
     private String codePostal = "";
     private String commune = "";
-    private String accident = "";
+    private boolean accident = false;
     private String nomMalade = "";
     private String prenomMalade = "";
     private String datedenaissanceMalade = "";
@@ -43,17 +43,17 @@ public class FeuilleSoinsJasper {
     private String ticketModerateur = "";
 
     private Actes actes = new Actes();
-    private String acte1 = JasperUtils.ACTE_DEFAULT_FORMAT;
-    private String acte2 = JasperUtils.ACTE_DEFAULT_FORMAT;
-    private String acte3 = JasperUtils.ACTE_DEFAULT_FORMAT;
-    private String acte4 = JasperUtils.ACTE_DEFAULT_FORMAT;
-    private String acte5 = JasperUtils.ACTE_DEFAULT_FORMAT;
-    private String acte6 = JasperUtils.ACTE_DEFAULT_FORMAT;
-    private String acte7 = JasperUtils.ACTE_DEFAULT_FORMAT;
-    private String acte8 = JasperUtils.ACTE_DEFAULT_FORMAT;
-    private String acte9 = JasperUtils.ACTE_DEFAULT_FORMAT;
-    private String acte10 = JasperUtils.ACTE_DEFAULT_FORMAT;
-    private String acte11 = JasperUtils.ACTE_DEFAULT_FORMAT;
+    private String acte1 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+    private String acte2 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+    private String acte3 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+    private String acte4 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+    private String acte5 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+    private String acte6 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+    private String acte7 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+    private String acte8 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+    private String acte9 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+    private String acte10 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+    private String acte11 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
 
     private String total = "";
 
@@ -240,14 +240,6 @@ public class FeuilleSoinsJasper {
         this.commune = commune;
     }
 
-    public String getAccident() {
-        return accident;
-    }
-
-    public void setAccident(String accident) {
-        this.accident = accident;
-    }
-
     public String getNomMalade() {
         return nomMalade;
     }
@@ -432,4 +424,11 @@ public class FeuilleSoinsJasper {
 		this.ticketModerateur = ticketModerateur;
 	}
 
+    public boolean isAccident() {
+        return accident;
+    }
+
+    public void setAccident(boolean accident) {
+        this.accident = accident;
+    }
 }

@@ -35,12 +35,14 @@ public class OptiSoinsLogger {
         switch (ConfigurationProperties.getConfiguration(ConfigurationPropertiesValue.LOGGER_LEVEL)) {
             case "ERROR":
                 return Level.ERROR;
+            case "WARNING":
+                return Level.WARN;
             case "DEBUG":
                 return Level.DEBUG;
             case "TRACE":
                 return Level.TRACE;
             default:
-                return Level.ERROR;
+                return Level.WARN;
         }
     }
 
@@ -48,6 +50,16 @@ public class OptiSoinsLogger {
         logger.error(message);
     }
 
+    public static void printError(Object message, Throwable t) {
+        logger.error(message, t);
+    }
+
+    public static void printWarning(Object message, Throwable t) {
+        logger.warn(message, t);
+    }
+    public static void printWarning(Object message) {
+        logger.warn(message);
+    }
 
     public static void printDebug(Object message) {
         logger.debug(message);

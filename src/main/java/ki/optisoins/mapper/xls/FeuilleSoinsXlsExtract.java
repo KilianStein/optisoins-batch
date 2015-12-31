@@ -3,6 +3,7 @@ package ki.optisoins.mapper.xls;
 import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.log.OptiSoinsLogger;
 import ki.optisoins.utils.ReflectUtils;
+import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -21,7 +22,7 @@ import java.util.Map;
 
 public class FeuilleSoinsXlsExtract {
 
-  private final static String XLS_EXTENSION = ".xls";
+  public final static String XLS_EXTENSION = ".xls";
 
   public List<FeuilleSoinsXls> extract() {
     return extract(OptiSoinsConfiguration.dataDirectory);
@@ -68,9 +69,12 @@ public class FeuilleSoinsXlsExtract {
     for (int rowNumber = 1; rowNumber < numberTotalRow; rowNumber++) {
       Map<String, Object> mapLine = new HashMap<>();
       for (int columnNumber = 0; columnNumber < numberTotalColumn; columnNumber++) {
-        Object objectCell = toObjectCell(sheet.getRow(rowNumber).getCell(columnNumber));
-        if (isNotEmpty(objectCell)) {
-          mapLine.put(nomColumn.get(columnNumber), objectCell);
+        HSSFRow row = sheet.getRow(rowNumber);
+        if (row != null){
+          Object objectCell = toObjectCell(row.getCell(columnNumber));
+          if (isNotEmpty(objectCell)) {
+            mapLine.put(nomColumn.get(columnNumber), objectCell);
+          }
         }
       }
       if (!mapLine.isEmpty()) {

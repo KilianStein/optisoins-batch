@@ -1,6 +1,8 @@
 package ki.optisoins.properties;
 
 import ki.optisoins.OptiSoinsConfiguration;
+import ki.optisoins.log.OptiSoinsLogger;
+import ki.optisoins.utils.StringUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,44 +11,39 @@ import java.nio.file.Paths;
 import java.util.Properties;
 
 public class AMOProperties {
-    private static AMOProperties amoProperties;
-    private Properties properties = new Properties();
+  private static AMOProperties amoProperties = createAndLoadProperties();
+  private Properties properties = new Properties();
 
+  public static Properties getProperties() {
+    return amoProperties.properties;
+  }
 
-    public Properties getProperties() {
-        return properties;
+  public static AMOProperties createAndLoadProperties() {
+    AMOProperties amoProperties = new AMOProperties();
+    amoProperties.loadProperties();
+    return amoProperties;
+  }
+
+  private void loadProperties() {
+    Path pathProperties = Paths.get(OptiSoinsConfiguration.amoConfiguration);
+    if (Files.isReadable(pathProperties)) {
+      try {
+        properties.load(Files.newInputStream(pathProperties));
+      } catch (IOException e) {
+        OptiSoinsLogger.printError("Erreur lors du chargement des AMOs", e);
+        throw new RuntimeException(e);
+      }
     }
+  }
 
-    public static void initProperties() throws IOException {
-        if (amoProperties != null){
-            throw new RuntimeException("les propriétés d'optisoin ont dégà été chargé");
-        }
-        amoProperties = new AMOProperties();
-        amoProperties.loadProperties();
+  public static int getAMOValue(String amo) {
+    if (StringUtils.isEmpty(amo)) {
+      return 0;
     }
-
-    private void loadProperties() throws IOException {
-        Path pathProperties = Paths.get(OptiSoinsConfiguration.amoConfiguration);
-        if (Files.isReadable(pathProperties)){
-            properties.load(Files.newInputStream(pathProperties));
-        }
+    String amoValue = getProperties().getProperty(amo);
+    if (amoValue == null) {
+      throw new RuntimeException("l'AMO " + amo + " n'a pas été défini dans le fichier de configuration");
     }
-
-    public static int getAMOValue(String amo){
-        if (amo == null || "".equals(amo)){
-            return 0;
-        }
-        controleInitialisationConfiguration();
-        String amoValue = amoProperties.getProperties().getProperty(amo);
-        if (amoValue == null){
-            throw new RuntimeException("l'AMO " + amo + " n'a pas été défini dans le fichier de configuration");
-        }
-        return Integer.parseInt(amoValue);
-    }
-
-    private static void controleInitialisationConfiguration(){
-        if (amoProperties == null){
-            throw new RuntimeException("les propriétés d'optisoin n'ont pas été chargé");
-        }
-    }
+    return Integer.parseInt(amoValue);
+  }
 }

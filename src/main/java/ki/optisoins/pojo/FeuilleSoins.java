@@ -1,6 +1,8 @@
 package ki.optisoins.pojo;
 
 public class FeuilleSoins {
+
+  private AttributsTechnique attributsTechnique = null;
   private Assure assure = null;
   private Malade malade = null;
   private Orthophoniste orthophoniste = null;
@@ -9,6 +11,14 @@ public class FeuilleSoins {
 
   public boolean isDomicile(){
     return getAssure() != null  && getAssure().getAdresse() != null;
+  }
+
+  public AttributsTechnique getAttributsTechnique() {
+    return attributsTechnique;
+  }
+
+  public void setAttributsTechnique(AttributsTechnique attributsTechnique) {
+    this.attributsTechnique = attributsTechnique;
   }
 
   public Assure getAssure() {

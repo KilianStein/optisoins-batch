@@ -13,9 +13,9 @@ public class StringUtils {
     return !isEmpty(s);
   }
 
-  public static boolean isOneNotEmpty(String ... strs) {
-    for(String str : strs){
-      if (isNotEmpty(str)){
+  public static boolean isOneNotEmpty(String... strs) {
+    for (String str : strs) {
+      if (isNotEmpty(str)) {
         return true;
       }
     }
@@ -33,5 +33,26 @@ public class StringUtils {
       }
     }
     return joiner.toString();
+  }
+
+  public static boolean toBoolean(String accident) {
+    if (StringUtils.isNotEmpty(accident)) {
+      switch (accident.trim().toLowerCase()) {
+        case "yes":
+        case "y":
+        case "o":
+        case "oui":
+        case "x":
+          return true;
+        case "no":
+        case "non":
+        case "n":
+          return false;
+
+        default:
+          return false;
+      }
+    }
+    return false;
   }
 }

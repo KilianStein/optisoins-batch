@@ -5,7 +5,7 @@ public class Malade {
   private String nom = "";
   private String prenom = "";
   private String dateNaissance = "";
-  private String lienAvecAssure = "";
+  private LienAssure lienAvecAssure = null;
   private String employeur = "";
   private String situationMalade = "";
   private String numeroNCS = "";
@@ -36,11 +36,11 @@ public class Malade {
     this.dateNaissance = dateNaissance;
   }
 
-  public String getLienAvecAssure() {
+  public LienAssure getLienAvecAssure() {
     return lienAvecAssure;
   }
 
-  public void setLienAvecAssure(String lienAvecAssure) {
+  public void setLienAvecAssure(LienAssure lienAvecAssure) {
     this.lienAvecAssure = lienAvecAssure;
   }
 

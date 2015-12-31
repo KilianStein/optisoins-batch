@@ -9,13 +9,13 @@ import java.util.List;
 
 public class FeuilleSoinsXls {
 
-  @AAttributTechnique
+  @ATechnique
   private String nomFichier = "";
 
-  @AAttributTechnique
+  @ATechnique
   private String nomFeuille = "";
 
-  @AAttributTechnique
+  @ATechnique
   private String numeroLigne = "";
 
   @AOrthophoniste
@@ -467,10 +467,10 @@ public class FeuilleSoinsXls {
   }
 
   public static List<String> getAttributsTechniques() {
-    return AnnotationsUtils.getFieldsNameWithAnnotation(FeuilleSoinsXls.class, AAttributTechnique.class);
+    return AnnotationsUtils.getFieldsNameWithAnnotation(FeuilleSoinsXls.class, ATechnique.class);
   }
 
   public static List<String> getAttributsMetier() {
-    return AnnotationsUtils.getFieldsNameWithoutAnnotation(FeuilleSoinsXls.class, AAttributTechnique.class);
+    return AnnotationsUtils.getFieldsNameWithoutAnnotation(FeuilleSoinsXls.class, ATechnique.class);
   }
 }
