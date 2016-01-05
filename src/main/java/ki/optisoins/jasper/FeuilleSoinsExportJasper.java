@@ -6,6 +6,7 @@ import ki.optisoins.pojo.FeuilleSoins;
 import ki.optisoins.properties.ConfigurationProperties;
 import ki.optisoins.properties.ConfigurationPropertiesValue;
 import ki.optisoins.utils.FileUtils;
+import ki.optisoins.utils.PixelUtils;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
@@ -24,8 +25,8 @@ public class FeuilleSoinsExportJasper {
   public static JasperReport compileReport() throws JRException {
     OptiSoinsLogger.printTrace("Initialisation des paramètres la feuille de soins");
     JasperReport jasperReport = JasperCompileManager.compileReport(initJasperDesign());
-    OptiSoinsLogger.printTrace(" Marge haut : " + jasperReport.getTopMargin() + "px");
-    OptiSoinsLogger.printTrace(" Marge gauche : " + jasperReport.getLeftMargin() + "px");
+    OptiSoinsLogger.printTrace(" Marge haut : " + jasperReport.getTopMargin() + "px / " + PixelUtils.tranformPxToMM(jasperReport.getTopMargin()) + " mm");
+    OptiSoinsLogger.printTrace(" Marge gauche : " + jasperReport.getLeftMargin() + "px / " + PixelUtils.tranformPxToMM(jasperReport.getLeftMargin()) + " mm");
     return jasperReport;
   }
 

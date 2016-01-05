@@ -21,6 +21,10 @@ public class PixelUtils {
     return 0;
   }
 
+  public static float tranformPxToMM(int margePx) {
+    return margePx / CONVERT_MM_TO_PX;
+  }
+
   private static float getValeurMarge(String marge, String unitMarge) {
     return Float.parseFloat(marge.replace(unitMarge, "").replace(",", ".").trim());
   }
