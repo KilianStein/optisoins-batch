@@ -49,4 +49,8 @@ public class FeuilleSoinsJasperFormat {
   private static String splitSpace(String s, String space) {
     return s.trim().replace(" ", "").replace("", space).trim();
   }
+
+  public static String formatXPF(int montant) {
+    return montant == 0 ? "" : String.valueOf(montant) + " XPF";
+  }
 }

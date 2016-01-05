@@ -12,6 +12,8 @@ import ki.optisoins.utils.FileUtils;
 import ki.optisoins.utils.PropertiesUtils;
 import net.sf.jasperreports.engine.JasperReport;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -27,9 +29,16 @@ public class OptiSoins {
       for (FeuilleSoins feuilleSoins : findFeuillesSoins()) {
         FeuilleSoinsExportJasper.printReport(jasperReport, feuilleSoins);
       }
+      ouvrirDossierOutput();
     } catch (Throwable e) {
       OptiSoinsLogger.printError(e);
       throw e;
+    }
+  }
+
+  private static void ouvrirDossierOutput() throws IOException {
+    if (Desktop.getDesktop().isSupported(Desktop.Action.OPEN)){
+      Desktop.getDesktop().open(new File(OptiSoinsConfiguration.outputDirectory));
     }
   }
 

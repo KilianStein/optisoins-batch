@@ -120,6 +120,7 @@ public class FeuilleSoinsJasperMapper {
       feuilleSoinsJasper.setActe9(FeuilleSoinsJasperFormat.formatActe(actes.getActe(9)));
       feuilleSoinsJasper.setActe10(FeuilleSoinsJasperFormat.formatActe(actes.getActe(10)));
       feuilleSoinsJasper.setActe11(FeuilleSoinsJasperFormat.formatActe(actes.getActe(11)));
+      feuilleSoinsJasper.setTotal(FeuilleSoinsJasperFormat.formatXPF(actes.calculerTotal()));
     }
 
     return feuilleSoinsJasper;
