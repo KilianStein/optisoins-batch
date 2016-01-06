@@ -94,8 +94,9 @@ public class FeuilleSoinsXlsMapper {
   }
 
   private Accident mapAccident(FeuilleSoinsXls fsXls) {
-    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AMalade.class) && isAccident(fsXls.getAccident())) {
+    if (AnnotationsUtils.isFieldNotEmpty(fsXls, AMalade.class) && StringUtils.isNotEmpty(fsXls.getAccident())) {
       Accident accident = new Accident();
+      accident.setAccident(isAccident(fsXls.getAccident()));
       accident.setDateAccident("");
       accident.setNomTierImpliqueAccident("");
       return accident;
@@ -142,9 +143,9 @@ public class FeuilleSoinsXlsMapper {
     if (StringUtils.isNotEmpty(fsXls.getNomEtPrenomMalade())) {
       return fsXls.getNomEtPrenomMalade();
     } else if (StringUtils.isNotEmpty(fsXls.getNomMalade() + fsXls.getPrenomMalade())) {
-      return fsXls.getPrenomMalade() + " " + fsXls.getNomMalade();
+      return fsXls.getNomMalade() + " " + fsXls.getPrenomMalade();
     } else if (StringUtils.isNotEmpty(fsXls.getNomAssure() + fsXls.getPrenomAssure())) {
-      return fsXls.getPrenomAssure() + " " + fsXls.getNomAssure();
+      return fsXls.getNomAssure() + " " + fsXls.getPrenomAssure();
     }
     return "";
   }

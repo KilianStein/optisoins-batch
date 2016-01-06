@@ -137,7 +137,7 @@
 			</textField>
 			<textField>
 				<reportElement style="croix" x="115" y="220" width="22" height="22" uuid="82ff63b7-84f8-4e1d-925e-0018c046071c"/>
-				<textFieldExpression><![CDATA[$F{accident} ? "x" : ""]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{accident}) ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="40" y="255" width="144" height="20" uuid="c437ea6e-ad4f-444e-8d16-4fc129e84972"/>
@@ -235,7 +235,7 @@
 			</textField>
 			<textField>
 				<reportElement style="croix" x="152" y="220" width="22" height="22" uuid="953ca66f-cf6f-4286-813a-0c24c974c157"/>
-				<textFieldExpression><![CDATA[$F{accident} ? "" : "x"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Boolean.FALSE.equals($F{accident}) ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="croix" x="-1" y="336" width="22" height="22" uuid="9e2a61b9-e71b-4f27-b30c-e278d039178a"/>

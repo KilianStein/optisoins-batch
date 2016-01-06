@@ -71,7 +71,7 @@ public class FeuilleSoinsJasperMapper {
 
   private FeuilleSoinsJasper mapAccident(FeuilleSoinsJasper feuilleSoinsJasper, FeuilleSoins feuilleSoins) {
     Accident accident = feuilleSoins.getMalade().getAccident();
-    feuilleSoinsJasper.setAccident(accident != null);
+    feuilleSoinsJasper.setAccident(accident != null ? accident.isAccident() : null);
     return feuilleSoinsJasper;
   }
 
