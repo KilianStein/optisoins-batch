@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="feuille_soins" pageWidth="595" pageHeight="842" columnWidth="561" leftMargin="34" rightMargin="0" topMargin="39" bottomMargin="0" uuid="29a1a777-682d-4066-bb5a-973301091243">
 	<property name="ireport.zoom" value="3.0"/>
-	<property name="ireport.x" value="758"/>
-	<property name="ireport.y" value="125"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="845"/>
 	<property name="ireport.background.image.properties" value="true,true,0.25,-8,-8,0,0,843,1185"/>
 	<style name="croix" hAlign="Center" vAlign="Middle" fontName="Arial" fontSize="16"/>
 	<subDataset name="dataset1" uuid="f866c7ce-e963-4f59-b774-0fb3af623e1b"/>
@@ -159,7 +159,7 @@
 				<textFieldExpression><![CDATA[$F{datedenaissanceMalade}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="croix" x="149" y="264" width="22" height="22" uuid="734731cf-2512-4855-aa1b-f32b652e001a"/>
+				<reportElement style="croix" x="150" y="264" width="22" height="22" uuid="734731cf-2512-4855-aa1b-f32b652e001a"/>
 				<textFieldExpression><![CDATA["concubin".equals($F{lienAssure}.toLowerCase()) || "concubine".equals($F{lienAssure}.toLowerCase()) || "tous".equals($F{lienAssure}.toLowerCase()) ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -170,21 +170,21 @@
 				<textFieldExpression><![CDATA[$F{situationMalade}.toLowerCase().contains("salarié") || $F{situationMalade}.toLowerCase().contains("salarie") || "tous".equals($F{situationMalade}.toLowerCase()) ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="499" y="25" width="61" height="16" uuid="b116e0d4-62f8-4c95-859d-cc360460e530"/>
+				<reportElement x="499" y="26" width="61" height="16" uuid="b116e0d4-62f8-4c95-859d-cc360460e530"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{debutValiditeAM}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="499" y="40" width="61" height="20" uuid="5a67dde8-7420-40c0-9fa3-83455cda04a3"/>
+				<reportElement x="499" y="41" width="61" height="20" uuid="5a67dde8-7420-40c0-9fa3-83455cda04a3"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{finValiditeAM}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="450" y="54" width="110" height="16" uuid="59ab29c7-91d8-4374-85ac-dddf9955fbd8"/>
+				<reportElement x="450" y="55" width="110" height="16" uuid="59ab29c7-91d8-4374-85ac-dddf9955fbd8"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
@@ -202,11 +202,11 @@
 				<textFieldExpression><![CDATA["conjoint".equals($F{lienAssure}.toLowerCase()) || "tous".equals($F{lienAssure}.toLowerCase()) ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="croix" x="224" y="264" width="22" height="22" uuid="fc26fff9-bfec-4e77-94c0-242dd1a64bdb"/>
+				<reportElement style="croix" x="225" y="264" width="22" height="22" uuid="fc26fff9-bfec-4e77-94c0-242dd1a64bdb"/>
 				<textFieldExpression><![CDATA["enfant".equals($F{lienAssure}.toLowerCase()) || "tous".equals($F{lienAssure}.toLowerCase()) ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="croix" x="278" y="264" width="22" height="22" uuid="76e047dd-0b1d-40ec-a7a2-7976b8654794"/>
+				<reportElement style="croix" x="279" y="264" width="22" height="22" uuid="76e047dd-0b1d-40ec-a7a2-7976b8654794"/>
 				<textFieldExpression><![CDATA[($F{lienAssure}.length() >= 5 && "autre".equals($F{lienAssure}.substring(0,5).toLowerCase())) || "tous".equals($F{lienAssure}.toLowerCase()) ? "x" : ""]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -238,7 +238,7 @@
 				<textFieldExpression><![CDATA[$F{accident} ? "" : "x"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="croix" x="-2" y="336" width="22" height="22" uuid="9e2a61b9-e71b-4f27-b30c-e278d039178a"/>
+				<reportElement style="croix" x="-1" y="336" width="22" height="22" uuid="9e2a61b9-e71b-4f27-b30c-e278d039178a"/>
 				<textElement>
 					<font size="16"/>
 				</textElement>
@@ -1016,7 +1016,7 @@
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="437" y="69" width="110" height="14" uuid="76e92fda-43c7-4ec5-a182-5613caf81828"/>
+				<reportElement x="437" y="70" width="110" height="14" uuid="76e92fda-43c7-4ec5-a182-5613caf81828"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
