@@ -1,4 +1,4 @@
-package ki.optisoins.export.feuilleSoins;
+package ki.optisoins.export.feuillesoins1;
 
 import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.log.OptiSoinsLogger;

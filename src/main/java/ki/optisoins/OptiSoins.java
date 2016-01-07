@@ -1,6 +1,6 @@
 package ki.optisoins;
 
-import ki.optisoins.export.dossierSoins.DossierSoinsExport;
+import ki.optisoins.export.dossiersoins1.DossierSoinsExport;
 import ki.optisoins.log.OptiSoinsLogger;
 import ki.optisoins.bdd.xls.DossierSoinsXlsMapper;
 import ki.optisoins.bdd.xls.FeuilleSoinsXls;
