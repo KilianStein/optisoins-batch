@@ -1,7 +1,7 @@
-package ki.optisoins.export.dossiersoins1;
+package ki.optisoins.export.dossiersoins;
 
 import ki.optisoins.export.etat.EtatExport;
-import ki.optisoins.export.feuillesoins1.FeuilleSoinsExport;
+import ki.optisoins.export.feuillesoins.FeuilleSoinsExport;
 import ki.optisoins.pojo.DossierSoins;
 
 import java.util.List;

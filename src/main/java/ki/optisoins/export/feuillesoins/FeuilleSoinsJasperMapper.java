@@ -1,4 +1,4 @@
-package ki.optisoins.export.feuillesoins1;
+package ki.optisoins.export.feuillesoins;
 
 import ki.optisoins.pojo.*;
 
