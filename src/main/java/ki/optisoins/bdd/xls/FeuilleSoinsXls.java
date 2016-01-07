@@ -18,6 +18,9 @@ public class FeuilleSoinsXls {
   @ATechnique
   private String numeroLigne = "";
 
+  @ATechnique
+  private String dateRecapitulatif = "";
+
   @AOrthophoniste
   private String reglementNomPrenom = "";
   @AOrthophoniste
@@ -47,22 +50,30 @@ public class FeuilleSoinsXls {
   @AAssure
   private String datedenaissanceAssure = "";
 
-  @AAssure @AAdresse
+  @AAssure
+  @AAdresse
   private String appartement = "";
-  @AAssure @AAdresse
+  @AAssure
+  @AAdresse
   private String batiment = "";
-  @AAssure @AAdresse
+  @AAssure
+  @AAdresse
   private String rue = "";
-  @AAssure @AAdresse
+  @AAssure
+  @AAdresse
   private String codePostal = "";
-  @AAssure @AAdresse
+  @AAssure
+  @AAdresse
   private String commune = "";
 
-  @AAssure @AAideMedicale
+  @AAssure
+  @AAideMedicale
   private String debutValiditeAM = "";
-  @AAssure @AAideMedicale
+  @AAssure
+  @AAideMedicale
   private String finValiditeAM = "";
-  @AAssure @AAideMedicale
+  @AAssure
+  @AAideMedicale
   private String numeroAM = "";
 
   @AMalade
@@ -77,7 +88,6 @@ public class FeuilleSoinsXls {
   private String lienAssure = "";
   @AMalade
   private String situationMalade = "";
-
 
   private String ticketModerateur = "";
   private String amo = "";
@@ -447,6 +457,14 @@ public class FeuilleSoinsXls {
 
   public void setActe11(String acte11) {
     this.acte11 = acte11;
+  }
+
+  public String getDateRecapitulatif() {
+    return dateRecapitulatif;
+  }
+
+  public void setDateRecapitulatif(String dateRecapitulatif) {
+    this.dateRecapitulatif = dateRecapitulatif;
   }
 
   @Override

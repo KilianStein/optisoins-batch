@@ -22,6 +22,7 @@ public class FeuilleSoinsXlsMapper {
     if (AnnotationsUtils.isFieldNotEmpty(fsXls, ATechnique.class)) {
       AttributsTechnique attributsTechnique = new AttributsTechnique();
       attributsTechnique.setId(StringUtils.concat("-", fsXls.getNomFichier(), fsXls.getNomFeuille(), fsXls.getNumeroLigne()));
+      attributsTechnique.setDateRecapitulatif(fsXls.getDateRecapitulatif());
       return attributsTechnique;
     }
     throw new RuntimeException("un problème technique est survenu, la feuille de soins n'a pas d'attribut technique");

@@ -4,6 +4,7 @@ public class AttributsTechnique {
 
   private String id = "";
   private String name = "";
+  private String dateRecapitulatif = "";
 
   public String getId() {
     return id;
@@ -19,5 +20,13 @@ public class AttributsTechnique {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public String getDateRecapitulatif() {
+    return dateRecapitulatif;
+  }
+
+  public void setDateRecapitulatif(String dateRecapitulatif) {
+    this.dateRecapitulatif = dateRecapitulatif;
   }
 }
