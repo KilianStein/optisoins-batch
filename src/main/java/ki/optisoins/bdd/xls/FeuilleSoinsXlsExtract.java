@@ -1,4 +1,4 @@
-package ki.optisoins.mapper.xls;
+package ki.optisoins.bdd.xls;
 
 import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.log.OptiSoinsLogger;

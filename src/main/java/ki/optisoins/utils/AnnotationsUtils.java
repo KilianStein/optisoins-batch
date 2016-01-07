@@ -1,12 +1,8 @@
 package ki.optisoins.utils;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-
-import ki.optisoins.mapper.xls.FeuilleSoinsXls;
-import ki.optisoins.mapper.xls.annotations.AAssure;
 
 public class AnnotationsUtils {
 

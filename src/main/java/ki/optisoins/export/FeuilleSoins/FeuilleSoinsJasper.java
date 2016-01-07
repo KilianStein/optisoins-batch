@@ -1,132 +1,115 @@
-package ki.optisoins.mapper.xls;
+package ki.optisoins.export.FeuilleSoins;
 
-import ki.optisoins.mapper.xls.annotations.*;
-import ki.optisoins.utils.AnnotationsUtils;
-import ki.optisoins.utils.ReflectUtils;
-import ki.optisoins.utils.StringUtils;
+import ki.optisoins.pojo.Acte;
+import ki.optisoins.pojo.Actes;
+import ki.optisoins.properties.ConfigurationProperties;
+import ki.optisoins.properties.ConfigurationPropertiesValue;
 
-import java.util.List;
+/**
+ * Classe représentant la feuille de soins d'auxiliaire médicale
+ */
+public class FeuilleSoinsJasper {
 
-public class FeuilleSoinsXls {
+  private String nomDossier = "";
 
-  @ATechnique
-  private String nomFichier = "";
-
-  @ATechnique
-  private String nomFeuille = "";
-
-  @ATechnique
-  private String numeroLigne = "";
-
-  @AOrthophoniste
   private String reglementNomPrenom = "";
-  @AOrthophoniste
   private String nomBanque = "";
-  @AOrthophoniste
   private String numeroCompte = "";
-  @AOrthophoniste
   private String identificationAuxiliaireMedical = "";
-  
-  @AOrdonnanceMedecin
-  private String nomMedecin = "";
-  @AOrdonnanceMedecin
   private String dateOrdonnance = "";
-  @AOrdonnanceMedecin
+  private String nomMedecin = "";
   private String numeroMedecin = "";
-  @AOrdonnanceMedecin
   private String numeroACP = "";
-  @AOrdonnanceMedecin
   private String nomEtPrenomMalade = "";
-
-  @AAssure
   private String numeroCafat = "";
-  @AAssure
   private String nomAssure = "";
-  @AAssure
   private String prenomAssure = "";
-  @AAssure
   private String datedenaissanceAssure = "";
-
-  @AAssure @AAdresse
   private String appartement = "";
-  @AAssure @AAdresse
   private String batiment = "";
-  @AAssure @AAdresse
   private String rue = "";
-  @AAssure @AAdresse
   private String codePostal = "";
-  @AAssure @AAdresse
   private String commune = "";
-
-  @AAssure @AAideMedicale
-  private String debutValiditeAM = "";
-  @AAssure @AAideMedicale
-  private String finValiditeAM = "";
-  @AAssure @AAideMedicale
-  private String numeroAM = "";
-
-  @AMalade
-  private String accident = "";
-  @AMalade
+  private Boolean accident = null;
   private String nomMalade = "";
-  @AMalade
   private String prenomMalade = "";
-  @AMalade
   private String datedenaissanceMalade = "";
-  @AMalade
   private String lienAssure = "";
-  @AMalade
   private String situationMalade = "";
-
-
-  private String ticketModerateur = "";
+  private String debutValiditeAM = "";
+  private String finValiditeAM = "";
+  private String numeroAM = "";
   private String amo = "";
+  private String ticketModerateur = "";
 
-  @AActes
-  private String acte1 = "";
-  @AActes
-  private String acte2 = "";
-  @AActes
-  private String acte3 = "";
-  @AActes
-  private String acte4 = "";
-  @AActes
-  private String acte5 = "";
-  @AActes
-  private String acte6 = "";
-  @AActes
-  private String acte7 = "";
-  @AActes
-  private String acte8 = "";
-  @AActes
-  private String acte9 = "";
-  @AActes
-  private String acte10 = "";
-  @AActes
-  private String acte11 = "";
+  private Actes actes = new Actes();
+  private String acte1 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+  private String acte2 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+  private String acte3 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+  private String acte4 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+  private String acte5 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+  private String acte6 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+  private String acte7 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+  private String acte8 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+  private String acte9 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+  private String acte10 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
+  private String acte11 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
 
-  public String getNomFeuille() {
-    return nomFeuille;
+  private String total = "";
+
+  private boolean afficherFond = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.AFFICHER_FOND);
+  private boolean debugBordures = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.AFFICHER_BORDURES);
+
+  public int calculerTotal() {
+    return actes.calculerTotal();
   }
 
-  public void setNomFeuille(String nomFeuille) {
-    this.nomFeuille = nomFeuille;
+  public void updateActes() {
+    actes.update(getAmo(), getTicketModerateur(), isDeplacement());
   }
 
-  public String getNomFichier() {
-    return nomFichier;
+  public Acte getActe(int numeroLigne) {
+    return actes.getActe(numeroLigne);
   }
 
-  public void setNomFichier(String nomFichier) {
-    this.nomFichier = nomFichier;
+  public void addToActes(int numeroLigne, Acte acte) {
+    actes.setToActes(numeroLigne, acte);
   }
 
-  public String getNumeroLigne() {
-    return numeroLigne;
+  public boolean isDeplacement() {
+    return !"".equals(appartement) || !"".equals(batiment) || !"".equals(rue) || !"".equals(codePostal) || !"".equals(commune);
   }
 
-  public void setNumeroLigne(String numeroLigne) {
-    this.numeroLigne = numeroLigne;
+  public boolean isAfficherFond() {
+    return afficherFond;
+  }
+
+  public void setAfficherFond(boolean afficherFond) {
+    this.afficherFond = afficherFond;
+  }
+
+  public boolean isDebugBordures() {
+    return debugBordures;
+  }
+
+  public void setDebugBordures(boolean debugBordures) {
+    this.debugBordures = debugBordures;
+  }
+
+  public String getNomDossier() {
+    return nomDossier;
+  }
+
+  public void setNomDossier(String nomDossier) {
+    this.nomDossier = nomDossier;
+  }
+
+  public String getReglementNomPrenom() {
+    return reglementNomPrenom;
+  }
+
+  public void setReglementNomPrenom(String reglementNomPrenom) {
+    this.reglementNomPrenom = reglementNomPrenom;
   }
 
   public String getNomBanque() {
@@ -137,6 +120,14 @@ public class FeuilleSoinsXls {
     this.nomBanque = nomBanque;
   }
 
+  public String getNumeroCompte() {
+    return numeroCompte;
+  }
+
+  public void setNumeroCompte(String numeroCompte) {
+    this.numeroCompte = numeroCompte;
+  }
+
   public String getIdentificationAuxiliaireMedical() {
     return identificationAuxiliaireMedical;
   }
@@ -145,20 +136,20 @@ public class FeuilleSoinsXls {
     this.identificationAuxiliaireMedical = identificationAuxiliaireMedical;
   }
 
-  public String getNomMedecin() {
-    return nomMedecin;
-  }
-
-  public void setNomMedecin(String nomMedecin) {
-    this.nomMedecin = nomMedecin;
-  }
-
   public String getDateOrdonnance() {
     return dateOrdonnance;
   }
 
   public void setDateOrdonnance(String dateOrdonnance) {
     this.dateOrdonnance = dateOrdonnance;
+  }
+
+  public String getNomMedecin() {
+    return nomMedecin;
+  }
+
+  public void setNomMedecin(String nomMedecin) {
+    this.nomMedecin = nomMedecin;
   }
 
   public String getNumeroMedecin() {
@@ -193,22 +184,6 @@ public class FeuilleSoinsXls {
     this.numeroCafat = numeroCafat;
   }
 
-  public String getReglementNomPrenom() {
-    return reglementNomPrenom;
-  }
-
-  public void setReglementNomPrenom(String reglementNomPrenom) {
-    this.reglementNomPrenom = reglementNomPrenom;
-  }
-
-  public String getNumeroCompte() {
-    return numeroCompte;
-  }
-
-  public void setNumeroCompte(String numeroCompte) {
-    this.numeroCompte = numeroCompte;
-  }
-
   public String getNomAssure() {
     return nomAssure;
   }
@@ -223,14 +198,6 @@ public class FeuilleSoinsXls {
 
   public void setPrenomAssure(String prenomAssure) {
     this.prenomAssure = prenomAssure;
-  }
-
-  public String getDatedenaissanceAssure() {
-    return datedenaissanceAssure;
-  }
-
-  public void setDatedenaissanceAssure(String datedenaissanceAssure) {
-    this.datedenaissanceAssure = datedenaissanceAssure;
   }
 
   public String getAppartement() {
@@ -271,14 +238,6 @@ public class FeuilleSoinsXls {
 
   public void setCommune(String commune) {
     this.commune = commune;
-  }
-
-  public String getAccident() {
-    return accident;
-  }
-
-  public void setAccident(String accident) {
-    this.accident = accident;
   }
 
   public String getNomMalade() {
@@ -343,22 +302,6 @@ public class FeuilleSoinsXls {
 
   public void setNumeroAM(String numeroAM) {
     this.numeroAM = numeroAM;
-  }
-
-  public String getTicketModerateur() {
-    return ticketModerateur;
-  }
-
-  public void setTicketModerateur(String ticketModerateur) {
-    this.ticketModerateur = ticketModerateur;
-  }
-
-  public String getAmo() {
-    return amo;
-  }
-
-  public void setAmo(String amo) {
-    this.amo = amo;
   }
 
   public String getActe1() {
@@ -449,28 +392,43 @@ public class FeuilleSoinsXls {
     this.acte11 = acte11;
   }
 
-  @Override
-  public String toString() {
-    return StringUtils.concat("\n", super.toString(), ReflectUtils.toStringFields(this));
+  public String getTotal() {
+    return total;
   }
 
-  public String getInformations() {
-    return "nom du fichier : '" + getNomFichier() + "', nom de la feuille Xls : " + getNomFeuille() + "', numéro de la ligne : '" + getNumeroLigne() + "'";
+  public void setTotal(String total) {
+    this.total = total;
   }
 
-  public static String getNomsChampsAutorises() {
-    String nomsChampsAutorises = "";
-    for (String nomChampAutorise : getAttributsMetier()) {
-      nomsChampsAutorises = StringUtils.concat(" ", nomsChampsAutorises, nomChampAutorise);
-    }
-    return nomsChampsAutorises;
+  public String getDatedenaissanceAssure() {
+    return datedenaissanceAssure;
   }
 
-  public static List<String> getAttributsTechniques() {
-    return AnnotationsUtils.getFieldsNameWithAnnotation(FeuilleSoinsXls.class, ATechnique.class);
+  public void setDatedenaissanceAssure(String datedenaissanceAssure) {
+    this.datedenaissanceAssure = datedenaissanceAssure;
   }
 
-  public static List<String> getAttributsMetier() {
-    return AnnotationsUtils.getFieldsNameWithoutAnnotation(FeuilleSoinsXls.class, ATechnique.class);
+  public String getAmo() {
+    return amo;
+  }
+
+  public void setAmo(String amo) {
+    this.amo = amo;
+  }
+
+  public String getTicketModerateur() {
+    return ticketModerateur;
+  }
+
+  public void setTicketModerateur(String ticketModerateur) {
+    this.ticketModerateur = ticketModerateur;
+  }
+
+  public Boolean getAccident() {
+    return accident;
+  }
+
+  public void setAccident(Boolean accident) {
+    this.accident = accident;
   }
 }

@@ -1,21 +1,13 @@
-package ki.optisoins.mapper.xls;
+package ki.optisoins.bdd.xls;
 
-import ki.optisoins.mapper.xls.annotations.*;
+import ki.optisoins.bdd.xls.annotations.*;
 import ki.optisoins.pojo.*;
 import ki.optisoins.utils.AnnotationsUtils;
 import ki.optisoins.utils.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class FeuilleSoinsXlsMapper {
 
-  public List<FeuilleSoins> map(List<FeuilleSoinsXls> feuillesSoinsXls) {
-    return feuillesSoinsXls.stream().map(this::map).collect(Collectors.toList());
-  }
-
-  private FeuilleSoins map(FeuilleSoinsXls feuilleSoinsXls) {
+  public FeuilleSoins map(FeuilleSoinsXls feuilleSoinsXls) {
     FeuilleSoins feuilleSoins = new FeuilleSoins();
     feuilleSoins.setAttributsTechnique(mapAttributsTechnique(feuilleSoinsXls));
     feuilleSoins.setAssure(mapAssure(feuilleSoinsXls));
@@ -30,7 +22,6 @@ public class FeuilleSoinsXlsMapper {
     if (AnnotationsUtils.isFieldNotEmpty(fsXls, ATechnique.class)) {
       AttributsTechnique attributsTechnique = new AttributsTechnique();
       attributsTechnique.setId(StringUtils.concat("-", fsXls.getNomFichier(), fsXls.getNomFeuille(), fsXls.getNumeroLigne()));
-      attributsTechnique.setDossierExport(fsXls.getNomFichier().replace(FeuilleSoinsXlsExtract.XLS_EXTENSION, ""));
       return attributsTechnique;
     }
     throw new RuntimeException("un problème technique est survenu, la feuille de soins n'a pas d'attribut technique");

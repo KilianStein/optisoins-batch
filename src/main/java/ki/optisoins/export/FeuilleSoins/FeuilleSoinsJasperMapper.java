@@ -1,4 +1,4 @@
-package ki.optisoins.jasper;
+package ki.optisoins.export.FeuilleSoins;
 
 import ki.optisoins.pojo.*;
 

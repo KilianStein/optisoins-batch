@@ -1,8 +1,7 @@
-package ki.optisoins.mapper.xls;
+package ki.optisoins.bdd.xls;
 
 import java.util.List;
 
-import ki.optisoins.pojo.FeuilleSoins;
 import org.junit.Test;
 
 public class FeuilleSoinsXlsExtractTest {

@@ -1,16 +1,16 @@
 package ki.optisoins;
 
-import ki.optisoins.jasper.FeuilleSoinsExportJasper;
+import ki.optisoins.export.DossierSoins.DossierSoinsExport;
 import ki.optisoins.log.OptiSoinsLogger;
-import ki.optisoins.mapper.xls.FeuilleSoinsXls;
-import ki.optisoins.mapper.xls.FeuilleSoinsXlsExtract;
-import ki.optisoins.mapper.xls.FeuilleSoinsXlsMapper;
-import ki.optisoins.pojo.FeuilleSoins;
+import ki.optisoins.bdd.xls.DossierSoinsXlsMapper;
+import ki.optisoins.bdd.xls.FeuilleSoinsXls;
+import ki.optisoins.bdd.xls.FeuilleSoinsXlsExtract;
+import ki.optisoins.pojo.DossierSoins;
+import ki.optisoins.process.UpdateDossiersSoinsProcess;
 import ki.optisoins.properties.AMOProperties;
 import ki.optisoins.properties.ConfigurationProperties;
 import ki.optisoins.utils.FileUtils;
 import ki.optisoins.utils.PropertiesUtils;
-import net.sf.jasperreports.engine.JasperReport;
 
 import java.awt.*;
 import java.io.File;
@@ -25,10 +25,10 @@ public class OptiSoins {
   public static void main(String[] args) throws Exception {
     try {
       initRessources();
-      JasperReport jasperReport = FeuilleSoinsExportJasper.compileReport();
-      for (FeuilleSoins feuilleSoins : findFeuillesSoins()) {
-        FeuilleSoinsExportJasper.printReport(jasperReport, feuilleSoins);
-      }
+
+      List<DossierSoins> dossiersSoins = extractDossiersSoins();
+      DossierSoinsExport.exportPDF(dossiersSoins);
+
       ouvrirDossierOutput();
     } catch (Throwable e) {
       OptiSoinsLogger.printError(e);
@@ -36,15 +36,16 @@ public class OptiSoins {
     }
   }
 
+  private static List<DossierSoins> extractDossiersSoins() {
+    List<FeuilleSoinsXls> feuilleSoinsXls = new FeuilleSoinsXlsExtract().extract();
+    List<DossierSoins> dossiersSoins = new DossierSoinsXlsMapper().map(feuilleSoinsXls);
+    return new UpdateDossiersSoinsProcess().process(dossiersSoins);
+  }
+
   private static void ouvrirDossierOutput() throws IOException {
     if (Desktop.getDesktop().isSupported(Desktop.Action.OPEN)){
       Desktop.getDesktop().open(new File(OptiSoinsConfiguration.outputDirectory));
     }
-  }
-
-  private static List<FeuilleSoins> findFeuillesSoins() {
-    List<FeuilleSoinsXls> feuilleSoinsXls = new FeuilleSoinsXlsExtract().extract();
-    return new FeuilleSoinsXlsMapper().map(feuilleSoinsXls);
   }
 
   private static void initRessources() throws IOException {

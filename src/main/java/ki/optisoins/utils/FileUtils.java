@@ -43,11 +43,16 @@ public class FileUtils {
     });
   }
 
-  public static String createDirIfNotExist(String dir) throws IOException {
+  public static String createDirIfNotExist(String dir) {
     Path path = Paths.get(dir);
     if (!Files.isReadable(path) || !Files.isDirectory(path)) {
       OptiSoinsLogger.printTrace("Création du dossier '" + dir + "'");
-      Files.createDirectory(path);
+      try {
+        Files.createDirectory(path);
+      } catch (IOException e) {
+        OptiSoinsLogger.printError("Erreur lors de la création du dossier '" + dir + "'");
+        throw new RuntimeException(e);
+      }
     }
     return dir;
   }

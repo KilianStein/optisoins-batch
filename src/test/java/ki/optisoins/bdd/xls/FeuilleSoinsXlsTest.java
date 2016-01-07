@@ -1,4 +1,4 @@
-package ki.optisoins.mapper.xls;
+package ki.optisoins.bdd.xls;
 
 import org.junit.Test;
 
