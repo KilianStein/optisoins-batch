@@ -14,6 +14,6 @@ public class DossierSoinsExport {
 
   private static void exportPDF(DossierSoins dossierSoins) {
     FeuilleSoinsExport.exportPDF(dossierSoins.getFeuillesSoins(), dossierSoins.getNom());
-    EtatExport.exportPDF(dossierSoins.getFeuillesSoins(), dossierSoins.getNom());
+    EtatExport.exportPDF(dossierSoins.getEtats(), dossierSoins.getNom());
   }
 }

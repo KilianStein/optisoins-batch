@@ -1,14 +1,17 @@
 package ki.optisoins.process;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import ki.optisoins.pojo.DossierSoins;
 import ki.optisoins.pojo.Etat;
 import ki.optisoins.pojo.FeuilleSoins;
 import ki.optisoins.utils.StringUtils;
 import ki.optisoins.utils.UniqueNameUtils;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class UpdateDossiersSoinsProcess {
 
@@ -40,13 +43,12 @@ public class UpdateDossiersSoinsProcess {
     Map<String, Etat> etats = new HashMap<>();
 
     for (FeuilleSoins feuilleSoins : dossierSoins.getFeuillesSoins()){
-      String dateRecap = feuilleSoins.getAttributsTechnique().getDateRecapitulatif();
-      if (StringUtils.isNotEmpty(dateRecap)){
-        Etat etat = etats.get(dateRecap);
+      String numeroEtat = feuilleSoins.getNumeroEtat();
+      if (StringUtils.isNotEmpty(numeroEtat)){
+        Etat etat = etats.get(numeroEtat);
         if (etat == null){
-          etat = new Etat();
-          etat.setDate(dateRecap);
-          etats.put(dateRecap, etat);
+          etat = createEtat(numeroEtat);
+          etats.put(numeroEtat, etat);
         }
         etat.addFeuillesSoins(feuilleSoins);
       }
@@ -54,4 +56,11 @@ public class UpdateDossiersSoinsProcess {
     dossierSoins.addAllEtats(etats.values());
   }
 
+  private Etat createEtat(String numeroEtat){
+    Etat etat = new Etat();
+    etat.setNumero(numeroEtat);
+    etat.setDate(Instant.now().atZone(ZoneId.of("Etc/GMT+11")).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+    return etat;
+  }
+  
 }

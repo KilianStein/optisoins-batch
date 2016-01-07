@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Etat {
-  private int numero = 0;
+  private String numero = "";
   private String date = "";
   private List<FeuilleSoins> feuillesSoins = new ArrayList<>();
 
@@ -16,11 +16,11 @@ public class Etat {
     return total;
   }
 
-  public int getNumero() {
+  public String getNumero() {
     return numero;
   }
 
-  public void setNumero(int numero) {
+  public void setNumero(String numero) {
     this.numero = numero;
   }
 
@@ -37,6 +37,9 @@ public class Etat {
   }
 
   public void addFeuillesSoins(FeuilleSoins feuilleSoins) {
+    if (feuillesSoins.size() >= 20){
+      throw new RuntimeException("Plus de 20 feuilles de soins ont été ajoutés à l'état numéro " + getNumero() + " alors que le maximun autorisé est de 20"  );
+    }
     feuillesSoins.add(feuilleSoins);
   }
 

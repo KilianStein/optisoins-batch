@@ -24,6 +24,7 @@ public class EtatJasper {
   private String feuilleSoins17 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
   private String feuilleSoins18 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
   private String feuilleSoins19 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
+  private String feuilleSoins20 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
 
   private String total = "";
 
@@ -85,6 +86,9 @@ public class EtatJasper {
         break;
       case 19:
         setFeuilleSoins19(feuilleChaineFormat);
+        break;
+      case 20:
+        setFeuilleSoins20(feuilleChaineFormat);
         break;
       default:
         break;
@@ -257,6 +261,14 @@ public class EtatJasper {
 
   public void setFeuilleSoins19(String feuilleSoins19) {
     this.feuilleSoins19 = feuilleSoins19;
+  }
+
+  public String getFeuilleSoins20() {
+    return feuilleSoins20;
+  }
+
+  public void setFeuilleSoins20(String feuilleSoins20) {
+    this.feuilleSoins20 = feuilleSoins20;
   }
 
   public String getTotal() {

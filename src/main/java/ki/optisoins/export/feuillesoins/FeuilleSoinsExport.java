@@ -1,20 +1,20 @@
 package ki.optisoins.export.feuillesoins;
 
+import java.io.File;
+import java.util.List;
+
 import ki.optisoins.OptiSoinsConfiguration;
+import ki.optisoins.export.JasperExport;
 import ki.optisoins.log.OptiSoinsLogger;
 import ki.optisoins.pojo.FeuilleSoins;
 import ki.optisoins.properties.ConfigurationProperties;
 import ki.optisoins.properties.ConfigurationPropertiesValue;
 import ki.optisoins.utils.FileUtils;
-import ki.optisoins.utils.PixelUtils;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 
 public class FeuilleSoinsExport {
 
@@ -53,19 +53,14 @@ public class FeuilleSoinsExport {
   }
 
   private static JasperReport compileReport() throws JRException {
-    OptiSoinsLogger.printTrace("Initialisation des paramètres la feuille de soins");
-    JasperReport jasperReport = JasperCompileManager.compileReport(initJasperDesign());
-    OptiSoinsLogger.printTrace(" Marge haut : " + jasperReport.getTopMargin() + "px / " + PixelUtils.tranformPxToMM(jasperReport.getTopMargin()) + " mm");
-    OptiSoinsLogger.printTrace(" Marge gauche : " + jasperReport.getLeftMargin() + "px / " + PixelUtils.tranformPxToMM(jasperReport.getLeftMargin()) + " mm");
-    return jasperReport;
+    return JasperExport.compileReport(initJasperDesign());
   }
 
   private static JasperDesign initJasperDesign() throws JRException {
-    JasperDesign jasperDesign = JRXmlLoader.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(OptiSoinsConfiguration.jasperReportFeuilleSoinsTemplateUrl));
+    JasperDesign jasperDesign = JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportFeuilleSoinsTemplateUrl);
     if (ConfigurationProperties.isConfigurationPresente(ConfigurationPropertiesValue.IMPRESSION_MARGE_GAUCHE)) {
       jasperDesign.setLeftMargin(ConfigurationProperties.getMargeGauche());
     }
-
     if (ConfigurationProperties.isConfigurationPresente(ConfigurationPropertiesValue.IMPRESSION_MARGE_HAUT)) {
       jasperDesign.setTopMargin(ConfigurationProperties.getMargeHaut());
     }
@@ -73,7 +68,7 @@ public class FeuilleSoinsExport {
   }
 
   private static JasperPrint fillReport(FeuilleSoins feuilleSoins) throws JRException {
-    return JasperFillManager.fillReport(getReport(), null, new JRBeanCollectionDataSource(Arrays.asList(new FeuilleSoinsJasperMapper().map(feuilleSoins))));
+    return JasperExport.fillReport(getReport(), new FeuilleSoinsJasperMapper().map(feuilleSoins));
   }
 
   private static String getPathExportPDF(String nomDossier, String fileName) {

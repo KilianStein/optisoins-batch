@@ -9,6 +9,7 @@ public class FeuilleSoinsXlsMapper {
 
   public FeuilleSoins map(FeuilleSoinsXls feuilleSoinsXls) {
     FeuilleSoins feuilleSoins = new FeuilleSoins();
+    feuilleSoins.setNumeroEtat(feuilleSoinsXls.getNumeroEtat());
     feuilleSoins.setAttributsTechnique(mapAttributsTechnique(feuilleSoinsXls));
     feuilleSoins.setAssure(mapAssure(feuilleSoinsXls));
     feuilleSoins.setMalade(mapMalade(feuilleSoinsXls));
@@ -22,7 +23,6 @@ public class FeuilleSoinsXlsMapper {
     if (AnnotationsUtils.isFieldNotEmpty(fsXls, ATechnique.class)) {
       AttributsTechnique attributsTechnique = new AttributsTechnique();
       attributsTechnique.setId(StringUtils.concat("-", fsXls.getNomFichier(), fsXls.getNomFeuille(), fsXls.getNumeroLigne()));
-      attributsTechnique.setDateRecapitulatif(fsXls.getDateRecapitulatif());
       return attributsTechnique;
     }
     throw new RuntimeException("un problème technique est survenu, la feuille de soins n'a pas d'attribut technique");

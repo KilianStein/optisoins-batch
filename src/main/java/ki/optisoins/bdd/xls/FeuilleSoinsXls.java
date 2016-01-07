@@ -19,7 +19,7 @@ public class FeuilleSoinsXls {
   private String numeroLigne = "";
 
   @ATechnique
-  private String dateRecapitulatif = "";
+  private String numeroEtat = "";
 
   @AOrthophoniste
   private String reglementNomPrenom = "";
@@ -459,12 +459,13 @@ public class FeuilleSoinsXls {
     this.acte11 = acte11;
   }
 
-  public String getDateRecapitulatif() {
-    return dateRecapitulatif;
+ 
+  public String getNumeroEtat() {
+    return numeroEtat;
   }
 
-  public void setDateRecapitulatif(String dateRecapitulatif) {
-    this.dateRecapitulatif = dateRecapitulatif;
+  public void setNumeroEtat(String numeroEtat) {
+    this.numeroEtat = numeroEtat;
   }
 
   @Override

@@ -18,7 +18,7 @@ public class EtatJasperFormat {
     acteListe.add(formatFeuilleSoinsAttribute(feuilleSoins.getNumeroCafat()));
     acteListe.add(formatFeuilleSoinsAttribute(feuilleSoins.getNomPrenomMalade()));
     acteListe.add(formatFeuilleSoinsAttribute(feuilleSoins.getNombreActes()));
-    acteListe.add(formatFeuilleSoinsAttribute(feuilleSoins.getMontantTotalActes()));
+    acteListe.add(formatFeuilleSoinsAttribute(formatXPF(feuilleSoins.getMontantTotalActes())));
     return String.join(";", acteListe);
   }
 
@@ -29,8 +29,8 @@ public class EtatJasperFormat {
   private static String formatFeuilleSoinsAttribute(int i) {
     return i == 0 ? " " : String.valueOf(i);
   }
-
-  public static String format(int i) {
-    return i == 0 ? "" : String.valueOf(i);
+  
+  public static String formatXPF(int montant) {
+    return montant == 0 ? "" : String.valueOf(montant) + " XPF";
   }
 }
