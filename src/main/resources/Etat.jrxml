@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Recap100" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7e26fc11-07f3-452c-b31c-f354549527fa">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<background>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="560" height="774" uuid="f38c767c-62e9-4eaa-b808-326a52ba1bdc"/>
+				<imageExpression><![CDATA["K:\\project\\optisoins\\src\\main\\resources\\Etat2.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+</jasperReport>

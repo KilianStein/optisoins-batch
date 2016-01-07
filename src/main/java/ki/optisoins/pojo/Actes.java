@@ -19,7 +19,7 @@ public class Actes {
         }
     }
 
-    public int calculerTotal() {
+    public int getMontantTotal() {
         int total = 0;
         for (Acte acte : actes) {
             if (acte != null){
@@ -47,4 +47,13 @@ public class Actes {
         return actes.get(numeroLigne-1);
     }
 
+    public int getNombreActes(){
+        int nbActes = 0;
+        for (Acte acte : actes) {
+            if (acte != null){
+                nbActes ++;
+            }
+        }
+        return nbActes;
+    }
 }

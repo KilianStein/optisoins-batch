@@ -1,4 +1,4 @@
-package ki.optisoins.export.FeuilleSoins;
+package ki.optisoins.export.feuilleSoins;
 
 import ki.optisoins.pojo.Acte;
 import ki.optisoins.pojo.Actes;
@@ -61,7 +61,7 @@ public class FeuilleSoinsJasper {
   private boolean debugBordures = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.AFFICHER_BORDURES);
 
   public int calculerTotal() {
-    return actes.calculerTotal();
+    return actes.getMontantTotal();
   }
 
   public void updateActes() {

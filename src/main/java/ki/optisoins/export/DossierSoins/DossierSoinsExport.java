@@ -1,6 +1,7 @@
-package ki.optisoins.export.DossierSoins;
+package ki.optisoins.export.dossierSoins;
 
-import ki.optisoins.export.FeuilleSoins.FeuilleSoinsExport;
+import ki.optisoins.export.etat.EtatExport;
+import ki.optisoins.export.feuilleSoins.FeuilleSoinsExport;
 import ki.optisoins.pojo.DossierSoins;
 
 import java.util.List;
@@ -13,5 +14,6 @@ public class DossierSoinsExport {
 
   private static void exportPDF(DossierSoins dossierSoins) {
     FeuilleSoinsExport.exportPDF(dossierSoins.getFeuillesSoins(), dossierSoins.getNom());
+    EtatExport.exportPDF(dossierSoins.getFeuillesSoins(), dossierSoins.getNom());
   }
 }

@@ -1,4 +1,4 @@
-package ki.optisoins.export.FeuilleSoins;
+package ki.optisoins.export.feuilleSoins;
 
 import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.log.OptiSoinsLogger;
@@ -61,7 +61,7 @@ public class FeuilleSoinsExport {
   }
 
   private static JasperDesign initJasperDesign() throws JRException {
-    JasperDesign jasperDesign = JRXmlLoader.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(OptiSoinsConfiguration.reportTemplateUrl));
+    JasperDesign jasperDesign = JRXmlLoader.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(OptiSoinsConfiguration.jasperReportFeuilleSoinsTemplateUrl));
     if (ConfigurationProperties.isConfigurationPresente(ConfigurationPropertiesValue.IMPRESSION_MARGE_GAUCHE)) {
       jasperDesign.setLeftMargin(ConfigurationProperties.getMargeGauche());
     }

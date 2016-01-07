@@ -1,4 +1,4 @@
-package ki.optisoins.export.FeuilleSoins;
+package ki.optisoins.export.feuilleSoins;
 
 import ki.optisoins.pojo.*;
 
@@ -120,7 +120,7 @@ public class FeuilleSoinsJasperMapper {
       feuilleSoinsJasper.setActe9(FeuilleSoinsJasperFormat.formatActe(actes.getActe(9)));
       feuilleSoinsJasper.setActe10(FeuilleSoinsJasperFormat.formatActe(actes.getActe(10)));
       feuilleSoinsJasper.setActe11(FeuilleSoinsJasperFormat.formatActe(actes.getActe(11)));
-      feuilleSoinsJasper.setTotal(FeuilleSoinsJasperFormat.formatXPF(actes.calculerTotal()));
+      feuilleSoinsJasper.setTotal(FeuilleSoinsJasperFormat.formatXPF(actes.getMontantTotal()));
     }
 
     return feuilleSoinsJasper;

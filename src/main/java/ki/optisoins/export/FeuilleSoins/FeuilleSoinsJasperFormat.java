@@ -1,4 +1,4 @@
-package ki.optisoins.export.FeuilleSoins;
+package ki.optisoins.export.feuilleSoins;
 
 import ki.optisoins.pojo.Acte;
 

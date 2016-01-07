@@ -9,8 +9,24 @@ public class FeuilleSoins {
   private OrdonnanceMedecin ordonnanceMedecin = null;
   private Actes actes = null;
 
-  public boolean isDomicile(){
-    return getAssure() != null  && getAssure().getAdresse() != null;
+  public boolean isDomicile() {
+    return getAssure() != null && getAssure().getAdresse() != null;
+  }
+
+  public String getNumeroCafat() {
+    return assure != null ? assure.getNumeroCafat() : "";
+  }
+
+  public String getNomPrenomMalade() {
+    return ordonnanceMedecin != null ? ordonnanceMedecin.getNomEtPrenomMalade() : "";
+  }
+
+  public int getNombreActes() {
+    return actes != null ? actes.getNombreActes() : 0;
+  }
+
+  public int getMontantTotalActes() {
+    return actes != null ? actes.getMontantTotal() : 0;
   }
 
   public AttributsTechnique getAttributsTechnique() {
