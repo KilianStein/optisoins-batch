@@ -43,7 +43,7 @@ public class FeuilleSoinsXlsExtract {
     return feuilleSoinXls;
   }
 
-  private List<FeuilleSoinsXls> extract(Path pathXls) throws IOException {
+  protected List<FeuilleSoinsXls> extract(Path pathXls) throws IOException {
     return extract(Files.newInputStream(pathXls), pathXls.getFileName().toString());
   }
 
