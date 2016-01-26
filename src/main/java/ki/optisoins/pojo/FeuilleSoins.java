@@ -3,6 +3,7 @@ package ki.optisoins.pojo;
 public class FeuilleSoins {
 
   private String numeroEtat = "";
+  private PriseEnCharge priseEnCharge = null;
   private AttributsTechnique attributsTechnique = null;
   private Assure assure = null;
   private Malade malade = null;
@@ -28,6 +29,14 @@ public class FeuilleSoins {
 
   public int getMontantTotalActes() {
     return actes != null ? actes.getMontantTotal() : 0;
+  }
+
+  public PriseEnCharge getPriseEnCharge() {
+    return priseEnCharge;
+  }
+
+  public void setPriseEnCharge(PriseEnCharge priseEnCharge) {
+    this.priseEnCharge = priseEnCharge;
   }
 
   public String getNumeroEtat() {

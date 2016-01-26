@@ -10,6 +10,7 @@ public class FeuilleSoinsXlsMapper {
   public FeuilleSoins map(FeuilleSoinsXls feuilleSoinsXls) {
     FeuilleSoins feuilleSoins = new FeuilleSoins();
     feuilleSoins.setNumeroEtat(feuilleSoinsXls.getNumeroEtat());
+    feuilleSoins.setPriseEnCharge(PriseEnCharge.getPriseEnCharge(feuilleSoinsXls.getNomFeuille()));
     feuilleSoins.setAttributsTechnique(mapAttributsTechnique(feuilleSoinsXls));
     feuilleSoins.setAssure(mapAssure(feuilleSoinsXls));
     feuilleSoins.setMalade(mapMalade(feuilleSoinsXls));
@@ -18,6 +19,7 @@ public class FeuilleSoinsXlsMapper {
     feuilleSoins.setActes(mapActes(feuilleSoins, feuilleSoinsXls));
     return feuilleSoins;
   }
+
 
   private AttributsTechnique mapAttributsTechnique(FeuilleSoinsXls fsXls) {
     if (AnnotationsUtils.isFieldNotEmpty(fsXls, ATechnique.class)) {
