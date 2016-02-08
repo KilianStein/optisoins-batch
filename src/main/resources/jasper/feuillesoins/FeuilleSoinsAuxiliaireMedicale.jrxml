@@ -57,7 +57,7 @@
 				<reportElement x="-4" y="-4" width="570" height="803" uuid="2fc7202c-92ab-4962-a204-64f6d11103b0">
 					<printWhenExpression><![CDATA[$F{afficherFond}]]></printWhenExpression>
 				</reportElement>
-				<imageExpression><![CDATA["FeuilleSoinsAuxiliaireMedicaleReduit.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["jasper/feuillesoins/FeuilleSoinsAuxiliaireMedicaleReduit.jpg"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="232" y="303" width="192" height="17" uuid="714d7f27-ebd8-4304-9ae7-0efacb052eec"/>

@@ -30,7 +30,7 @@
 		<band height="802" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="1" width="560" height="774" uuid="f38c767c-62e9-4eaa-b808-326a52ba1bdc"/>
-				<imageExpression><![CDATA["Etat_100.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["jasper/etat_100/Etat_100.jpg"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement x="176" y="176" width="149" height="18" uuid="3b636092-81d6-4100-a4f4-bd0036746c58"/>
