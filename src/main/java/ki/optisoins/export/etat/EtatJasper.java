@@ -27,6 +27,8 @@ public class EtatJasper {
   private String feuilleSoins20 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
 
   private String total = "";
+  private String abattement = "";
+  private String montantDu = "";
 
   public void setFeuilleSoins(int i, String feuilleChaineFormat) {
     switch (i) {
@@ -277,5 +279,21 @@ public class EtatJasper {
 
   public void setTotal(String total) {
     this.total = total;
+  }
+
+  public String getAbattement() {
+    return abattement;
+  }
+
+  public void setAbattement(String abattement) {
+    this.abattement = abattement;
+  }
+
+  public String getMontantDu() {
+    return montantDu;
+  }
+
+  public void setMontantDu(String montantDu) {
+    this.montantDu = montantDu;
   }
 }

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Etat 100%" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7e26fc11-07f3-452c-b31c-f354549527fa">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="816"/>
+	<property name="ireport.y" value="188"/>
 	<field name="numero" class="java.lang.String"/>
 	<field name="date" class="java.lang.String"/>
 	<field name="feuilleSoins1" class="java.lang.String"/>
@@ -30,14 +30,14 @@
 		<band height="802" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="1" width="560" height="774" uuid="f38c767c-62e9-4eaa-b808-326a52ba1bdc"/>
-				<imageExpression><![CDATA["Etat2.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["Etat_100.jpg"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="176" y="174" width="149" height="18" uuid="3b636092-81d6-4100-a4f4-bd0036746c58"/>
+				<reportElement x="176" y="176" width="149" height="18" uuid="3b636092-81d6-4100-a4f4-bd0036746c58"/>
 				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="394" y="176" width="90" height="18" uuid="abb58ffe-58ae-4503-a5b6-495bc35838f8"/>
+				<reportElement x="394" y="178" width="90" height="18" uuid="abb58ffe-58ae-4503-a5b6-495bc35838f8"/>
 				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -61,7 +61,7 @@
 				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[3]]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="350" y="306" width="98" height="16" uuid="79c0e1ad-39b8-4be3-a2c5-754ed4e722de"/>
+				<reportElement x="350" y="307" width="98" height="16" uuid="79c0e1ad-39b8-4be3-a2c5-754ed4e722de"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[4]]]></textFieldExpression>
 			</textField>
@@ -86,7 +86,7 @@
 				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[3]]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="351" y="322" width="98" height="16" uuid="d9e5ef5a-6739-4133-a47e-372a8ca26cd9"/>
+				<reportElement x="351" y="323" width="98" height="16" uuid="d9e5ef5a-6739-4133-a47e-372a8ca26cd9"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[4]]]></textFieldExpression>
 			</textField>
@@ -544,6 +544,13 @@
 				<reportElement x="33" y="599" width="30" height="16" uuid="6682ed98-e1b6-4846-adaf-fb08dd85617d"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{feuilleSoins20}.split(";")[0]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="218" y="115" width="21" height="20" uuid="b712d10b-9389-4844-966a-f4d5c246eb9a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["X"]]></textFieldExpression>
 			</textField>
 		</band>
 	</background>

@@ -7,6 +7,8 @@ import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.export.JasperExport;
 import ki.optisoins.log.OptiSoinsLogger;
 import ki.optisoins.pojo.Etat;
+import ki.optisoins.pojo.LocalisationAM;
+import ki.optisoins.pojo.PriseEnCharge;
 import ki.optisoins.properties.ConfigurationProperties;
 import ki.optisoins.properties.ConfigurationPropertiesValue;
 import ki.optisoins.utils.FileUtils;
@@ -62,22 +64,24 @@ public class EtatExport {
     return ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.UN_DOSSIER_PAR_EXCEL) ? dirName + File.separator : "";
   }
 
-  public static JasperReport getReport() throws JRException {
-    if (report == null) {
-      report = compileReport();
+  public static JasperReport getReport(Etat etat) throws JRException {
+    return compileReport(etat);
+  }
+
+  private static JasperReport compileReport(Etat etat) throws JRException {
+    return JasperExport.compileReport(initJasperDesign(etat));
+  }
+
+  private static JasperDesign initJasperDesign(Etat etat) throws JRException {
+    if (PriseEnCharge.REMBOURSEMENT_100_POURCENT.equals(etat.getPriseEnCharge())){
+      return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtat100TemplateUrl);
+    } else  if (PriseEnCharge.AIDE_MEDICALE.equals(etat.getPriseEnCharge()) && LocalisationAM.SUD.equals(etat.getLocalisationAM())) {
+      return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtatAideMedicalSudTemplateUrl);
     }
-    return report;
-  }
-
-  private static JasperReport compileReport() throws JRException {
-    return JasperExport.compileReport(initJasperDesign());
-  }
-
-  private static JasperDesign initJasperDesign() throws JRException {
-    return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtatTemplateUrl);
+    throw new RuntimeException("La génération pour l'état numéro : '" + etat.getNumero() + "' n'est pas géré");
   }
 
   private static JasperPrint fillReport(Etat etat) throws JRException {
-    return JasperExport.fillReport(getReport(), new EtatJasperMapper().map(etat));
+    return JasperExport.fillReport(getReport(etat), new EtatJasperMapper().map(etat));
   }
 }

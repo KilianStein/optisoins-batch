@@ -6,6 +6,8 @@ import java.util.List;
 public class Etat {
   private String numero = "";
   private String date = "";
+  private PriseEnCharge priseEnCharge = null;
+  private LocalisationAM localisationAM = null;
   private List<FeuilleSoins> feuillesSoins = new ArrayList<>();
 
   public int getMontantTotal() {
@@ -14,6 +16,30 @@ public class Etat {
       total += feuilleSoins.getMontantTotalActes();
     }
     return total;
+  }
+
+  public int getAbattement() {
+    return (int)Math.ceil((getMontantTotal()) *  0.15);
+  }
+
+  public int getMontantDu() {
+    return getMontantTotal() - getAbattement();
+  }
+
+  public PriseEnCharge getPriseEnCharge() {
+    return priseEnCharge;
+  }
+
+  public void setPriseEnCharge(PriseEnCharge priseEnCharge) {
+    this.priseEnCharge = priseEnCharge;
+  }
+
+  public LocalisationAM getLocalisationAM() {
+    return localisationAM;
+  }
+
+  public void setLocalisationAM(LocalisationAM localisationAM) {
+    this.localisationAM = localisationAM;
   }
 
   public String getNumero() {
@@ -37,10 +63,11 @@ public class Etat {
   }
 
   public void addFeuillesSoins(FeuilleSoins feuilleSoins) {
-    if (feuillesSoins.size() >= 20){
-      throw new RuntimeException("Plus de 20 feuilles de soins ont été ajoutés à l'état numéro " + getNumero() + " alors que le maximun autorisé est de 20"  );
+    if (feuillesSoins.size() >= 20) {
+      throw new RuntimeException("Plus de 20 feuilles de soins ont été ajoutés à l'état numéro " + getNumero() + " alors que le maximun autorisé est de 20");
     }
     feuillesSoins.add(feuilleSoins);
   }
+
 
 }

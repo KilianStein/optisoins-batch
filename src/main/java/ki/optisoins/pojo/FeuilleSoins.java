@@ -11,6 +11,10 @@ public class FeuilleSoins {
   private OrdonnanceMedecin ordonnanceMedecin = null;
   private Actes actes = null;
 
+  public LocalisationAM getLocalisationAM() {
+    return assure != null && assure.getAideMedicale() != null ? assure.getAideMedicale().getLocalisationAM() : null;
+  }
+
   public boolean isDomicile() {
     return getAssure() != null && getAssure().getAdresse() != null;
   }

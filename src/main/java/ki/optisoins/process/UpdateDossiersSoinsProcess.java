@@ -10,12 +10,13 @@ import java.util.Map;
 import ki.optisoins.pojo.DossierSoins;
 import ki.optisoins.pojo.Etat;
 import ki.optisoins.pojo.FeuilleSoins;
+import ki.optisoins.pojo.PriseEnCharge;
 import ki.optisoins.utils.StringUtils;
 import ki.optisoins.utils.UniqueNameUtils;
 
 public class UpdateDossiersSoinsProcess {
 
-  public List<DossierSoins>  process(List<DossierSoins> dossiersSoins){
+  public List<DossierSoins> process(List<DossierSoins> dossiersSoins) {
     dossiersSoins.forEach(this::process);
     return dossiersSoins;
   }
@@ -27,7 +28,7 @@ public class UpdateDossiersSoinsProcess {
   }
 
   private DossierSoins updateFeuillesSoins(DossierSoins dossierSoins) {
-    for (FeuilleSoins feuilleSoins : dossierSoins.getFeuillesSoins()){
+    for (FeuilleSoins feuilleSoins : dossierSoins.getFeuillesSoins()) {
       updateFeuilleSoins(dossierSoins, feuilleSoins);
     }
     return dossierSoins;
@@ -38,17 +39,18 @@ public class UpdateDossiersSoinsProcess {
     return feuilleSoins;
   }
 
-
   private void generateEtat(DossierSoins dossierSoins) {
     Map<String, Etat> etats = new HashMap<>();
 
-    for (FeuilleSoins feuilleSoins : dossierSoins.getFeuillesSoins()){
+    for (FeuilleSoins feuilleSoins : dossierSoins.getFeuillesSoins()) {
       String numeroEtat = feuilleSoins.getNumeroEtat();
-      if (StringUtils.isNotEmpty(numeroEtat)){
+      if (StringUtils.isNotEmpty(numeroEtat)) {
         Etat etat = etats.get(numeroEtat);
-        if (etat == null){
-          etat = createEtat(numeroEtat);
+        if (etat == null) {
+          etat = createEtat(feuilleSoins);
           etats.put(numeroEtat, etat);
+        } else {
+          validateEtat(etat, feuilleSoins);
         }
         etat.addFeuillesSoins(feuilleSoins);
       }
@@ -56,11 +58,21 @@ public class UpdateDossiersSoinsProcess {
     dossierSoins.addAllEtats(etats.values());
   }
 
-  private Etat createEtat(String numeroEtat){
+  private void validateEtat(Etat etat, FeuilleSoins feuilleSoins) {
+    if (etat.getPriseEnCharge() != null && !etat.getPriseEnCharge().equals(feuilleSoins.getPriseEnCharge())) {
+      throw new RuntimeException("Le même numéro d'état '" + etat.getNumero() + "' est utilisé pour des prises en charges differentes ");
+    }
+    if (etat.getLocalisationAM() != null && !etat.getLocalisationAM().equals(feuilleSoins.getLocalisationAM())) {
+      throw new RuntimeException("Le même numéro d'état '" + etat.getNumero() + "' est utilisé pour des localisations d'Aide Médicale différentes ");
+    }
+  }
+
+  private Etat createEtat(FeuilleSoins feuilleSoins) {
     Etat etat = new Etat();
-    etat.setNumero(numeroEtat);
+    etat.setNumero(feuilleSoins.getNumeroEtat());
+    etat.setPriseEnCharge(feuilleSoins.getPriseEnCharge());
+    etat.setLocalisationAM(feuilleSoins.getLocalisationAM());
     etat.setDate(Instant.now().atZone(ZoneId.of("Etc/GMT+11")).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     return etat;
   }
-  
 }

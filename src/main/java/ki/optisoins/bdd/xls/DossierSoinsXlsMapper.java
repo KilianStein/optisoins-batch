@@ -1,6 +1,9 @@
 package ki.optisoins.bdd.xls;
 
 import ki.optisoins.pojo.DossierSoins;
+import ki.optisoins.pojo.FeuilleSoins;
+import ki.optisoins.pojo.PriseEnCharge;
+import ki.optisoins.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,8 +21,15 @@ public class DossierSoinsXlsMapper {
         dossiersSoins.put(feuilleSoinsXls.getNomFichier(), dossierSoins);
       }
       dossierSoins.setNom(feuilleSoinsXls.getNomFichier().replace(FeuilleSoinsXlsExtract.XLS_EXTENSION, ""));
-      dossierSoins.addFeuillesSoins(new FeuilleSoinsXlsMapper().map(feuilleSoinsXls));
+      dossierSoins.addFeuillesSoins(validate(new FeuilleSoinsXlsMapper().map(feuilleSoinsXls)));
     }
     return new ArrayList<>(dossiersSoins.values());
+  }
+
+  private FeuilleSoins validate(FeuilleSoins feuilleSoins) {
+    if (StringUtils.isNotEmpty(feuilleSoins.getNumeroEtat()) && PriseEnCharge.REMBOURSEMENT_50_POURCENT.equals(feuilleSoins.getPriseEnCharge())) {
+      throw new RuntimeException("Il n'est pas possible de générer des états pour les 50%");
+    }
+    return feuilleSoins;
   }
 }

@@ -12,11 +12,10 @@ public class FeuilleSoinsXlsExtractTest {
 
   @Test
   public void testExtract() throws Exception {
-    List<FeuilleSoinsXls> feuillesSoinsXls = new FeuilleSoinsXlsExtract().extract(Paths.get(new File(OptiSoins.class.getClassLoader().getResource("Test.xls").getPath()).toURI()));
+    List<FeuilleSoinsXls> feuillesSoinsXls = new FeuilleSoinsXlsExtract().extract(Paths.get(new File(OptiSoins.class.getClassLoader().getResource("FeuillesSoins.xls").getPath()).toURI()));
     for (FeuilleSoinsXls feuilleSoinsXls : feuillesSoinsXls){
       System.out.println(feuilleSoinsXls.toString());
       System.out.println("--------------");
     }
-
   }
 }

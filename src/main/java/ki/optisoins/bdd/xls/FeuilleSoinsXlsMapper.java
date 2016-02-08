@@ -50,6 +50,7 @@ public class FeuilleSoinsXlsMapper {
   private AideMedicale mapAideMedicale(FeuilleSoinsXls fsXls) {
     if (AnnotationsUtils.isFieldNotEmpty(fsXls, AAideMedicale.class)) {
       AideMedicale aideMedicale = new AideMedicale();
+      aideMedicale.setLocalisationAM(LocalisationAM.getLocalisationAM(fsXls.getLocalisationAM()));
       aideMedicale.setDateDebutValidite(toDate(fsXls.getDebutValiditeAM()));
       aideMedicale.setNumero(fsXls.getNumeroAM());
       aideMedicale.setDateFinValidite(toDate(fsXls.getFinValiditeAM()));

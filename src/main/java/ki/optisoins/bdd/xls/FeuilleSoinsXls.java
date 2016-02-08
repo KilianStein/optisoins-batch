@@ -68,6 +68,9 @@ public class FeuilleSoinsXls {
 
   @AAssure
   @AAideMedicale
+  private String localisationAM = "";
+  @AAssure
+  @AAideMedicale
   private String debutValiditeAM = "";
   @AAssure
   @AAideMedicale
@@ -114,6 +117,14 @@ public class FeuilleSoinsXls {
   private String acte10 = "";
   @AActes
   private String acte11 = "";
+
+  public String getLocalisationAM() {
+    return localisationAM;
+  }
+
+  public void setLocalisationAM(String localisationAM) {
+    this.localisationAM = localisationAM;
+  }
 
   public String getNomFeuille() {
     return nomFeuille;
@@ -459,7 +470,6 @@ public class FeuilleSoinsXls {
     this.acte11 = acte11;
   }
 
- 
   public String getNumeroEtat() {
     return numeroEtat;
   }

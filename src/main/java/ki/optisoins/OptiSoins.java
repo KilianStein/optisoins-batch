@@ -43,7 +43,7 @@ public class OptiSoins {
   }
 
   private static void ouvrirDossierOutput() throws IOException {
-    if (Desktop.getDesktop().isSupported(Desktop.Action.OPEN)){
+    if (Desktop.getDesktop().isSupported(Desktop.Action.OPEN)) {
       Desktop.getDesktop().open(new File(OptiSoinsConfiguration.outputDirectory));
     }
   }
