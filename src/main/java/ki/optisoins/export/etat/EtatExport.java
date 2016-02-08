@@ -19,11 +19,11 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
 
 public class EtatExport {
-  
+
   private static JasperReport report = null;
 
   public static void exportPDF(List<Etat> etats, String nomDossier) {
-    for (Etat etat : etats){
+    for (Etat etat : etats) {
       exportPDF(etat, nomDossier);
     }
   }
@@ -31,7 +31,7 @@ public class EtatExport {
   private static void exportPDF(Etat etat, String nomDossier) {
     exportPDF(etat, nomDossier, getFileName(nomDossier, etat));
   }
-  
+
   private static void exportPDF(Etat etat, String nomDossier, String fileName) {
     OptiSoinsLogger.printTrace("export du pdf : '" + nomDossier + File.separator + fileName + "'");
     String pathExportPDF = getPathExportPDF(nomDossier, fileName);
@@ -44,12 +44,12 @@ public class EtatExport {
   }
 
   private static String getFileName(String nomDossier, Etat etat) {
-    String prefixe = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.UN_DOSSIER_PAR_EXCEL) ? "" : "_" + nomDossier ;
+    String prefixe = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.UN_DOSSIER_PAR_EXCEL) ? "" : "_" + nomDossier;
     return prefixe + "_etat-n-" + etat.getNumero();
   }
-  
+
   private static String getPathExportPDF(String nomDossier, String fileName) {
-    return getDossierExportPDF(nomDossier) + getFileNamePDF(fileName);
+    return getDossierExportPDF(nomDossier) + File.separator + getFileNamePDF(fileName);
   }
 
   private static String getFileNamePDF(String fileName) {
@@ -57,7 +57,7 @@ public class EtatExport {
   }
 
   private static String getDossierExportPDF(String dirName) {
-    return FileUtils.createDirIfNotExist(OptiSoinsConfiguration.outputDirectory + File.separator + getDossierExcel(dirName));
+    return FileUtils.createDirIfNotExist(OptiSoinsConfiguration.outputDirectory + File.separator + getDossierExcel(dirName)).toString();
   }
 
   private static String getDossierExcel(String dirName) {
@@ -73,9 +73,9 @@ public class EtatExport {
   }
 
   private static JasperDesign initJasperDesign(Etat etat) throws JRException {
-    if (PriseEnCharge.REMBOURSEMENT_100_POURCENT.equals(etat.getPriseEnCharge())){
+    if (PriseEnCharge.REMBOURSEMENT_100_POURCENT.equals(etat.getPriseEnCharge())) {
       return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtat100TemplateUrl);
-    } else  if (PriseEnCharge.AIDE_MEDICALE.equals(etat.getPriseEnCharge()) && LocalisationAM.SUD.equals(etat.getLocalisationAM())) {
+    } else if (PriseEnCharge.AIDE_MEDICALE.equals(etat.getPriseEnCharge()) && LocalisationAM.SUD.equals(etat.getLocalisationAM())) {
       return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtatAideMedicalSudTemplateUrl);
     }
     throw new RuntimeException("La génération pour l'état numéro : '" + etat.getNumero() + "' n'est pas géré");

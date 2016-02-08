@@ -1,5 +1,6 @@
 package ki.optisoins.utils;
 
+import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.log.OptiSoinsLogger;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class FileUtils {
     });
   }
 
-  public static String createDirIfNotExist(String dir) {
+  public static Path createDirIfNotExist(String dir) {
     Path path = Paths.get(dir);
     if (!Files.isReadable(path) || !Files.isDirectory(path)) {
       OptiSoinsLogger.printTrace("Création du dossier '" + dir + "'");
@@ -54,6 +55,19 @@ public class FileUtils {
         throw new RuntimeException(e);
       }
     }
-    return dir;
+    return path;
+  }
+
+  public static boolean isDirEmpty(Path directory) throws IOException {
+    try (DirectoryStream<Path> dirStream = Files.newDirectoryStream(directory)) {
+      return !dirStream.iterator().hasNext();
+    }
+  }
+
+  public static void copyRessourceIfNotExist(String fichier, String target) throws IOException {
+    if (!Files.exists(Paths.get(target))) {
+      OptiSoinsLogger.printTrace("Copie de la ressource " + fichier);
+      Files.copy(Thread.currentThread().getContextClassLoader().getResourceAsStream(fichier), Paths.get(target));
+    }
   }
 }

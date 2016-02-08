@@ -1,10 +1,10 @@
 package ki.optisoins;
 
-import ki.optisoins.export.dossiersoins.DossierSoinsExport;
-import ki.optisoins.log.OptiSoinsLogger;
 import ki.optisoins.bdd.xls.DossierSoinsXlsMapper;
 import ki.optisoins.bdd.xls.FeuilleSoinsXls;
 import ki.optisoins.bdd.xls.FeuilleSoinsXlsExtract;
+import ki.optisoins.export.dossiersoins.DossierSoinsExport;
+import ki.optisoins.log.OptiSoinsLogger;
 import ki.optisoins.pojo.DossierSoins;
 import ki.optisoins.process.UpdateDossiersSoinsProcess;
 import ki.optisoins.properties.AMOProperties;
@@ -49,10 +49,10 @@ public class OptiSoins {
   }
 
   private static void initRessources() throws IOException {
-    PropertiesUtils.printTraceValues(ConfigurationProperties.getProperties(), OptiSoinsConfiguration.fichierConfiguration);
-    PropertiesUtils.printTraceValues(AMOProperties.getProperties(), OptiSoinsConfiguration.amoConfiguration);
     initData();
     initOuput();
+    PropertiesUtils.printTraceValues(ConfigurationProperties.getProperties(), OptiSoinsConfiguration.fichierConfiguration);
+    PropertiesUtils.printTraceValues(AMOProperties.getProperties(), OptiSoinsConfiguration.amoConfiguration);
   }
 
   private static void initOuput() throws IOException {
@@ -65,6 +65,19 @@ public class OptiSoins {
   }
 
   private static void initData() throws IOException {
-    FileUtils.createDirIfNotExist(OptiSoinsConfiguration.dataDirectory);
+    initFeuillesSoins();
+    initConfiguration();
+  }
+
+  private static void initConfiguration() throws IOException {
+    FileUtils.createDirIfNotExist(OptiSoinsConfiguration.dossierConfiguration);
+    FileUtils.copyRessourceIfNotExist(OptiSoinsConfiguration.fichierConfiguration, OptiSoinsConfiguration.fichierConfiguration);
+    FileUtils.copyRessourceIfNotExist(OptiSoinsConfiguration.amoConfiguration, OptiSoinsConfiguration.amoConfiguration);
+  }
+
+  private static void initFeuillesSoins() throws IOException {
+    if (FileUtils.isDirEmpty(FileUtils.createDirIfNotExist(OptiSoinsConfiguration.dossierDonnees))) {
+      FileUtils.copyRessourceIfNotExist(OptiSoinsConfiguration.donneesDefault, OptiSoinsConfiguration.donneesDefault);
+    }
   }
 }

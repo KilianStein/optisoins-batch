@@ -9,7 +9,6 @@ import java.io.IOException;
 
 public class OptiSoinsLogger {
   private static Logger logger = getLogger();
-  ;
 
   private static Logger getLogger() {
     Logger logger = Logger.getLogger(OptiSoins.class);
@@ -32,7 +31,8 @@ public class OptiSoinsLogger {
   }
 
   private static Level getLevel() {
-    switch (ConfigurationProperties.getConfiguration(ConfigurationPropertiesValue.LOGGER_LEVEL)) {
+    String level = ConfigurationProperties.getConfiguration(ConfigurationPropertiesValue.LOGGER_LEVEL);
+    switch (level != null ? level : "") {
       case "ERROR":
         return Level.ERROR;
       case "WARNING":
@@ -42,7 +42,7 @@ public class OptiSoinsLogger {
       case "TRACE":
         return Level.TRACE;
       default:
-        return Level.WARN;
+        return Level.TRACE;
     }
   }
 

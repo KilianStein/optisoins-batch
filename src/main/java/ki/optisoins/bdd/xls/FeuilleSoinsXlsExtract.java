@@ -25,7 +25,7 @@ public class FeuilleSoinsXlsExtract {
   public final static String XLS_EXTENSION = ".xls";
 
   public List<FeuilleSoinsXls> extract() {
-    return extract(OptiSoinsConfiguration.dataDirectory);
+    return extract(OptiSoinsConfiguration.dossierDonnees);
   }
 
   private List<FeuilleSoinsXls> extract(String dataDirectory) {

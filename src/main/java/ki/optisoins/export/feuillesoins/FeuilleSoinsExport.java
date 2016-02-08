@@ -72,7 +72,7 @@ public class FeuilleSoinsExport {
   }
 
   private static String getPathExportPDF(String nomDossier, String fileName) {
-    return getDossierExportPDF(nomDossier) + getFileNamePDF(fileName);
+    return getDossierExportPDF(nomDossier)  + File.separator + getFileNamePDF(fileName);
   }
 
   private static String getFileNamePDF(String fileName) {
@@ -80,7 +80,7 @@ public class FeuilleSoinsExport {
   }
 
   private static String getDossierExportPDF(String dirName) {
-    return FileUtils.createDirIfNotExist(OptiSoinsConfiguration.outputDirectory + File.separator + getDossierExcel(dirName));
+    return FileUtils.createDirIfNotExist(OptiSoinsConfiguration.outputDirectory + File.separator + getDossierExcel(dirName)).toString();
   }
 
   private static String getDossierExcel(String dirName) {

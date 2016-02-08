@@ -6,13 +6,14 @@ import java.util.List;
 
 import ki.optisoins.OptiSoins;
 
+import ki.optisoins.OptiSoinsConfiguration;
 import org.junit.Test;
 
 public class FeuilleSoinsXlsExtractTest {
 
   @Test
   public void testExtract() throws Exception {
-    List<FeuilleSoinsXls> feuillesSoinsXls = new FeuilleSoinsXlsExtract().extract(Paths.get(new File(OptiSoins.class.getClassLoader().getResource("FeuillesSoins.xls").getPath()).toURI()));
+    List<FeuilleSoinsXls> feuillesSoinsXls = new FeuilleSoinsXlsExtract().extract(Paths.get(new File(OptiSoins.class.getClassLoader().getResource(OptiSoinsConfiguration.donneesDefault).getPath()).toURI()));
     for (FeuilleSoinsXls feuilleSoinsXls : feuillesSoinsXls){
       System.out.println(feuilleSoinsXls.toString());
       System.out.println("--------------");
