@@ -26,9 +26,9 @@ public class EtatJasper {
   private String feuilleSoins19 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
   private String feuilleSoins20 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
 
-  private String total = "";
-  private String abattement = "";
-  private String montantDu = "";
+  private String totalActesEtDeplacements = "";
+  private String montantAbattement = "";
+  private String montantAPayer = "";
 
   public void setFeuilleSoins(int i, String feuilleChaineFormat) {
     switch (i) {
@@ -273,27 +273,27 @@ public class EtatJasper {
     this.feuilleSoins20 = feuilleSoins20;
   }
 
-  public String getTotal() {
-    return total;
+  public String getTotalActesEtDeplacements() {
+    return totalActesEtDeplacements;
   }
 
-  public void setTotal(String total) {
-    this.total = total;
+  public void setTotalActesEtDeplacements(String totalActesEtDeplacements) {
+    this.totalActesEtDeplacements = totalActesEtDeplacements;
   }
 
-  public String getAbattement() {
-    return abattement;
+  public String getMontantAbattement() {
+    return montantAbattement;
   }
 
-  public void setAbattement(String abattement) {
-    this.abattement = abattement;
+  public void setMontantAbattement(String montantAbattement) {
+    this.montantAbattement = montantAbattement;
   }
 
-  public String getMontantDu() {
-    return montantDu;
+  public String getMontantAPayer() {
+    return montantAPayer;
   }
 
-  public void setMontantDu(String montantDu) {
-    this.montantDu = montantDu;
+  public void setMontantAPayer(String montantAPayer) {
+    this.montantAPayer = montantAPayer;
   }
 }

@@ -35,6 +35,14 @@ public class FeuilleSoins {
     return actes != null ? actes.getMontantTotal() : 0;
   }
 
+  public int getMontantTotalHonoraires() {
+    return actes != null ? actes.getMontantTotalHonoraires() : 0;
+  }
+
+  public int getMontantTotalFraisDeplacements() {
+    return actes != null ? actes.getMontantTotalFraisDeplacements() : 0;
+  }
+
   public PriseEnCharge getPriseEnCharge() {
     return priseEnCharge;
   }

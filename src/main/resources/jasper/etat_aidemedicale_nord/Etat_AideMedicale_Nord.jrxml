@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Etat Aide Medical Nord" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7e26fc11-07f3-452c-b31c-f354549527fa">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="353"/>
+	<field name="nomOrthophoniste" class="java.lang.String"/>
+	<field name="adresseOrthophoniste" class="java.lang.String"/>
+	<field name="numeroCompteOrthophoniste" class="java.lang.String"/>
+	<field name="numeroRidetOrthophoniste" class="java.lang.String"/>
+	<field name="numeroCafatOrthophoniste" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="date" class="java.lang.String"/>
+	<field name="feuilleSoins1" class="java.lang.String"/>
+	<field name="feuilleSoins2" class="java.lang.String"/>
+	<field name="feuilleSoins3" class="java.lang.String"/>
+	<field name="feuilleSoins4" class="java.lang.String"/>
+	<field name="feuilleSoins5" class="java.lang.String"/>
+	<field name="totalActes" class="java.lang.String"/>
+	<field name="montantAbattement" class="java.lang.String"/>
+	<field name="montantAPayer" class="java.lang.String"/>
+	<field name="totalDeplacement" class="java.lang.String"/>
+	<field name="montantAPayerLettre" class="java.lang.String"/>
+	<field name="totalActesAvecAbattement" class="java.lang.String"/>
+	<background>
+		<band height="555" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="1" width="802" height="550" uuid="f38c767c-62e9-4eaa-b808-326a52ba1bdc"/>
+				<imageExpression><![CDATA["jasper/etat_aidemedicale_nord/Etat_AideMedicale_Nord.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="111" y="166" width="100" height="20" uuid="e357a8fa-4199-4dbb-8efc-bf8327fdc71e"/>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="166" width="198" height="20" uuid="4107a9e0-4526-4260-8199-02303c59c7b1"/>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="174" y="68" width="356" height="20" uuid="c655706b-a92b-4edb-982d-53b6350bd9d4"/>
+				<textFieldExpression><![CDATA[$F{nomOrthophoniste}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="115" width="244" height="20" uuid="57a0d553-cc32-4653-82ba-9eef4f7b17da"/>
+				<textFieldExpression><![CDATA[$F{adresseOrthophoniste}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="91" width="263" height="20" uuid="cea9083e-7b8a-4480-8850-103deed30553"/>
+				<textFieldExpression><![CDATA[$F{numeroCompteOrthophoniste}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="114" width="138" height="20" uuid="35f06563-4b5e-4a82-b307-4bcee434cdaf"/>
+				<textFieldExpression><![CDATA[$F{numeroRidetOrthophoniste}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="138" width="177" height="20" uuid="ecc2adf3-13df-48fb-abfe-28123532239a"/>
+				<textFieldExpression><![CDATA[$F{numeroCafatOrthophoniste}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="258" width="67" height="20" uuid="520723cf-ef87-4f92-a448-dd1828b89f40"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[0]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="258" width="67" height="20" uuid="6a83f483-af69-43a2-9775-26ab14c43ac1"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[1]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="258" width="49" height="20" uuid="f9d241f2-4649-4f15-8a87-523dfe6ff718"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[2]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="258" width="62" height="20" uuid="75d043e5-bfc5-432d-a2b4-4c5ffc666f77"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[3]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="258" width="94" height="20" uuid="d2e79dc9-2540-49d6-83af-db00cfcebc2d"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[4]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="258" width="70" height="20" uuid="d199ab98-cf9f-4891-8b9d-ae93016e0238"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[5]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="258" width="69" height="20" uuid="ab7db6b8-021e-44be-8481-8c64f3852420"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[6]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="258" width="59" height="20" uuid="919e056b-a5b3-46c3-b179-e975abaa8f57"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[7]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="596" y="258" width="59" height="20" uuid="2cbb84fc-5653-4665-8a59-53a0f8fd6baf"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[8]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="658" y="258" width="65" height="20" uuid="a7f2fdba-23ba-4d33-91ba-ba5b14bd6367"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins1}.split(";")[9]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="280" width="67" height="20" uuid="a4c26e29-e33e-4478-9c1c-e45159732980"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[0]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="280" width="67" height="20" uuid="39eeb6f4-ac74-4f26-8f59-cc993b5dcc60"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[1]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="280" width="49" height="20" uuid="259abb4d-d6c2-4848-b1a8-f14ea3c2d5cc"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[2]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="280" width="62" height="20" uuid="acbf22b1-7d25-40d0-9cd6-ea5c3a3fb619"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[3]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="280" width="94" height="20" uuid="e1878da4-d681-4c68-96f8-e2f021a69093"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[4]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="280" width="70" height="20" uuid="da0122c5-28f9-4a3c-b6a2-a6633e02ca90"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[5]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="280" width="69" height="20" uuid="859c4827-7283-4e88-90a7-448050e98ba9"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[6]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="280" width="59" height="20" uuid="265194af-20db-44f8-a89a-9656d6efe112"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[7]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="596" y="280" width="59" height="20" uuid="26dcf209-670a-42ee-b6ed-fc972b150707"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[8]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="658" y="280" width="65" height="20" uuid="0b6acb9b-7cd7-4e1b-bb74-102fa215042d"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins2}.split(";")[9]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="303" width="67" height="20" uuid="3de7ce66-435b-449e-9cab-1eac5bf3d874"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins3}.split(";")[0]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="303" width="67" height="20" uuid="e91c17af-358c-4629-8400-ed87ef21b739"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins3}.split(";")[1]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="303" width="49" height="20" uuid="91cfac7b-6211-459e-b0d4-d0ab6b9519e7"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins3}.split(";")[2]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="303" width="62" height="20" uuid="5bc98222-36d8-404d-b72a-97aff3bcd973"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins3}.split(";")[3]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="303" width="94" height="20" uuid="80bd6314-c35d-4922-b3c7-3a3e9aa7141f"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins3}.split(";")[4]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="303" width="70" height="20" uuid="61bfa063-b72c-4f1e-af6d-93a25b5b8f4f"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins3}.split(";")[5]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="303" width="69" height="20" uuid="7e2edac4-e7da-475b-8f92-5d73844635cf"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins3}.split(";")[6]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="303" width="59" height="20" uuid="0d30bade-5dd1-4623-ae31-debc5dc2a5f8"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins3}.split(";")[7]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="596" y="303" width="59" height="20" uuid="e864d7da-4914-4134-8239-12be26d93e0b"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins3}.split(";")[8]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="658" y="303" width="65" height="20" uuid="34792619-2439-4a2e-a186-6227decbe290"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins3}.split(";")[9]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="658" y="325" width="65" height="20" uuid="73f79977-0017-4738-9003-fef66f0312db"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins4}.split(";")[9]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="325" width="67" height="20" uuid="f37bd345-79fc-4113-9875-5fdc4b41a0f8"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins4}.split(";")[0]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="325" width="69" height="20" uuid="2278cbdf-76c3-4637-9a76-ae9ea279b58f"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins4}.split(";")[6]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="325" width="94" height="20" uuid="667840fb-65a5-4ece-952e-75770b8b1eb9"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins4}.split(";")[4]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="325" width="59" height="20" uuid="722d1677-e543-4654-b790-9c610c1a4d8c"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins4}.split(";")[7]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="325" width="49" height="20" uuid="85f498b0-fa1c-4724-b09e-e4ba3b2950e4"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins4}.split(";")[2]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="596" y="325" width="59" height="20" uuid="e7226628-f53a-4c34-a5ef-9b10cb474711"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins4}.split(";")[8]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="325" width="70" height="20" uuid="a584cbc1-1ab3-485a-991d-ea20b6479afe"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins4}.split(";")[5]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="325" width="62" height="20" uuid="5901b055-1e72-40d9-86ca-b764be30ecfc"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins4}.split(";")[3]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="325" width="67" height="20" uuid="702cff1a-358c-493f-a0d5-f528891aa700"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins4}.split(";")[1]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="347" width="94" height="20" uuid="74b90987-78f6-4551-8513-040a8f0b201f"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins5}.split(";")[4]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="347" width="67" height="20" uuid="116625a1-8f17-4dcf-9565-bbecad275269"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins5}.split(";")[1]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="347" width="49" height="20" uuid="ee592dec-d1f4-4443-a530-45d2c989d67b"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins5}.split(";")[2]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="347" width="70" height="20" uuid="189d960d-ff22-4fd2-bee0-ec1f2e42b431"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins5}.split(";")[5]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="347" width="62" height="20" uuid="c198890c-e929-4137-8f0e-3af1cef7b974"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins5}.split(";")[3]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="596" y="347" width="59" height="20" uuid="eff4613b-7575-415e-a7b8-9890d068d900"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins5}.split(";")[8]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="347" width="59" height="20" uuid="1dcdbb11-a3fb-4d1a-80df-8430915ee8b3"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins5}.split(";")[7]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="347" width="69" height="20" uuid="7f516d08-cb6d-4286-bb71-fa50fa31c278"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins5}.split(";")[6]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="658" y="347" width="65" height="20" uuid="dfc80089-4019-4a5a-bcce-dcbdf7312867"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins5}.split(";")[9]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="41" y="347" width="67" height="20" uuid="ab1681d6-a6bb-4409-8b68-afd575b33a67"/>
+				<textFieldExpression><![CDATA[$F{feuilleSoins5}.split(";")[0]]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="658" y="371" width="65" height="20" uuid="63823339-aba0-4a32-82ad-62bd4fd6177b"/>
+				<textFieldExpression><![CDATA[$F{totalDeplacement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="436" width="69" height="20" uuid="babce472-dadf-477a-994e-eab3bc4991c0"/>
+				<textFieldExpression><![CDATA[$F{totalDeplacement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="370" width="70" height="20" uuid="0c585305-b796-4c6b-ad65-0edc4f05ddb0"/>
+				<textFieldExpression><![CDATA[$F{totalActes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="461" y="392" width="69" height="20" uuid="6a2b2f7d-7254-4fd6-877c-6d25d19f6914"/>
+				<textFieldExpression><![CDATA[$F{montantAbattement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="459" width="70" height="20" uuid="afbc875c-a3aa-4f58-8ede-4b93878f16ed"/>
+				<textFieldExpression><![CDATA[$F{montantAPayer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="520" width="349" height="20" uuid="bf618789-470b-43a8-8f83-d1074391546c"/>
+				<textFieldExpression><![CDATA[$F{montantAPayerLettre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="414" width="70" height="20" uuid="5e35d9fd-3b8f-4a4b-8705-a5e9d88af9f8"/>
+				<textFieldExpression><![CDATA[$F{totalActesAvecAbattement}]]></textFieldExpression>
+			</textField>
+		</band>
+	</background>
+</jasperReport>

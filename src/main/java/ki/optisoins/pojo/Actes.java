@@ -8,52 +8,72 @@ import java.util.List;
  */
 public class Actes {
 
-    public static final int NOMBRE_ACTES_PAR_FEUILLE_DE_SOINS = 11;
-    public static final int MONTANT_FRAIS_DEPLACEMENT_DEFAULT = 320;
+  public static final int NOMBRE_ACTES_PAR_FEUILLE_DE_SOINS = 11;
+  public static final int MONTANT_FRAIS_DEPLACEMENT_DEFAULT = 320;
 
-    private List<Acte> actes = new ArrayList<>(NOMBRE_ACTES_PAR_FEUILLE_DE_SOINS - 1);
+  private List<Acte> actes = new ArrayList<>(NOMBRE_ACTES_PAR_FEUILLE_DE_SOINS - 1);
 
-    public Actes(){
-        for(int i = 0; i < NOMBRE_ACTES_PAR_FEUILLE_DE_SOINS; i++){
-            actes.add(null);
-        }
+  public Actes() {
+    for (int i = 0; i < NOMBRE_ACTES_PAR_FEUILLE_DE_SOINS; i++) {
+      actes.add(null);
     }
+  }
 
-    public int getMontantTotal() {
-        int total = 0;
-        for (Acte acte : actes) {
-            if (acte != null){
-                total += acte.getTotal();
-            }
-        }
-        return total;
+  public int getMontantTotal() {
+    int total = 0;
+    for (Acte acte : actes) {
+      if (acte != null) {
+        total += acte.getTotal();
+      }
     }
-    
-    public void update(String amo, String ticketModerateur, boolean isDeplacement){
-        for (Acte acte : actes) {
-            if (acte != null){
-                acte.setAmo(amo);
-                acte.setTicketModerateur(ticketModerateur);
-               	acte.setDomicile(isDeplacement);
-            }
-        }
-    }
+    return total;
+  }
 
-    public void setToActes(int numeroLigne, Acte acte){
-        actes.set(numeroLigne - 1, acte);
+  public int getMontantTotalHonoraires() {
+    int totalHonoraire = 0;
+    for (Acte acte : actes) {
+      if (acte != null) {
+        totalHonoraire += acte.getMontantHonoraire();
+      }
     }
+    return totalHonoraire;
+  }
 
-    public Acte getActe(int numeroLigne){
-        return actes.get(numeroLigne-1);
+  public int getMontantTotalFraisDeplacements() {
+    int totalFraisDeplacement = 0;
+    for (Acte acte : actes) {
+      if (acte != null) {
+        totalFraisDeplacement += acte.getFraisDeplacement();
+      }
     }
+    return totalFraisDeplacement;
+  }
 
-    public int getNombreActes(){
-        int nbActes = 0;
-        for (Acte acte : actes) {
-            if (acte != null){
-                nbActes ++;
-            }
-        }
-        return nbActes;
+  public void update(String amo, String ticketModerateur, boolean isDeplacement) {
+    for (Acte acte : actes) {
+      if (acte != null) {
+        acte.setAmo(amo);
+        acte.setTicketModerateur(ticketModerateur);
+        acte.setDomicile(isDeplacement);
+      }
     }
+  }
+
+  public void setToActes(int numeroLigne, Acte acte) {
+    actes.set(numeroLigne - 1, acte);
+  }
+
+  public Acte getActe(int numeroLigne) {
+    return actes.get(numeroLigne - 1);
+  }
+
+  public int getNombreActes() {
+    int nbActes = 0;
+    for (Acte acte : actes) {
+      if (acte != null) {
+        nbActes++;
+      }
+    }
+    return nbActes;
+  }
 }

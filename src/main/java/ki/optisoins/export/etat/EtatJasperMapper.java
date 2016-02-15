@@ -8,9 +8,9 @@ public class EtatJasperMapper {
   public EtatJasper map(Etat etat) {
     EtatJasper etatJasper = new EtatJasper();
     etatJasper.setDate(etat.getDate());
-    etatJasper.setTotal(EtatJasperFormat.formatXPF(etat.getMontantTotal()));
-    etatJasper.setAbattement(EtatJasperFormat.formatXPF(etat.getAbattement()));
-    etatJasper.setMontantDu(EtatJasperFormat.formatXPF(etat.getMontantDu()));
+    etatJasper.setTotalActesEtDeplacements(EtatJasperFormat.formatXPF(etat.getMontantTotalActesEtDeplacements()));
+    etatJasper.setMontantAbattement(EtatJasperFormat.formatXPF(etat.getMontantAbattement()));
+    etatJasper.setMontantAPayer(EtatJasperFormat.formatXPF(etat.getMontantAPayer()));
     etatJasper.setNumero(etat.getNumero());
     mapFeuillesSoins(etatJasper, etat);
     return etatJasper;

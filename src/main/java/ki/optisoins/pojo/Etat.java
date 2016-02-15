@@ -10,7 +10,7 @@ public class Etat {
   private LocalisationAM localisationAM = null;
   private List<FeuilleSoins> feuillesSoins = new ArrayList<>();
 
-  public int getMontantTotal() {
+  public int getMontantTotalActesEtDeplacements() {
     int total = 0;
     for (FeuilleSoins feuilleSoins : feuillesSoins) {
       total += feuilleSoins.getMontantTotalActes();
@@ -18,12 +18,38 @@ public class Etat {
     return total;
   }
 
-  public int getAbattement() {
-    return (int)Math.ceil((getMontantTotal()) *  0.15);
+  public int getMontantTotalHonoraires() {
+    int total = 0;
+    for (FeuilleSoins feuilleSoins : feuillesSoins) {
+      total += feuilleSoins.getMontantTotalHonoraires();
+    }
+    return total;
   }
 
-  public int getMontantDu() {
-    return getMontantTotal() - getAbattement();
+  public int getMontantTotalFraisDeplacements() {
+    int total = 0;
+    for (FeuilleSoins feuilleSoins : feuillesSoins) {
+      total += feuilleSoins.getMontantTotalFraisDeplacements();
+    }
+    return total;
+  }
+
+  public int getMontantAbattement() {
+    if (LocalisationAM.SUD.equals(localisationAM)) {
+      return (int) Math.ceil((getMontantTotalActesEtDeplacements()) * 0.15);
+    } else if (LocalisationAM.NORD.equals(localisationAM)) {
+      return ((int) Math.ceil((getMontantTotalHonoraires()) * 0.15)) + getMontantTotalFraisDeplacements();
+    }
+    return 0;
+  }
+
+  public int getMontantAPayer() {
+    if (PriseEnCharge.REMBOURSEMENT_100_POURCENT.equals(priseEnCharge)) {
+      return getMontantTotalActesEtDeplacements();
+    } else if (PriseEnCharge.AIDE_MEDICALE.equals(priseEnCharge)) {
+      return getMontantTotalActesEtDeplacements() - getMontantAbattement();
+    }
+    return 0;
   }
 
   public PriseEnCharge getPriseEnCharge() {
@@ -68,6 +94,5 @@ public class Etat {
     }
     feuillesSoins.add(feuilleSoins);
   }
-
 
 }
