@@ -42,7 +42,6 @@ public class FeuilleSoinsJasper {
   private String amo = "";
   private String ticketModerateur = "";
 
-  private Actes actes = new Actes();
   private String acte1 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
   private String acte2 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
   private String acte3 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
@@ -59,26 +58,6 @@ public class FeuilleSoinsJasper {
 
   private boolean afficherFond = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.AFFICHER_FOND);
   private boolean debugBordures = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.AFFICHER_BORDURES);
-
-  public int calculerTotal() {
-    return actes.getMontantTotal();
-  }
-
-  public void updateActes() {
-    actes.update(getAmo(), getTicketModerateur(), isDeplacement());
-  }
-
-  public Acte getActe(int numeroLigne) {
-    return actes.getActe(numeroLigne);
-  }
-
-  public void addToActes(int numeroLigne, Acte acte) {
-    actes.setToActes(numeroLigne, acte);
-  }
-
-  public boolean isDeplacement() {
-    return !"".equals(appartement) || !"".equals(batiment) || !"".equals(rue) || !"".equals(codePostal) || !"".equals(commune);
-  }
 
   public boolean isAfficherFond() {
     return afficherFond;

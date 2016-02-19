@@ -62,16 +62,12 @@ public class UpdateDossiersSoinsProcess {
     if (etat.getPriseEnCharge() != null && !etat.getPriseEnCharge().equals(feuilleSoins.getPriseEnCharge())) {
       throw new RuntimeException("Le même numéro d'état '" + etat.getNumero() + "' est utilisé pour des prises en charges differentes ");
     }
-    if (etat.getLocalisationAM() != null && !etat.getLocalisationAM().equals(feuilleSoins.getLocalisationAM())) {
-      throw new RuntimeException("Le même numéro d'état '" + etat.getNumero() + "' est utilisé pour des localisations d'Aide Médicale différentes ");
-    }
   }
 
   private Etat createEtat(FeuilleSoins feuilleSoins) {
     Etat etat = new Etat();
     etat.setNumero(feuilleSoins.getNumeroEtat());
     etat.setPriseEnCharge(feuilleSoins.getPriseEnCharge());
-    etat.setLocalisationAM(feuilleSoins.getLocalisationAM());
     etat.setDate(Instant.now().atZone(ZoneId.of("Etc/GMT+11")).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     return etat;
   }

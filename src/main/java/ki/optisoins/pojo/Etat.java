@@ -7,7 +7,6 @@ public class Etat {
   private String numero = "";
   private String date = "";
   private PriseEnCharge priseEnCharge = null;
-  private LocalisationAM localisationAM = null;
   private List<FeuilleSoins> feuillesSoins = new ArrayList<>();
 
   public int getMontantTotalActesEtDeplacements() {
@@ -26,6 +25,10 @@ public class Etat {
     return total;
   }
 
+  public int getMontantTotalHonorairesAvecAbattement() {
+    return getMontantTotalHonoraires() - getMontantAbattement();
+  }
+
   public int getMontantTotalFraisDeplacements() {
     int total = 0;
     for (FeuilleSoins feuilleSoins : feuillesSoins) {
@@ -35,18 +38,18 @@ public class Etat {
   }
 
   public int getMontantAbattement() {
-    if (LocalisationAM.SUD.equals(localisationAM)) {
+    if (PriseEnCharge.isAideMedicaleSud(priseEnCharge)) {
       return (int) Math.ceil((getMontantTotalActesEtDeplacements()) * 0.15);
-    } else if (LocalisationAM.NORD.equals(localisationAM)) {
+    } else if (PriseEnCharge.isAideMedicaleNord(priseEnCharge)) {
       return ((int) Math.ceil((getMontantTotalHonoraires()) * 0.15)) + getMontantTotalFraisDeplacements();
     }
     return 0;
   }
 
   public int getMontantAPayer() {
-    if (PriseEnCharge.REMBOURSEMENT_100_POURCENT.equals(priseEnCharge)) {
+    if (PriseEnCharge.isRemboursement100Pourcent(priseEnCharge)) {
       return getMontantTotalActesEtDeplacements();
-    } else if (PriseEnCharge.AIDE_MEDICALE.equals(priseEnCharge)) {
+    } else if (PriseEnCharge.isAideMedicale(priseEnCharge)) {
       return getMontantTotalActesEtDeplacements() - getMontantAbattement();
     }
     return 0;
@@ -58,14 +61,6 @@ public class Etat {
 
   public void setPriseEnCharge(PriseEnCharge priseEnCharge) {
     this.priseEnCharge = priseEnCharge;
-  }
-
-  public LocalisationAM getLocalisationAM() {
-    return localisationAM;
-  }
-
-  public void setLocalisationAM(LocalisationAM localisationAM) {
-    this.localisationAM = localisationAM;
   }
 
   public String getNumero() {
@@ -94,5 +89,4 @@ public class Etat {
     }
     feuillesSoins.add(feuilleSoins);
   }
-
 }

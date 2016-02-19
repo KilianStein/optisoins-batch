@@ -50,7 +50,6 @@ public class FeuilleSoinsXlsMapper {
   private AideMedicale mapAideMedicale(FeuilleSoinsXls fsXls) {
     if (AnnotationsUtils.isFieldNotEmpty(fsXls, AAideMedicale.class)) {
       AideMedicale aideMedicale = new AideMedicale();
-      aideMedicale.setLocalisationAM(LocalisationAM.getLocalisationAM(fsXls.getLocalisationAM()));
       aideMedicale.setDateDebutValidite(toDate(fsXls.getDebutValiditeAM()));
       aideMedicale.setNumero(fsXls.getNumeroAM());
       aideMedicale.setDateFinValidite(toDate(fsXls.getFinValiditeAM()));
@@ -106,8 +105,11 @@ public class FeuilleSoinsXlsMapper {
   private Orthophoniste mapOrthophoniste(FeuilleSoinsXls fsXls) {
     if (AnnotationsUtils.isFieldNotEmpty(fsXls, AOrthophoniste.class)) {
       Orthophoniste orthophoniste = new Orthophoniste();
-      orthophoniste.setNomEtPrenom(fsXls.getReglementNomPrenom());
-      orthophoniste.setIdentification(fsXls.getIdentificationAuxiliaireMedical());
+      orthophoniste.setNomEtPrenom(fsXls.getNomPrenomOrthophoniste());
+      orthophoniste.setAdresse(fsXls.getAdresseOrthophoniste());
+      orthophoniste.setNumeroRidet(fsXls.getNumeroRidetOrthophoniste());
+      orthophoniste.setNumeroCafat(fsXls.getNumeroCafatOrthophoniste());
+      orthophoniste.setIdentification(fsXls.getIdentificationOrthophoniste());
       orthophoniste.setCompteBancaire(mapCompteBancaire(fsXls));
       return orthophoniste;
     }
@@ -116,8 +118,8 @@ public class FeuilleSoinsXlsMapper {
 
   private CompteBancaire mapCompteBancaire(FeuilleSoinsXls fsXls) {
     CompteBancaire compteBancaire = new CompteBancaire();
-    compteBancaire.setNomBanque(fsXls.getNomBanque());
-    compteBancaire.setNumeroCompte(fsXls.getNumeroCompte());
+    compteBancaire.setNomBanque(fsXls.getNomBanqueOrthophoniste());
+    compteBancaire.setNumeroCompte(fsXls.getNumeroCompteOrthophoniste());
     return compteBancaire;
   }
 

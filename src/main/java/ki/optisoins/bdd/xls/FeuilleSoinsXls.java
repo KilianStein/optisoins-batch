@@ -22,13 +22,19 @@ public class FeuilleSoinsXls {
   private String numeroEtat = "";
 
   @AOrthophoniste
-  private String reglementNomPrenom = "";
+  private String nomPrenomOrthophoniste = "";
   @AOrthophoniste
-  private String nomBanque = "";
+  private String nomBanqueOrthophoniste = "";
   @AOrthophoniste
-  private String numeroCompte = "";
+  private String numeroCompteOrthophoniste = "";
   @AOrthophoniste
-  private String identificationAuxiliaireMedical = "";
+  private String adresseOrthophoniste = "";
+  @AOrthophoniste
+  private String numeroRidetOrthophoniste = "";
+  @AOrthophoniste
+  private String numeroCafatOrthophoniste = "";
+  @AOrthophoniste
+  private String identificationOrthophoniste = "";
 
   @AOrdonnanceMedecin
   private String nomMedecin = "";
@@ -66,9 +72,6 @@ public class FeuilleSoinsXls {
   @AAdresse
   private String commune = "";
 
-  @AAssure
-  @AAideMedicale
-  private String localisationAM = "";
   @AAssure
   @AAideMedicale
   private String debutValiditeAM = "";
@@ -118,12 +121,12 @@ public class FeuilleSoinsXls {
   @AActes
   private String acte11 = "";
 
-  public String getLocalisationAM() {
-    return localisationAM;
+  public String getNomFichier() {
+    return nomFichier;
   }
 
-  public void setLocalisationAM(String localisationAM) {
-    this.localisationAM = localisationAM;
+  public void setNomFichier(String nomFichier) {
+    this.nomFichier = nomFichier;
   }
 
   public String getNomFeuille() {
@@ -134,14 +137,6 @@ public class FeuilleSoinsXls {
     this.nomFeuille = nomFeuille;
   }
 
-  public String getNomFichier() {
-    return nomFichier;
-  }
-
-  public void setNomFichier(String nomFichier) {
-    this.nomFichier = nomFichier;
-  }
-
   public String getNumeroLigne() {
     return numeroLigne;
   }
@@ -150,20 +145,68 @@ public class FeuilleSoinsXls {
     this.numeroLigne = numeroLigne;
   }
 
-  public String getNomBanque() {
-    return nomBanque;
+  public String getNumeroEtat() {
+    return numeroEtat;
   }
 
-  public void setNomBanque(String nomBanque) {
-    this.nomBanque = nomBanque;
+  public void setNumeroEtat(String numeroEtat) {
+    this.numeroEtat = numeroEtat;
   }
 
-  public String getIdentificationAuxiliaireMedical() {
-    return identificationAuxiliaireMedical;
+  public String getNomPrenomOrthophoniste() {
+    return nomPrenomOrthophoniste;
   }
 
-  public void setIdentificationAuxiliaireMedical(String identificationAuxiliaireMedical) {
-    this.identificationAuxiliaireMedical = identificationAuxiliaireMedical;
+  public void setNomPrenomOrthophoniste(String nomPrenomOrthophoniste) {
+    this.nomPrenomOrthophoniste = nomPrenomOrthophoniste;
+  }
+
+  public String getNomBanqueOrthophoniste() {
+    return nomBanqueOrthophoniste;
+  }
+
+  public void setNomBanqueOrthophoniste(String nomBanqueOrthophoniste) {
+    this.nomBanqueOrthophoniste = nomBanqueOrthophoniste;
+  }
+
+  public String getNumeroCompteOrthophoniste() {
+    return numeroCompteOrthophoniste;
+  }
+
+  public void setNumeroCompteOrthophoniste(String numeroCompteOrthophoniste) {
+    this.numeroCompteOrthophoniste = numeroCompteOrthophoniste;
+  }
+
+  public String getAdresseOrthophoniste() {
+    return adresseOrthophoniste;
+  }
+
+  public void setAdresseOrthophoniste(String adresseOrthophoniste) {
+    this.adresseOrthophoniste = adresseOrthophoniste;
+  }
+
+  public String getNumeroRidetOrthophoniste() {
+    return numeroRidetOrthophoniste;
+  }
+
+  public void setNumeroRidetOrthophoniste(String numeroRidetOrthophoniste) {
+    this.numeroRidetOrthophoniste = numeroRidetOrthophoniste;
+  }
+
+  public String getNumeroCafatOrthophoniste() {
+    return numeroCafatOrthophoniste;
+  }
+
+  public void setNumeroCafatOrthophoniste(String numeroCafatOrthophoniste) {
+    this.numeroCafatOrthophoniste = numeroCafatOrthophoniste;
+  }
+
+  public String getIdentificationOrthophoniste() {
+    return identificationOrthophoniste;
+  }
+
+  public void setIdentificationOrthophoniste(String identificationOrthophoniste) {
+    this.identificationOrthophoniste = identificationOrthophoniste;
   }
 
   public String getNomMedecin() {
@@ -212,22 +255,6 @@ public class FeuilleSoinsXls {
 
   public void setNumeroCafat(String numeroCafat) {
     this.numeroCafat = numeroCafat;
-  }
-
-  public String getReglementNomPrenom() {
-    return reglementNomPrenom;
-  }
-
-  public void setReglementNomPrenom(String reglementNomPrenom) {
-    this.reglementNomPrenom = reglementNomPrenom;
-  }
-
-  public String getNumeroCompte() {
-    return numeroCompte;
-  }
-
-  public void setNumeroCompte(String numeroCompte) {
-    this.numeroCompte = numeroCompte;
   }
 
   public String getNomAssure() {
@@ -294,6 +321,30 @@ public class FeuilleSoinsXls {
     this.commune = commune;
   }
 
+  public String getDebutValiditeAM() {
+    return debutValiditeAM;
+  }
+
+  public void setDebutValiditeAM(String debutValiditeAM) {
+    this.debutValiditeAM = debutValiditeAM;
+  }
+
+  public String getFinValiditeAM() {
+    return finValiditeAM;
+  }
+
+  public void setFinValiditeAM(String finValiditeAM) {
+    this.finValiditeAM = finValiditeAM;
+  }
+
+  public String getNumeroAM() {
+    return numeroAM;
+  }
+
+  public void setNumeroAM(String numeroAM) {
+    this.numeroAM = numeroAM;
+  }
+
   public String getAccident() {
     return accident;
   }
@@ -340,30 +391,6 @@ public class FeuilleSoinsXls {
 
   public void setSituationMalade(String situationMalade) {
     this.situationMalade = situationMalade;
-  }
-
-  public String getDebutValiditeAM() {
-    return debutValiditeAM;
-  }
-
-  public void setDebutValiditeAM(String debutValiditeAM) {
-    this.debutValiditeAM = debutValiditeAM;
-  }
-
-  public String getFinValiditeAM() {
-    return finValiditeAM;
-  }
-
-  public void setFinValiditeAM(String finValiditeAM) {
-    this.finValiditeAM = finValiditeAM;
-  }
-
-  public String getNumeroAM() {
-    return numeroAM;
-  }
-
-  public void setNumeroAM(String numeroAM) {
-    this.numeroAM = numeroAM;
   }
 
   public String getTicketModerateur() {
@@ -468,14 +495,6 @@ public class FeuilleSoinsXls {
 
   public void setActe11(String acte11) {
     this.acte11 = acte11;
-  }
-
-  public String getNumeroEtat() {
-    return numeroEtat;
-  }
-
-  public void setNumeroEtat(String numeroEtat) {
-    this.numeroEtat = numeroEtat;
   }
 
   @Override

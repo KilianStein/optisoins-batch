@@ -2,33 +2,43 @@ package ki.optisoins.export.etat;
 
 public class EtatJasper {
 
+  private String nomOrthophoniste = "";
+  private String adresseOrthophoniste = "";
+  private String numeroCompteOrthophoniste = "";
+  private String numeroRidetOrthophoniste = "";
+  private String numeroCafatOrthophoniste = "";
+
   private String numero = "";
   private String date = "";
 
-  private String feuilleSoins1 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins2 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins3 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins4 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins5 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins6 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins7 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins8 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins9 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins10 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins11 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins12 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins13 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins14 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins15 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins16 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins17 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins18 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins19 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
-  private String feuilleSoins20 = EtatJasperFormat.FEUILLE_SOINS_DEFAULT_FORMAT;
+  private String feuilleSoins1 = "";
+  private String feuilleSoins2 = "";
+  private String feuilleSoins3 = "";
+  private String feuilleSoins4 = "";
+  private String feuilleSoins5 = "";
+  private String feuilleSoins6 = "";
+  private String feuilleSoins7 = "";
+  private String feuilleSoins8 = "";
+  private String feuilleSoins9 = "";
+  private String feuilleSoins10 = "";
+  private String feuilleSoins11 = "";
+  private String feuilleSoins12 = "";
+  private String feuilleSoins13 = "";
+  private String feuilleSoins14 = "";
+  private String feuilleSoins15 = "";
+  private String feuilleSoins16 = "";
+  private String feuilleSoins17 = "";
+  private String feuilleSoins18 = "";
+  private String feuilleSoins19 = "";
+  private String feuilleSoins20 = "";
 
+  private String totalActes = "";
+  private String totalDeplacement = "";
   private String totalActesEtDeplacements = "";
   private String montantAbattement = "";
+  private String totalActesAvecAbattement = "";
   private String montantAPayer = "";
+  private String montantAPayerLettres = "";
 
   public void setFeuilleSoins(int i, String feuilleChaineFormat) {
     switch (i) {
@@ -295,5 +305,77 @@ public class EtatJasper {
 
   public void setMontantAPayer(String montantAPayer) {
     this.montantAPayer = montantAPayer;
+  }
+
+  public String getNomOrthophoniste() {
+    return nomOrthophoniste;
+  }
+
+  public void setNomOrthophoniste(String nomOrthophoniste) {
+    this.nomOrthophoniste = nomOrthophoniste;
+  }
+
+  public String getAdresseOrthophoniste() {
+    return adresseOrthophoniste;
+  }
+
+  public void setAdresseOrthophoniste(String adresseOrthophoniste) {
+    this.adresseOrthophoniste = adresseOrthophoniste;
+  }
+
+  public String getNumeroCompteOrthophoniste() {
+    return numeroCompteOrthophoniste;
+  }
+
+  public void setNumeroCompteOrthophoniste(String numeroCompteOrthophoniste) {
+    this.numeroCompteOrthophoniste = numeroCompteOrthophoniste;
+  }
+
+  public String getNumeroRidetOrthophoniste() {
+    return numeroRidetOrthophoniste;
+  }
+
+  public void setNumeroRidetOrthophoniste(String numeroRidetOrthophoniste) {
+    this.numeroRidetOrthophoniste = numeroRidetOrthophoniste;
+  }
+
+  public String getNumeroCafatOrthophoniste() {
+    return numeroCafatOrthophoniste;
+  }
+
+  public void setNumeroCafatOrthophoniste(String numeroCafatOrthophoniste) {
+    this.numeroCafatOrthophoniste = numeroCafatOrthophoniste;
+  }
+
+  public String getTotalActes() {
+    return totalActes;
+  }
+
+  public void setTotalActes(String totalActes) {
+    this.totalActes = totalActes;
+  }
+
+  public String getTotalDeplacement() {
+    return totalDeplacement;
+  }
+
+  public void setTotalDeplacement(String totalDeplacement) {
+    this.totalDeplacement = totalDeplacement;
+  }
+
+  public String getTotalActesAvecAbattement() {
+    return totalActesAvecAbattement;
+  }
+
+  public void setTotalActesAvecAbattement(String totalActesAvecAbattement) {
+    this.totalActesAvecAbattement = totalActesAvecAbattement;
+  }
+
+  public String getMontantAPayerLettres() {
+    return montantAPayerLettres;
+  }
+
+  public void setMontantAPayerLettres(String montantAPayerLettres) {
+    this.montantAPayerLettres = montantAPayerLettres;
   }
 }

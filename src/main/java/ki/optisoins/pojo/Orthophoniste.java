@@ -2,6 +2,9 @@ package ki.optisoins.pojo;
 
 public class Orthophoniste {
   private String nomEtPrenom = "";
+  private String adresse = "";
+  private String numeroCafat = "";
+  private String numeroRidet = "";
   private String identification = "";
   private CompteBancaire compteBancaire = null;
 
@@ -27,5 +30,29 @@ public class Orthophoniste {
 
   public void setCompteBancaire(CompteBancaire compteBancaire) {
     this.compteBancaire = compteBancaire;
+  }
+
+  public String getAdresse() {
+    return adresse;
+  }
+
+  public void setAdresse(String adresse) {
+    this.adresse = adresse;
+  }
+
+  public String getNumeroCafat() {
+    return numeroCafat;
+  }
+
+  public void setNumeroCafat(String numeroCafat) {
+    this.numeroCafat = numeroCafat;
+  }
+
+  public String getNumeroRidet() {
+    return numeroRidet;
+  }
+
+  public void setNumeroRidet(String numeroRidet) {
+    this.numeroRidet = numeroRidet;
   }
 }

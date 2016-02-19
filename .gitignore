@@ -20,11 +20,10 @@
 
 **/fichiersGeneres/*
 /fichiersGeneres/
+/donnees/*
+/conf/*
 
 *.exe
 
 *.jasper
 
-# Donnees test #
-################
-/donnees/*

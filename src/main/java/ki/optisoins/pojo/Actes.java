@@ -2,61 +2,37 @@ package ki.optisoins.pojo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Représente les actes d'une feuille de soin.
  */
 public class Actes {
 
-  public static final int NOMBRE_ACTES_PAR_FEUILLE_DE_SOINS = 11;
-  public static final int MONTANT_FRAIS_DEPLACEMENT_DEFAULT = 320;
+  public static final int NOMBRE_ACTES_MAX_PAR_FEUILLE_DE_SOINS = 11;
 
-  private List<Acte> actes = new ArrayList<>(NOMBRE_ACTES_PAR_FEUILLE_DE_SOINS - 1);
+  private List<Acte> actes = new ArrayList<>(NOMBRE_ACTES_MAX_PAR_FEUILLE_DE_SOINS - 1);
 
   public Actes() {
-    for (int i = 0; i < NOMBRE_ACTES_PAR_FEUILLE_DE_SOINS; i++) {
+    for (int i = 0; i < NOMBRE_ACTES_MAX_PAR_FEUILLE_DE_SOINS; i++) {
       actes.add(null);
     }
   }
 
+  public List<Acte> getActes() {
+    return actes.stream().filter(a -> a != null).collect(Collectors.toList());
+  }
+
   public int getMontantTotal() {
-    int total = 0;
-    for (Acte acte : actes) {
-      if (acte != null) {
-        total += acte.getTotal();
-      }
-    }
-    return total;
+    return getActes().stream().mapToInt(Acte::getTotal).sum();
   }
 
   public int getMontantTotalHonoraires() {
-    int totalHonoraire = 0;
-    for (Acte acte : actes) {
-      if (acte != null) {
-        totalHonoraire += acte.getMontantHonoraire();
-      }
-    }
-    return totalHonoraire;
+    return getActes().stream().mapToInt(Acte::getMontantHonoraire).sum();
   }
 
   public int getMontantTotalFraisDeplacements() {
-    int totalFraisDeplacement = 0;
-    for (Acte acte : actes) {
-      if (acte != null) {
-        totalFraisDeplacement += acte.getFraisDeplacement();
-      }
-    }
-    return totalFraisDeplacement;
-  }
-
-  public void update(String amo, String ticketModerateur, boolean isDeplacement) {
-    for (Acte acte : actes) {
-      if (acte != null) {
-        acte.setAmo(amo);
-        acte.setTicketModerateur(ticketModerateur);
-        acte.setDomicile(isDeplacement);
-      }
-    }
+    return getActes().stream().mapToInt(Acte::getFraisDeplacement).sum();
   }
 
   public void setToActes(int numeroLigne, Acte acte) {
@@ -68,12 +44,6 @@ public class Actes {
   }
 
   public int getNombreActes() {
-    int nbActes = 0;
-    for (Acte acte : actes) {
-      if (acte != null) {
-        nbActes++;
-      }
-    }
-    return nbActes;
+    return getActes().size();
   }
 }

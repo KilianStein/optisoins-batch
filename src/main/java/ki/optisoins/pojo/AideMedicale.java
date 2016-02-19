@@ -1,18 +1,9 @@
 package ki.optisoins.pojo;
 
 public class AideMedicale {
-  private LocalisationAM localisationAM = null;
   private String dateDebutValidite = "";
   private String dateFinValidite = "";
   private String numero = "";
-
-  public LocalisationAM getLocalisationAM() {
-    return localisationAM;
-  }
-
-  public void setLocalisationAM(LocalisationAM localisationAM) {
-    this.localisationAM = localisationAM;
-  }
 
   public String getDateDebutValidite() {
     return dateDebutValidite;

@@ -1,13 +1,10 @@
 package ki.optisoins.export.etat;
 
-import java.io.File;
-import java.util.List;
-
 import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.export.JasperExport;
+import ki.optisoins.export.etat.map.EtatJasperMapper;
 import ki.optisoins.log.OptiSoinsLogger;
 import ki.optisoins.pojo.Etat;
-import ki.optisoins.pojo.LocalisationAM;
 import ki.optisoins.pojo.PriseEnCharge;
 import ki.optisoins.properties.ConfigurationProperties;
 import ki.optisoins.properties.ConfigurationPropertiesValue;
@@ -18,9 +15,10 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
 
-public class EtatExport {
+import java.io.File;
+import java.util.List;
 
-  private static JasperReport report = null;
+public class EtatExport {
 
   public static void exportPDF(List<Etat> etats, String nomDossier) {
     for (Etat etat : etats) {
@@ -73,15 +71,17 @@ public class EtatExport {
   }
 
   private static JasperDesign initJasperDesign(Etat etat) throws JRException {
-    if (PriseEnCharge.REMBOURSEMENT_100_POURCENT.equals(etat.getPriseEnCharge())) {
+    if (PriseEnCharge.isRemboursement100Pourcent(etat.getPriseEnCharge())) {
       return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtat100TemplateUrl);
-    } else if (PriseEnCharge.AIDE_MEDICALE.equals(etat.getPriseEnCharge()) && LocalisationAM.SUD.equals(etat.getLocalisationAM())) {
+    } else if (PriseEnCharge.isAideMedicaleSud(etat.getPriseEnCharge())) {
       return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtatAideMedicalSudTemplateUrl);
+    } else if (PriseEnCharge.isAideMedicaleNord(etat.getPriseEnCharge())) {
+      return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtatAideMedicalNordTemplateUrl);
     }
     throw new RuntimeException("La génération pour l'état numéro : '" + etat.getNumero() + "' n'est pas géré");
   }
 
   private static JasperPrint fillReport(Etat etat) throws JRException {
-    return JasperExport.fillReport(getReport(etat), new EtatJasperMapper().map(etat));
+    return JasperExport.fillReport(getReport(etat), EtatJasperMapper.map(etat));
   }
 }

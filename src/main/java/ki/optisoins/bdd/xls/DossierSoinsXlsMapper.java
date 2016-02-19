@@ -27,7 +27,7 @@ public class DossierSoinsXlsMapper {
   }
 
   private FeuilleSoins validate(FeuilleSoins feuilleSoins) {
-    if (StringUtils.isNotEmpty(feuilleSoins.getNumeroEtat()) && PriseEnCharge.REMBOURSEMENT_50_POURCENT.equals(feuilleSoins.getPriseEnCharge())) {
+    if (StringUtils.isNotEmpty(feuilleSoins.getNumeroEtat()) && PriseEnCharge.isRemboursement50Pourcent(feuilleSoins.getPriseEnCharge())) {
       throw new RuntimeException("Il n'est pas possible de générer des états pour les 50%");
     }
     return feuilleSoins;

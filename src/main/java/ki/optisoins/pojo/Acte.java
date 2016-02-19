@@ -7,66 +7,67 @@ import ki.optisoins.properties.AMOProperties;
  */
 public class Acte {
 
-    private String date = "";
-    private String origine = "";
-    private String amo = "";
-    private boolean domicile = false;
-    private String ticketModerateur = "";
+  private static final int MONTANT_FRAIS_DEPLACEMENT_DEFAULT = 320;
 
-    public int getTotal() {
-        return getMontantHonoraire() + getFraisDeplacement();
-    }
+  private String date = "";
+  private String origine = "";
+  private String amo = "";
+  private boolean domicile = false;
+  private String ticketModerateur = "";
 
-    public int getMontantHonoraire() {
-        return  AMOProperties.getAMOValue(getNombreAMO(amo));
-    }
-
-    private String getNombreAMO(String designation){
-        return designation.toLowerCase().replace("amo", "").trim();
-    }
-
-    public int getFraisDeplacement() {
-      return isDomicile() ? 320 : 0;
+  public int getTotal() {
+    return getMontantHonoraire() + getFraisDeplacement();
   }
 
-    
-    public String getDate() {
-        return date;
-    }
+  public int getMontantHonoraire() {
+    return AMOProperties.getAMOValue(getNombreAMO(amo));
+  }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+  private String getNombreAMO(String designation) {
+    return designation.toLowerCase().replace("amo", "").trim();
+  }
 
-    public String getOrigine() {
-        return origine;
-    }
+  public int getFraisDeplacement() {
+    return isDomicile() ? MONTANT_FRAIS_DEPLACEMENT_DEFAULT : 0;
+  }
 
-    public void setOrigine(String origine) {
-        this.origine = origine;
-    }
+  public String getDate() {
+    return date;
+  }
 
-    public String getAmo() {
-        return amo;
-    }
+  public void setDate(String date) {
+    this.date = date;
+  }
 
-    public void setAmo(String amo) {
-        this.amo = amo;
-    }
+  public String getOrigine() {
+    return origine;
+  }
 
-    public void setTicketModerateur(String ticketModerateur) {
-        this.ticketModerateur = ticketModerateur;
-    }
-    
-    public String getTicketModerateur(){
-      return ticketModerateur;
-    }
+  public void setOrigine(String origine) {
+    this.origine = origine;
+  }
 
-    public boolean isDomicile() {
-      return domicile;
-    }
+  public String getAmo() {
+    return amo;
+  }
 
-    public void setDomicile(boolean domicile) {
-      this.domicile = domicile;
-    }
+  public void setAmo(String amo) {
+    this.amo = amo;
+  }
+
+  public void setTicketModerateur(String ticketModerateur) {
+    this.ticketModerateur = ticketModerateur;
+  }
+
+  public String getTicketModerateur() {
+    return ticketModerateur;
+  }
+
+  public boolean isDomicile() {
+    return domicile;
+  }
+
+  public void setDomicile(boolean domicile) {
+    this.domicile = domicile;
+  }
 }
