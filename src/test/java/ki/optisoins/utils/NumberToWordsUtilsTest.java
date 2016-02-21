@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class NumberToWordsUtilsTest {
 
-  Object[][] donnnees = {
+  Object[][] donnees = {
           // Données simples
           {"zéro", 0},
           {"un", 1},
@@ -49,7 +49,7 @@ public class NumberToWordsUtilsTest {
 
           //Donneées avec accords
           //20 et 100 s’accordent quand ils sont multipliés par un nombre sans être suivis par un autre nombre.
-          //{"quatre-vingts", 80}, TODO : Réaliser la gestion de 80
+          {"quatre-vingts", 80},
           {"quatre-vingt-trois", 83},
           {"quatre cents", 400},
           {"quatre cent vingt et un", 421},
@@ -61,7 +61,7 @@ public class NumberToWordsUtilsTest {
 
           //Millier, million et milliard sont des noms et non des adjectifs. Ils ne font pas vraiment partie du nombre et laissent place à l’accord :
           {"quatre cents millions", 400000000},
-          //{"deux cent mille", 200000}, TODO : Réaliser la gestion de 200000
+          {"deux cent mille", 200000},
 
           //Divers
           {"zéro", 0},
@@ -71,7 +71,6 @@ public class NumberToWordsUtilsTest {
           {"vingt-huit", 28},
           {"soixante et onze", 71},
           {"soixante-douze", 72},
-          {"quatre-vingt", 80},
           {"quatre-vingt-un", 81},
           {"quatre-vingt-neuf", 89},
           {"quatre-vingt-dix", 90},
@@ -97,8 +96,8 @@ public class NumberToWordsUtilsTest {
 
   @Test
   public void testSpelling() {
-    for (Object[] o : donnnees) {
-      Assert.assertEquals(o[0], NumberToWordsUtils.convert(Long.parseLong(String.valueOf(o[1]))));
+    for (Object[] o : donnees) {
+      Assert.assertEquals(String.valueOf(o[0]), o[0], NumberToWordsUtils.convert(Long.parseLong(String.valueOf(o[1]))));
     }
   }
 }

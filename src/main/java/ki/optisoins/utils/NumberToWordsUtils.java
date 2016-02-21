@@ -171,12 +171,15 @@ public class NumberToWordsUtils {
         tradCentMille = "mille ";
         break;
       default:
-        tradCentMille = convertLessThanOneThousand(lesCentMille) + " mille ";
+        // cf règle des cents
+        tradCentMille = convertLessThanOneThousand(lesCentMille).replaceAll("(cent)s$", "$1") + " mille ";
         break;
     }
     resultat = resultat + tradCentMille;
 
     resultat = resultat + convertLessThanOneThousand(lesMille);
+    // cf règle des vingt(s)
+    resultat = resultat.replaceAll("(\\-vingt)$", "$1s");
     return resultat.trim();
   }
 }
