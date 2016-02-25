@@ -68,7 +68,7 @@ public class UpdateDossiersSoinsProcess {
     Etat etat = new Etat();
     etat.setNumero(feuilleSoins.getNumeroEtat());
     etat.setPriseEnCharge(feuilleSoins.getPriseEnCharge());
-    etat.setDate(Instant.now().atZone(ZoneId.of("Etc/GMT+11")).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+    etat.setDate(Instant.now().atZone(ZoneId.of("GMT+11")).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     return etat;
   }
 }
