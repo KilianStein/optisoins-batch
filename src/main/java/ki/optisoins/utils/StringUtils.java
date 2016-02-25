@@ -35,9 +35,9 @@ public class StringUtils {
     return joiner.toString();
   }
 
-  public static boolean toBoolean(String accident) {
-    if (StringUtils.isNotEmpty(accident)) {
-      switch (accident.trim().toLowerCase()) {
+  public static Boolean toBoolean(String bool) {
+    if (StringUtils.isNotEmpty(bool)) {
+      switch (bool.trim().toLowerCase()) {
         case "yes":
         case "y":
         case "o":
@@ -50,9 +50,9 @@ public class StringUtils {
           return false;
 
         default:
-          return false;
+          return null;
       }
     }
-    return false;
+    return null;
   }
 }

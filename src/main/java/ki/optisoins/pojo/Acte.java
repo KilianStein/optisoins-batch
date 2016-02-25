@@ -13,7 +13,7 @@ public class Acte {
   private String origine = "";
   private String amo = "";
   private boolean domicile = false;
-  private String ticketModerateur = "";
+  private Boolean ticketModerateur = false;
 
   public int getTotal() {
     return getMontantHonoraire() + getFraisDeplacement();
@@ -55,11 +55,11 @@ public class Acte {
     this.amo = amo;
   }
 
-  public void setTicketModerateur(String ticketModerateur) {
+  public void setTicketModerateur(Boolean ticketModerateur) {
     this.ticketModerateur = ticketModerateur;
   }
 
-  public String getTicketModerateur() {
+  public Boolean getTicketModerateur() {
     return ticketModerateur;
   }
 

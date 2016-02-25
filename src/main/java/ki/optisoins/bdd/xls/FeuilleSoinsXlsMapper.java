@@ -20,7 +20,6 @@ public class FeuilleSoinsXlsMapper {
     return feuilleSoins;
   }
 
-
   private AttributsTechnique mapAttributsTechnique(FeuilleSoinsXls fsXls) {
     if (AnnotationsUtils.isFieldNotEmpty(fsXls, ATechnique.class)) {
       AttributsTechnique attributsTechnique = new AttributsTechnique();
@@ -172,11 +171,15 @@ public class FeuilleSoinsXlsMapper {
       acte.setAmo(fsXls.getAmo());
       acte.setDate(toDate(dateActe));
       acte.setDomicile(feuilleSoins.isDomicile());
-      acte.setTicketModerateur(fsXls.getTicketModerateur());
+      acte.setTicketModerateur(isTicketModerateur(fsXls.getTicketModerateur()));
       acte.setOrigine("");
       return acte;
     }
     return null;
+  }
+
+  private Boolean isTicketModerateur(String ticketModerateur) {
+    return StringUtils.toBoolean(ticketModerateur);
   }
 
   private String toDate(String datedenaissanceAssure) {

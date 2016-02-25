@@ -1,15 +1,15 @@
 package ki.optisoins.pojo;
 
 public class Accident {
-  private boolean accident = false;
+  private Boolean accident = null;
   private String dateAccident = "";
   private String nomTierImpliqueAccident = "";
 
-  public boolean isAccident() {
+  public Boolean isAccident() {
     return accident;
   }
 
-  public void setAccident(boolean accident) {
+  public void setAccident(Boolean accident) {
     this.accident = accident;
   }
 

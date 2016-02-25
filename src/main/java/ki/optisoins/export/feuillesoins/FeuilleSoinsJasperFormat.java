@@ -21,9 +21,13 @@ public class FeuilleSoinsJasperFormat {
     acteListe.add(formatActeAttribute(acte.getFraisDeplacement()));
     acteListe.add(" ");
     acteListe.add(" ");
-    acteListe.add(formatActeAttribute(acte.getTicketModerateur()));
+    acteListe.add(formatActeAttribute(formatTicketModerateur(acte.getTicketModerateur())));
     acteListe.add(formatActeAttribute(acte.getTotal()));
     return String.join(";", acteListe);
+  }
+
+  private static String formatTicketModerateur(Boolean tm) {
+    return tm == null ? "" : tm ? "O" : "N";
   }
 
   private static String formatActeAMO(String s) {
