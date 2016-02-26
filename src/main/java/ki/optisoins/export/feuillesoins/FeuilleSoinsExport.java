@@ -84,6 +84,6 @@ public class FeuilleSoinsExport {
   }
 
   private static String getDossierExcel(String dirName) {
-    return ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.UN_DOSSIER_PAR_EXCEL) ? dirName + File.separator : "";
+    return ConfigurationProperties.isUnDossierParExcel() ? dirName + File.separator : "";
   }
 }

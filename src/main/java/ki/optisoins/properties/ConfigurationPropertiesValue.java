@@ -1,7 +1,6 @@
 package ki.optisoins.properties;
 
 public enum ConfigurationPropertiesValue {
-  UN_DOSSIER_PAR_EXCEL("UN_DOSSIER_PAR_EXCEL", Boolean.class),
   IMPRESSION_MARGE_GAUCHE("IMPRESSION_MARGE_GAUCHE", Integer.class),
   IMPRESSION_MARGE_HAUT("IMPRESSION_MARGE_HAUT", Integer.class),
   LOGGER_LEVEL("LOGGER_LEVEL", String.class),

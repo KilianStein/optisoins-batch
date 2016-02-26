@@ -14,6 +14,7 @@ import java.util.Properties;
 public class ConfigurationProperties {
   private static ConfigurationProperties optiSoinsProperties = createAndLoadProperties();
   private Properties properties = new Properties();
+  private static boolean unDossierParExcel = false;
 
   public static Properties getProperties() {
     return optiSoinsProperties.properties;
@@ -60,4 +61,11 @@ public class ConfigurationProperties {
     return PixelUtils.tranformToPixel(getConfiguration(ConfigurationPropertiesValue.IMPRESSION_MARGE_GAUCHE));
   }
 
+  public static boolean isUnDossierParExcel() {
+    return unDossierParExcel;
+  }
+
+  public static void setUnDossierParExcel(boolean unDosssierParExcelValue) {
+    unDossierParExcel = unDosssierParExcelValue;
+  }
 }

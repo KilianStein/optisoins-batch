@@ -2,6 +2,7 @@ package ki.optisoins.bdd.xls;
 
 import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.log.OptiSoinsLogger;
+import ki.optisoins.properties.ConfigurationProperties;
 import ki.optisoins.utils.ReflectUtils;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -31,11 +32,14 @@ public class FeuilleSoinsXlsExtract {
   private List<FeuilleSoinsXls> extract(String dataDirectory) {
     List<FeuilleSoinsXls> feuilleSoinXls = new ArrayList<>();
     try (DirectoryStream<Path> dataDirStream = Files.newDirectoryStream(Paths.get(dataDirectory))) {
+      int compteurFichierExcel = 0;
       for (Path pathFichier : dataDirStream) {
         if (pathFichier.toString().endsWith(XLS_EXTENSION)) {
           feuilleSoinXls.addAll(extract(pathFichier));
         }
+        compteurFichierExcel ++;
       }
+      ConfigurationProperties.setUnDossierParExcel(compteurFichierExcel > 1);
     } catch (IOException e) {
       OptiSoinsLogger.printError(e);
       throw new RuntimeException(e);

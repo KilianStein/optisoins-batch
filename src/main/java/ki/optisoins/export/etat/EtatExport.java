@@ -42,7 +42,7 @@ public class EtatExport {
   }
 
   private static String getFileName(String nomDossier, Etat etat) {
-    String prefixe = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.UN_DOSSIER_PAR_EXCEL) ? "" : "_" + nomDossier;
+    String prefixe = ConfigurationProperties.isUnDossierParExcel() ? "" : "_" + nomDossier;
     return prefixe + "_etat-n-" + etat.getNumero();
   }
 
@@ -59,7 +59,7 @@ public class EtatExport {
   }
 
   private static String getDossierExcel(String dirName) {
-    return ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.UN_DOSSIER_PAR_EXCEL) ? dirName + File.separator : "";
+    return ConfigurationProperties.isUnDossierParExcel() ? dirName + File.separator : "";
   }
 
   public static JasperReport getReport(Etat etat) throws JRException {

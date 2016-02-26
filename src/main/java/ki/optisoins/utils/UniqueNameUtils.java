@@ -20,7 +20,7 @@ public class UniqueNameUtils {
   }
 
   private static String getNameUnique(String dirName, String name){
-    if (ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.UN_DOSSIER_PAR_EXCEL)){
+    if (ConfigurationProperties.isUnDossierParExcel()){
       return dirName + File.separator + name;
     }
     return name;
