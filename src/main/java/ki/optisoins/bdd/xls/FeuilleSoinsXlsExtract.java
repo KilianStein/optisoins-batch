@@ -4,6 +4,7 @@ import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.log.OptiSoinsLogger;
 import ki.optisoins.properties.ConfigurationProperties;
 import ki.optisoins.utils.ReflectUtils;
+import ki.optisoins.utils.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -82,7 +83,10 @@ public class FeuilleSoinsXlsExtract {
         }
       }
       if (!mapLine.isEmpty()) {
-        feuillesSoinsXls.add(createFeuilleSoinsXls(mapLine, filename, sheet.getSheetName(), rowNumber));
+        FeuilleSoinsXls feuilleSoinsXls = createFeuilleSoinsXls(mapLine, filename, sheet.getSheetName(), rowNumber);
+        if (StringUtils.isNotEmpty(feuilleSoinsXls.getNomEtPrenomMalade())){
+          feuillesSoinsXls.add(createFeuilleSoinsXls(mapLine, filename, sheet.getSheetName(), rowNumber));
+        }
       }
     }
     return feuillesSoinsXls;

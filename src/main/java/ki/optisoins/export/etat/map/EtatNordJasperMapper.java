@@ -45,7 +45,7 @@ public class EtatNordJasperMapper extends EtatJasperMapper {
         etatJasper.setFeuilleSoins(i++, formatActe(feuilleSoins, acte));
       }
     }
-    for (; i < NOMBRE_LIGNE_ACTE_MAX; i++) {
+    for (; i <= NOMBRE_LIGNE_ACTE_MAX; i++) {
       etatJasper.setFeuilleSoins(i, FEUILLES_SOINS_ETAT_NORD_DEFAULT_FORMAT);
     }
   }
@@ -74,7 +74,7 @@ public class EtatNordJasperMapper extends EtatJasperMapper {
     feuillesSoinsEtats.add(formatFeuilleSoinsAttribute(feuilleSoins.getOrdonnanceMedecin().getNumeroACP()));
     feuillesSoinsEtats.add(formatFeuilleSoinsAttribute(acte.getDate()));
     feuillesSoinsEtats.add(formatFeuilleSoinsAttribute(acte.getAmo()));
-    feuillesSoinsEtats.add("");
+    feuillesSoinsEtats.add(formatFeuilleSoinsAttribute(""));
     feuillesSoinsEtats.add(formatFeuilleSoinsAttribute(acte.getMontantHonoraire()));
     feuillesSoinsEtats.add(formatFeuilleSoinsAttribute(acte.isDomicile() ? "1" : ""));
     feuillesSoinsEtats.add(formatFeuilleSoinsAttribute(acte.getFraisDeplacement()));

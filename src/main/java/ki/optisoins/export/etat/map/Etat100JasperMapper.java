@@ -47,7 +47,7 @@ public class Etat100JasperMapper extends EtatJasperMapper {
 
   private static List<String> getLigne(FeuilleSoins feuilleSoins) {
     List<String> feuillesSoinsEtats = new ArrayList<>();
-    feuillesSoinsEtats.add(" ");
+    feuillesSoinsEtats.add(formatFeuilleSoinsAttribute(""));
     feuillesSoinsEtats.add(formatFeuilleSoinsAttribute(feuilleSoins.getNumeroCafat()));
     feuillesSoinsEtats.add(formatFeuilleSoinsAttribute(feuilleSoins.getNomPrenomMalade()));
     feuillesSoinsEtats.add(formatFeuilleSoinsAttribute(feuilleSoins.getNombreActes()));
