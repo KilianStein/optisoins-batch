@@ -5,7 +5,7 @@ La nomenclature de ce fichier se base sur http://keepachangelog.com/.
 
 ## [Non livré]
 
-## [1.3.5] - 2016-04-02
+## [1.3.5] - 2016-03-04
 ### Correction
 - Correction de la date de naissance du malade qui ne s'affichait pas.
 
