@@ -62,6 +62,7 @@ public class FeuilleSoinsJasperMapper {
     if (malade != null) {
       feuilleSoinsJasper.setNomMalade(malade.getNom());
       feuilleSoinsJasper.setPrenomMalade(malade.getPrenom());
+      feuilleSoinsJasper.setDatedenaissanceMalade(malade.getDateNaissance());
       feuilleSoinsJasper.setSituationMalade(malade.getSituationMalade());
       feuilleSoinsJasper.setLienAssure(malade.getLienAvecAssure() != null ? malade.getLienAvecAssure().getValue() : "");
       mapAccident(feuilleSoinsJasper, feuilleSoins);

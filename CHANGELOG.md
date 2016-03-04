@@ -1,8 +1,10 @@
 # Change Log
+### Correction
 Tous les changements notables du projet seront documentés dans ce fichier.
 La nomenclature de ce fichier se base sur http://keepachangelog.com/.
 
 ## [Non livré]
+- Correction de la date de naissance du malade qui ne s'affichait pas.
 
 ## [1.3.4] - 2016-03-02
 ### Ajout
@@ -24,7 +26,6 @@ La nomenclature de ce fichier se base sur http://keepachangelog.com/.
 
 ### Correction
 - Correction de la date des états à la date du jour.
-- Correction de la date de naissance du malade qui ne s'affichait pas.
 - Correction technique:  génération des lignes vides de l'etat du nord, si les dates ne sont pas remplis.
 - Correction de l'utilitaire sur la conversion de nombres en mots.
 
