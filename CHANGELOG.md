@@ -4,6 +4,9 @@ Tous les changements notables du projet seront documentés dans ce fichier.
 La nomenclature de ce fichier se base sur http://keepachangelog.com/.
 
 ## [Non livré]
+
+## [1.3.5] - 2016-04-02
+### Correction
 - Correction de la date de naissance du malade qui ne s'affichait pas.
 
 ## [1.3.4] - 2016-03-02
