@@ -1,9 +1,11 @@
 # Change Log
 ### Correction
 Tous les changements notables du projet seront documentés dans ce fichier.
-La nomenclature de ce fichier se base sur http://keepachangelog.com/.
+La nomenclature de ce fichier se base sur [KeepAChangelog](http://keepachangelog.com/).
 
 ## [Non livré]
+### Ajout
+- Affichage d'une popup en cas d'erreur.
 
 ## [1.3.5] - 2016-03-04
 ### Correction
