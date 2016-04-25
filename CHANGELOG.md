@@ -7,6 +7,9 @@ La nomenclature de ce fichier se base sur [KeepAChangelog](http://keepachangelog
 ### Ajout
 - Affichage d'une popup en cas d'erreur.
 
+### Correction
+- Le fichier xls d'exemple des données possèdait deux colonnes "numeroEtat" pour les 100% 
+
 ## [1.3.5] - 2016-03-04
 ### Correction
 - Correction de la date de naissance du malade qui ne s'affichait pas.
