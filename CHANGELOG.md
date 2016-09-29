@@ -4,6 +4,12 @@ Tous les changements notables du projet seront documentés dans ce fichier.
 La nomenclature de ce fichier se base sur [KeepAChangelog](http://keepachangelog.com/).
 
 ## [Non livré]
+### Ajout
+- Gestion du ticket moderateur pour l'aide médicale sud : 
+	* affichage de texte explicatif sur la feuille de soins
+	* calcul du total d'un acte : honoraire + FD - 10% de l'honoraire
+	* affichage du total des actes avec les 10% du ticket modérateur et de l'explication du calcul
+
 
 ## [1.3.6] - 2016-09-29
 ### Ajout

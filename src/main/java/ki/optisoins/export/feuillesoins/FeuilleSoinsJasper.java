@@ -1,7 +1,5 @@
 package ki.optisoins.export.feuillesoins;
 
-import ki.optisoins.pojo.Acte;
-import ki.optisoins.pojo.Actes;
 import ki.optisoins.properties.ConfigurationProperties;
 import ki.optisoins.properties.ConfigurationPropertiesValue;
 
@@ -55,6 +53,7 @@ public class FeuilleSoinsJasper {
   private String acte11 = FeuilleSoinsJasperFormat.ACTE_DEFAULT_FORMAT;
 
   private String total = "";
+  private String totalAvecTicketModerateur = "";
 
   private boolean afficherFond = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.AFFICHER_FOND);
   private boolean debugBordures = ConfigurationProperties.getConfigurationBoolean(ConfigurationPropertiesValue.AFFICHER_BORDURES);
@@ -379,6 +378,14 @@ public class FeuilleSoinsJasper {
     this.total = total;
   }
 
+  public String getTotalAvecTicketModerateur() {
+    return totalAvecTicketModerateur;
+  }
+
+  public void setTotalAvecTicketModerateur(String totalAvecTicketModerateur) {
+    this.totalAvecTicketModerateur = totalAvecTicketModerateur;
+  }
+  
   public String getDatedenaissanceAssure() {
     return datedenaissanceAssure;
   }

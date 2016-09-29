@@ -16,7 +16,18 @@ public class Acte {
   private Boolean ticketModerateur = false;
 
   public int getTotal() {
+    return getMontantHonoraire() + getFraisDeplacement() - getMontantTicketModerateur();
+  }
+
+  public int getTotalSansTicketModerateur() {
     return getMontantHonoraire() + getFraisDeplacement();
+  }
+  
+  private int getMontantTicketModerateur() {
+    if (Boolean.TRUE.equals(ticketModerateur)) {
+      return (int)(getMontantHonoraire() * 0.1);
+    }
+    return 0;
   }
 
   public int getMontantHonoraire() {

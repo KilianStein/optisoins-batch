@@ -27,7 +27,7 @@ public class FeuilleSoinsJasperFormat {
   }
 
   private static String formatTicketModerateur(Boolean tm) {
-    return tm == null ? "" : tm ? "O" : "N";
+    return tm == null ? "" : tm ? "- TM de 10%         O" : "N";
   }
 
   private static String formatActeAMO(String s) {
@@ -56,5 +56,9 @@ public class FeuilleSoinsJasperFormat {
 
   public static String formatXPF(int montant) {
     return montant == 0 ? "" : String.valueOf(montant) + " XPF";
+  }
+
+  public static String formatTotalTicketModerateur(int montantTotal) {
+    return "Total - TM de 10% = " + formatXPF(montantTotal) ;
   }
 }

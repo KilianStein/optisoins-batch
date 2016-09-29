@@ -121,7 +121,8 @@ public class FeuilleSoinsJasperMapper {
       feuilleSoinsJasper.setActe9(FeuilleSoinsJasperFormat.formatActe(actes.getActe(9)));
       feuilleSoinsJasper.setActe10(FeuilleSoinsJasperFormat.formatActe(actes.getActe(10)));
       feuilleSoinsJasper.setActe11(FeuilleSoinsJasperFormat.formatActe(actes.getActe(11)));
-      feuilleSoinsJasper.setTotal(FeuilleSoinsJasperFormat.formatXPF(actes.getMontantTotal()));
+      feuilleSoinsJasper.setTotal(FeuilleSoinsJasperFormat.formatXPF(actes.getMontantTotalSansTicketModerateur()));
+      feuilleSoinsJasper.setTotalAvecTicketModerateur(actes.isTicketModerateurPresent() ? FeuilleSoinsJasperFormat.formatTotalTicketModerateur(actes.getMontantTotal()) : "");
     }
 
     return feuilleSoinsJasper;

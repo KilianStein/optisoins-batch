@@ -28,7 +28,7 @@ public class FeuilleSoins {
   }
 
   public int getMontantTotalActes() {
-    return actes != null ? actes.getMontantTotal() : 0;
+    return actes != null ? actes.getMontantTotalSansTicketModerateur() : 0;
   }
 
   public int getMontantTotalHonoraires() {

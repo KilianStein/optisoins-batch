@@ -27,6 +27,10 @@ public class Actes {
     return getActes().stream().mapToInt(Acte::getTotal).sum();
   }
 
+  public int getMontantTotalSansTicketModerateur() {
+    return getActes().stream().mapToInt(Acte::getTotalSansTicketModerateur).sum();
+  }
+
   public int getMontantTotalHonoraires() {
     return getActes().stream().mapToInt(Acte::getMontantHonoraire).sum();
   }
@@ -39,11 +43,19 @@ public class Actes {
     actes.set(numeroLigne - 1, acte);
   }
 
+  public boolean isTicketModerateurPresent() {
+    return getActes().stream().anyMatch(acte -> Boolean.TRUE.equals(acte.getTicketModerateur()));
+  }
+
   public Acte getActe(int numeroLigne) {
     return actes.get(numeroLigne - 1);
   }
 
   public int getNombreActes() {
     return getActes().size();
+  }
+
+  public boolean isFraisDeplacementPresent() {
+    return getActes().stream().anyMatch(acte -> acte.isDomicile());
   }
 }
