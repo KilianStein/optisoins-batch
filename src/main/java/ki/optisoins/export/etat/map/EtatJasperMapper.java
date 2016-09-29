@@ -13,6 +13,8 @@ public abstract class EtatJasperMapper {
       return new EtatSudJasperMapper();
     } else if (PriseEnCharge.isAideMedicaleNord(etat.getPriseEnCharge())) {
       return new EtatNordJasperMapper();
+    } else if (PriseEnCharge.isAideMedicaleIles(etat.getPriseEnCharge())) {
+      return new EtatSudJasperMapper();
     }
     throw new RuntimeException("Etat " + etat.getNumero() + " non géré.");
   }

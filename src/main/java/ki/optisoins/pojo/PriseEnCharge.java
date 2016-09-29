@@ -4,7 +4,23 @@ public enum PriseEnCharge {
   REMBOURSEMENT_50_POURCENT,
   REMBOURSEMENT_100_POURCENT,
   AIDE_MEDICALE_SUD,
-  AIDE_MEDICALE_NORD;
+  AIDE_MEDICALE_NORD,
+  AIDE_MEDICALE_ILES;
+
+  public String getAcronyme() {
+    switch (this) {
+    case REMBOURSEMENT_100_POURCENT:
+      return "100";
+    case AIDE_MEDICALE_SUD:
+      return "AM_Sud";
+    case AIDE_MEDICALE_NORD:
+      return "AM_Nord";
+    case AIDE_MEDICALE_ILES:
+      return "AM_Iles";
+    default:
+      throw new RuntimeException("l'acronyme non géré : " + this);
+    }
+  }
 
   public static PriseEnCharge getPriseEnCharge(String priseEnCharge) {
     switch (priseEnCharge.trim().toLowerCase()) {
@@ -16,6 +32,8 @@ public enum PriseEnCharge {
         return AIDE_MEDICALE_SUD;
       case "aide médicale nord":
         return AIDE_MEDICALE_NORD;
+      case "aide médicale iles":
+        return AIDE_MEDICALE_ILES;
       default:
         throw new RuntimeException("la prise en charge " + priseEnCharge + " n'est pas reconnue, les valeurs possibles sont '50%', '100%', 'aide médicale'");
     }
@@ -23,6 +41,10 @@ public enum PriseEnCharge {
 
   public static boolean isAideMedicale(PriseEnCharge priseEnCharge) {
     return isAideMedicaleNord(priseEnCharge) || isAideMedicaleSud(priseEnCharge);
+  }
+
+  public static boolean isAideMedicaleIles(PriseEnCharge priseEnCharge) {
+    return AIDE_MEDICALE_ILES.equals(priseEnCharge);
   }
 
   public static boolean isAideMedicaleNord(PriseEnCharge priseEnCharge) {

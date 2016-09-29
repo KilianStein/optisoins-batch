@@ -1,5 +1,8 @@
 package ki.optisoins.export.etat;
 
+import java.io.File;
+import java.util.List;
+
 import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.export.JasperExport;
 import ki.optisoins.export.etat.map.EtatJasperMapper;
@@ -7,16 +10,12 @@ import ki.optisoins.log.OptiSoinsLogger;
 import ki.optisoins.pojo.Etat;
 import ki.optisoins.pojo.PriseEnCharge;
 import ki.optisoins.properties.ConfigurationProperties;
-import ki.optisoins.properties.ConfigurationPropertiesValue;
 import ki.optisoins.utils.FileUtils;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
-
-import java.io.File;
-import java.util.List;
 
 public class EtatExport {
 
@@ -43,7 +42,7 @@ public class EtatExport {
 
   private static String getFileName(String nomDossier, Etat etat) {
     String prefixe = ConfigurationProperties.isUnDossierParExcel() ? "" : "_" + nomDossier;
-    return prefixe + "_etat-n-" + etat.getNumero();
+    return prefixe + "_etat " + etat.getPriseEnCharge().getAcronyme() + "-n-" + etat.getNumero();
   }
 
   private static String getPathExportPDF(String nomDossier, String fileName) {
@@ -77,6 +76,8 @@ public class EtatExport {
       return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtatAideMedicalSudTemplateUrl);
     } else if (PriseEnCharge.isAideMedicaleNord(etat.getPriseEnCharge())) {
       return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtatAideMedicalNordTemplateUrl);
+    } else if (PriseEnCharge.isAideMedicaleIles(etat.getPriseEnCharge())) {
+      return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtatAideMedicalSudTemplateUrl);
     }
     throw new RuntimeException("La génération pour l'état numéro : '" + etat.getNumero() + "' n'est pas géré");
   }

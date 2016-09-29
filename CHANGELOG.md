@@ -10,6 +10,8 @@ La nomenclature de ce fichier se base sur [KeepAChangelog](http://keepachangelog
 	* calcul du total d'un acte : honoraire + FD - 10% de l'honoraire
 	* affichage du total des actes avec les 10% du ticket modérateur et de l'explication du calcul
 - Gestion de nouveaux modèles de feuilles de soins. Les nouveaux modèles sont configurables dans optisoins.conf
+- Le type de prise en charge est spécifié dans le nom du fichier de l'état : _FeuillesSoins_etat-AM_Nord-n-3
+- Ajout de l'onglet de l'aide médicale des iles : la génération de la feuille de soin et de l'état est réalisé temporairement selon les mêmes regles que l'AM Sud
 
 ## [1.3.6] - 2016-09-29
 ### Ajout
