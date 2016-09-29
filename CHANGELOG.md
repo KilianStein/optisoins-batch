@@ -4,6 +4,8 @@ Tous les changements notables du projet seront documentés dans ce fichier.
 La nomenclature de ce fichier se base sur [KeepAChangelog](http://keepachangelog.com/).
 
 ## [Non livré]
+
+## [1.3.6] - 2016-09-29
 ### Ajout
 - Affichage d'une popup en cas d'erreur.
 
