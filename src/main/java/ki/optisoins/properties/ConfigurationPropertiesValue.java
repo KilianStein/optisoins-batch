@@ -1,6 +1,7 @@
 package ki.optisoins.properties;
 
 public enum ConfigurationPropertiesValue {
+  IDENTIFIANT_FEUILLE_SOINS("IDENTIFIANT_FEUILLE_SOINS", String.class),
   IMPRESSION_MARGE_GAUCHE("IMPRESSION_MARGE_GAUCHE", Integer.class),
   IMPRESSION_MARGE_HAUT("IMPRESSION_MARGE_HAUT", Integer.class),
   LOGGER_LEVEL("LOGGER_LEVEL", String.class),

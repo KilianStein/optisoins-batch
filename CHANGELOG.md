@@ -9,7 +9,7 @@ La nomenclature de ce fichier se base sur [KeepAChangelog](http://keepachangelog
 	* affichage de texte explicatif sur la feuille de soins
 	* calcul du total d'un acte : honoraire + FD - 10% de l'honoraire
 	* affichage du total des actes avec les 10% du ticket modérateur et de l'explication du calcul
-
+- Gestion de nouveaux modèles de feuilles de soins. Les nouveaux modèles sont configurables dans optisoins.conf
 
 ## [1.3.6] - 2016-09-29
 ### Ajout

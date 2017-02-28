@@ -1,15 +1,14 @@
 package ki.optisoins.properties;
 
-import ki.optisoins.OptiSoinsConfiguration;
-import ki.optisoins.log.OptiSoinsLogger;
-import ki.optisoins.utils.PixelUtils;
-import ki.optisoins.utils.StringUtils;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
+
+import ki.optisoins.OptiSoinsConfiguration;
+import ki.optisoins.export.feuillesoins.IdentifiantsFeuilleSoins;
+import ki.optisoins.utils.PixelUtils;
 
 public class ConfigurationProperties {
   private static ConfigurationProperties optiSoinsProperties = createAndLoadProperties();
@@ -59,6 +58,14 @@ public class ConfigurationProperties {
 
   public static int getMargeGauche() {
     return PixelUtils.tranformToPixel(getConfiguration(ConfigurationPropertiesValue.IMPRESSION_MARGE_GAUCHE));
+  }
+
+  public static IdentifiantsFeuilleSoins getIdentifiantFeuilleSoins() {
+    try {
+      return IdentifiantsFeuilleSoins.valueOf(getConfiguration(ConfigurationPropertiesValue.IDENTIFIANT_FEUILLE_SOINS));
+    } catch (IllegalArgumentException e){
+      return IdentifiantsFeuilleSoins.DEFAULT;
+    }
   }
 
   public static boolean isUnDossierParExcel() {

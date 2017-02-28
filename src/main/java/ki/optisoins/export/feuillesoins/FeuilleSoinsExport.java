@@ -1,6 +1,7 @@
 package ki.optisoins.export.feuillesoins;
 
 import java.io.File;
+import java.text.MessageFormat;
 import java.util.List;
 
 import ki.optisoins.OptiSoinsConfiguration;
@@ -57,7 +58,7 @@ public class FeuilleSoinsExport {
   }
 
   private static JasperDesign initJasperDesign() throws JRException {
-    JasperDesign jasperDesign = JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportFeuilleSoinsTemplateUrl);
+    JasperDesign jasperDesign = JasperExport.initJasperDesign(getJasperReportFeuilleSoinsTemplateUrl());
     if (ConfigurationProperties.isConfigurationPresente(ConfigurationPropertiesValue.IMPRESSION_MARGE_GAUCHE)) {
       jasperDesign.setLeftMargin(ConfigurationProperties.getMargeGauche());
     }
@@ -65,6 +66,10 @@ public class FeuilleSoinsExport {
       jasperDesign.setTopMargin(ConfigurationProperties.getMargeHaut());
     }
     return jasperDesign;
+  }
+ 
+  public static String getJasperReportFeuilleSoinsTemplateUrl(){
+	  return MessageFormat.format(OptiSoinsConfiguration.jasperReportFeuilleSoinsTemplateUrl, ConfigurationProperties.getIdentifiantFeuilleSoins().getRepertoire());
   }
 
   private static JasperPrint fillReport(FeuilleSoins feuilleSoins) throws JRException {
