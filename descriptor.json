@@ -4,16 +4,16 @@
        fields are mandatory. */
 
     "package": {
-        "name": "travis-example", // Bintray package name
-        "repo": "maven", // Bintray repository name
-        "subject": "myBintrayUser", // Bintray subject (user or organization)
+        "name": "optisoins-batch", // Bintray package name
+        "repo": "optisoins", // Bintray repository name
+        "subject": "kilian", // Bintray subject (user or organization)
         "desc": "I was pushed completely automatically",
         "website_url": "www.jfrog.com",
-        "issue_tracker_url": "https://github.com/bintray/bintray-client-java/issues",
-        "vcs_url": "https://github.com/bintray/bintray-client-java.git",
+        "issue_tracker_url": "https://github.com/KilianStein/optisoins-batch/issues",
+        "vcs_url": "https://github.com/KilianStein/optisoins-batch.git",
         "github_use_tag_release_notes": true,
         "github_release_notes_file": "RELEASE.txt",
-        "licenses": ["MIT"],
+        "licenses": ["Apache Licence 2.0"],
         "labels": ["cool", "awesome", "gorilla"],
         "public_download_numbers": false,
         "public_stats": false,
