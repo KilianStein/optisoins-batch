@@ -1,13 +1,12 @@
 package ki.optisoins.bdd.xls;
 
+import ki.optisoins.OptiSoins;
+import ki.optisoins.OptiSoinsConfiguration;
+import org.junit.Test;
+
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
-
-import ki.optisoins.OptiSoins;
-
-import ki.optisoins.OptiSoinsConfiguration;
-import org.junit.Test;
 
 public class FeuilleSoinsXlsExtractTest {
 

@@ -1,12 +1,8 @@
 package ki.optisoins.export.feuillesoins;
 
-import java.io.File;
-import java.text.MessageFormat;
-import java.util.List;
-
 import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.export.JasperExport;
-import ki.optisoins.log.OptiSoinsLogger;
+import ki.optisoins.export.etat.EtatExport;
 import ki.optisoins.pojo.FeuilleSoins;
 import ki.optisoins.properties.ConfigurationProperties;
 import ki.optisoins.properties.ConfigurationPropertiesValue;
@@ -16,8 +12,15 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.text.MessageFormat;
+import java.util.List;
 
 public class FeuilleSoinsExport {
+  private static Logger logger = LoggerFactory.getLogger(EtatExport.class);
 
   private static JasperReport report = null;
 
@@ -32,12 +35,12 @@ public class FeuilleSoinsExport {
   }
 
   private static void exportPDF(FeuilleSoins feuilleSoins, String nomDossier, String fileName) {
-    OptiSoinsLogger.printTrace("export du pdf : '" + nomDossier + File.separator + fileName + "'");
+    logger.trace("export du pdf : '{}'", nomDossier + File.separator + fileName);
     String pathExportPDF = getPathExportPDF(nomDossier, fileName);
     try {
       JasperExportManager.exportReportToPdfFile(fillReport(feuilleSoins), pathExportPDF);
     } catch (JRException e) {
-      OptiSoinsLogger.printError("une erreur est survenue lors de l'export du pdf : '" + pathExportPDF + "'", e);
+      logger.trace("une erreur est survenue lors de l'export du pdf : '{}'", pathExportPDF, e);
       throw new RuntimeException(e);
     }
   }
@@ -67,9 +70,9 @@ public class FeuilleSoinsExport {
     }
     return jasperDesign;
   }
- 
-  public static String getJasperReportFeuilleSoinsTemplateUrl(){
-	  return MessageFormat.format(OptiSoinsConfiguration.jasperReportFeuilleSoinsTemplateUrl, ConfigurationProperties.getIdentifiantFeuilleSoins().getRepertoire());
+
+  public static String getJasperReportFeuilleSoinsTemplateUrl() {
+    return MessageFormat.format(OptiSoinsConfiguration.jasperReportFeuilleSoinsTemplateUrl, ConfigurationProperties.getIdentifiantFeuilleSoins().getRepertoire());
   }
 
   private static JasperPrint fillReport(FeuilleSoins feuilleSoins) throws JRException {
@@ -77,7 +80,7 @@ public class FeuilleSoinsExport {
   }
 
   private static String getPathExportPDF(String nomDossier, String fileName) {
-    return getDossierExportPDF(nomDossier)  + File.separator + getFileNamePDF(fileName);
+    return getDossierExportPDF(nomDossier) + File.separator + getFileNamePDF(fileName);
   }
 
   private static String getFileNamePDF(String fileName) {

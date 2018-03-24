@@ -1,0 +1,80 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.0.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'edu.sc.seis.gradle:launch4j:2.4.3'
+        classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'edu.sc.seis.launch4j'
+apply plugin: 'eu.appsatori.fatjar'
+
+
+group = 'nc.ki.optisoins'
+version = '2.0.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url "http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/"
+    }
+}
+
+
+
+jar {
+    enabled = true
+}
+
+fatJar {
+    classifier 'fat'
+    with jar
+    manifest {
+        attributes 'Main-Class': 'ki.optisoins.OptisoinsBatchApplication'
+    }
+}
+fatJarPrepareFiles.dependsOn jar
+
+bootJar {
+    launchScript()
+    classifier = 'boot'
+}
+
+bootRun {
+    main = 'ki.optisoins.OptisoinsBatchApplication'
+}
+
+launch4j {
+    mainClassName = 'ki.optisoins.OptisoinsBatchApplication'
+    icon = "${projectDir}/icons/optisoinslogo.ico"
+    headerType = "console"
+    language = "FRENCH"
+    trademarks = "Kilian Stein"
+    copyright = "Kilian Stein"
+    dontWrapJar = true
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter')
+
+    compile group: 'net.vidageek', name: 'mirror', version: '1.6.1'
+    compile group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.5.1'
+    compile group: 'com.lowagie', name: 'itext', version: '2.1.7'
+    compile group: 'org.apache.poi', name: 'poi', version: '3.17'
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+}

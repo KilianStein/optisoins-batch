@@ -1,8 +1,10 @@
 package ki.optisoins.utils;
 
-import ki.optisoins.log.OptiSoinsLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PixelUtils {
+  private static Logger logger = LoggerFactory.getLogger(PixelUtils.class);
 
   private static float CONVERT_MM_TO_PX = 2.8346f;
 
@@ -37,8 +39,8 @@ public class PixelUtils {
     } else if (marge.contains("cm")) {
       return "mm";
     }
-    OptiSoinsLogger.printWarning("L'unité de la marge n'a pas été défini ou n'est pas supporté pour '" + marge +"'" );
-    OptiSoinsLogger.printWarning("-> Les unités supportés sont 'px', 'mm', 'cm'");
+    logger.warn("L'unité de la marge n'a pas été défini ou n'est pas supporté pour '{}'", marge);
+    logger.warn("-> Les unités supportés sont 'px', 'mm', 'cm'");
     return "px";
   }
 }

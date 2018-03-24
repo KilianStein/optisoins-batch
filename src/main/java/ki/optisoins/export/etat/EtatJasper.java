@@ -4,6 +4,7 @@ public class EtatJasper {
 
   private String nomOrthophoniste = "";
   private String adresseOrthophoniste = "";
+  private String nomBanqueOrthophoniste = "";
   private String numeroCompteOrthophoniste = "";
   private String numeroRidetOrthophoniste = "";
   private String numeroCafatOrthophoniste = "";
@@ -329,6 +330,14 @@ public class EtatJasper {
 
   public void setNumeroCompteOrthophoniste(String numeroCompteOrthophoniste) {
     this.numeroCompteOrthophoniste = numeroCompteOrthophoniste;
+  }
+
+  public String getNomBanqueOrthophoniste() {
+    return nomBanqueOrthophoniste;
+  }
+
+  public void setNomBanqueOrthophoniste(String nomBanqueOrthophoniste) {
+    this.nomBanqueOrthophoniste = nomBanqueOrthophoniste;
   }
 
   public String getNumeroRidetOrthophoniste() {

@@ -1,4 +1,8 @@
-Infos du projet (à compléter)
+Install
 
-* Construit avec Maven
-* Format du code : 2 espaces pour l'indentation
+gradle build
+
+
+Create .exe
+
+gradle createExe

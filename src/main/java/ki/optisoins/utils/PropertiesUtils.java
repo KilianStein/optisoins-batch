@@ -1,15 +1,17 @@
 package ki.optisoins.utils;
 
-import ki.optisoins.log.OptiSoinsLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
 public class PropertiesUtils {
+  private static Logger logger = LoggerFactory.getLogger(PropertiesUtils.class);
 
   public static void printTraceValues(Properties properties, String nomProperties){
-    OptiSoinsLogger.printTrace("Chargement du fichier de configuration : '" + nomProperties + "'");
+    logger.trace("Chargement du fichier de configuration : '{}'", nomProperties);
     for (String key : properties.stringPropertyNames()){
-      OptiSoinsLogger.printTrace(StringUtils.concat("=", " " + key.toString(), properties.getProperty(key)));
+      logger.trace(StringUtils.concat("=", " " + key.toString(), properties.getProperty(key)));
     }
   }
 }

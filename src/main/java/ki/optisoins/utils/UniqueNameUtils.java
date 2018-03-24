@@ -1,7 +1,6 @@
 package ki.optisoins.utils;
 
 import ki.optisoins.properties.ConfigurationProperties;
-import ki.optisoins.properties.ConfigurationPropertiesValue;
 
 import java.io.File;
 import java.util.HashSet;

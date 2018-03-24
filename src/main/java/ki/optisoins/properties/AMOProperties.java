@@ -1,8 +1,10 @@
 package ki.optisoins.properties;
 
 import ki.optisoins.OptiSoinsConfiguration;
-import ki.optisoins.log.OptiSoinsLogger;
+import ki.optisoins.export.etat.EtatExport;
 import ki.optisoins.utils.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,6 +13,8 @@ import java.nio.file.Paths;
 import java.util.Properties;
 
 public class AMOProperties {
+  private static Logger logger = LoggerFactory.getLogger(EtatExport.class);
+
   private static AMOProperties amoProperties = createAndLoadProperties();
   private Properties properties = new Properties();
 
@@ -30,7 +34,7 @@ public class AMOProperties {
       try {
         properties.load(Files.newInputStream(pathProperties));
       } catch (IOException e) {
-        OptiSoinsLogger.printError("Erreur lors du chargement des AMOs", e);
+        logger.error("Erreur lors du chargement des AMOs", e);
         throw new RuntimeException(e);
       }
     }

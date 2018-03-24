@@ -1,12 +1,8 @@
 package ki.optisoins.export.etat;
 
-import java.io.File;
-import java.util.List;
-
 import ki.optisoins.OptiSoinsConfiguration;
 import ki.optisoins.export.JasperExport;
 import ki.optisoins.export.etat.map.EtatJasperMapper;
-import ki.optisoins.log.OptiSoinsLogger;
 import ki.optisoins.pojo.Etat;
 import ki.optisoins.pojo.PriseEnCharge;
 import ki.optisoins.properties.ConfigurationProperties;
@@ -16,8 +12,14 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.util.List;
 
 public class EtatExport {
+  private static Logger logger = LoggerFactory.getLogger(EtatExport.class);
 
   public static void exportPDF(List<Etat> etats, String nomDossier) {
     for (Etat etat : etats) {
@@ -30,12 +32,12 @@ public class EtatExport {
   }
 
   private static void exportPDF(Etat etat, String nomDossier, String fileName) {
-    OptiSoinsLogger.printTrace("export du pdf : '" + nomDossier + File.separator + fileName + "'");
+    logger.trace("export du pdf : '{}'", nomDossier + File.separator + fileName);
     String pathExportPDF = getPathExportPDF(nomDossier, fileName);
     try {
       JasperExportManager.exportReportToPdfFile(fillReport(etat), pathExportPDF);
     } catch (JRException e) {
-      OptiSoinsLogger.printError("une erreur est survenue lors de l'export du pdf : '" + pathExportPDF + "'", e);
+      logger.error("une erreur est survenue lors de l'export du pdf : '{}'", pathExportPDF, e);
       throw new RuntimeException(e);
     }
   }
@@ -77,7 +79,7 @@ public class EtatExport {
     } else if (PriseEnCharge.isAideMedicaleNord(etat.getPriseEnCharge())) {
       return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtatAideMedicalNordTemplateUrl);
     } else if (PriseEnCharge.isAideMedicaleIles(etat.getPriseEnCharge())) {
-      return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtatAideMedicalSudTemplateUrl);
+      return JasperExport.initJasperDesign(OptiSoinsConfiguration.jasperReportEtatAideMedicalIlesTemplateUrl);
     }
     throw new RuntimeException("La génération pour l'état numéro : '" + etat.getNumero() + "' n'est pas géré");
   }

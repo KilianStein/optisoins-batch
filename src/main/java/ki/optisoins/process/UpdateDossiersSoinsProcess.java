@@ -1,18 +1,17 @@
 package ki.optisoins.process;
 
+import ki.optisoins.pojo.DossierSoins;
+import ki.optisoins.pojo.Etat;
+import ki.optisoins.pojo.FeuilleSoins;
+import ki.optisoins.utils.StringUtils;
+import ki.optisoins.utils.UniqueNameUtils;
+
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import ki.optisoins.pojo.DossierSoins;
-import ki.optisoins.pojo.Etat;
-import ki.optisoins.pojo.FeuilleSoins;
-import ki.optisoins.pojo.PriseEnCharge;
-import ki.optisoins.utils.StringUtils;
-import ki.optisoins.utils.UniqueNameUtils;
 
 public class UpdateDossiersSoinsProcess {
 

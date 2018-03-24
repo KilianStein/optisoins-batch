@@ -1,7 +1,6 @@
 package ki.optisoins.bdd.xls;
 
 import ki.optisoins.OptiSoinsConfiguration;
-import ki.optisoins.log.OptiSoinsLogger;
 import ki.optisoins.properties.ConfigurationProperties;
 import ki.optisoins.utils.ReflectUtils;
 import ki.optisoins.utils.StringUtils;
@@ -10,6 +9,8 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,6 +24,8 @@ import java.util.List;
 import java.util.Map;
 
 public class FeuilleSoinsXlsExtract {
+
+  private static Logger logger = LoggerFactory.getLogger(FeuilleSoinsXlsExtract.class);
 
   public final static String XLS_EXTENSION = ".xls";
 
@@ -38,11 +41,11 @@ public class FeuilleSoinsXlsExtract {
         if (pathFichier.toString().endsWith(XLS_EXTENSION)) {
           feuilleSoinXls.addAll(extract(pathFichier));
         }
-        compteurFichierExcel ++;
+        compteurFichierExcel++;
       }
       ConfigurationProperties.setUnDossierParExcel(compteurFichierExcel > 1);
     } catch (IOException e) {
-      OptiSoinsLogger.printError(e);
+      logger.error("Erreur lors de l'extraction des données", e);
       throw new RuntimeException(e);
     }
     return feuilleSoinXls;
@@ -75,7 +78,7 @@ public class FeuilleSoinsXlsExtract {
       Map<String, Object> mapLine = new HashMap<>();
       for (int columnNumber = 0; columnNumber < numberTotalColumn; columnNumber++) {
         HSSFRow row = sheet.getRow(rowNumber);
-        if (row != null){
+        if (row != null) {
           Object objectCell = toObjectCell(row.getCell(columnNumber));
           if (isNotEmpty(objectCell)) {
             mapLine.put(nomColumn.get(columnNumber), objectCell);
@@ -84,7 +87,7 @@ public class FeuilleSoinsXlsExtract {
       }
       if (!mapLine.isEmpty()) {
         FeuilleSoinsXls feuilleSoinsXls = createFeuilleSoinsXls(mapLine, filename, sheet.getSheetName(), rowNumber);
-        if (StringUtils.isNotEmpty(feuilleSoinsXls.getNomEtPrenomMalade())){
+        if (StringUtils.isNotEmpty(feuilleSoinsXls.getNomEtPrenomMalade())) {
           feuillesSoinsXls.add(createFeuilleSoinsXls(mapLine, filename, sheet.getSheetName(), rowNumber));
         }
       }
@@ -98,15 +101,15 @@ public class FeuilleSoinsXlsExtract {
     feuilleSoinsXls.setNomFeuille(sheetName);
     feuilleSoinsXls.setNumeroLigne(String.valueOf(rowNumber));
 
-      for (String nomChamp : mapLine.keySet()) {
-        try {
-          ReflectUtils.setFieldValue(feuilleSoinsXls, nomChamp, mapLine.get(nomChamp));
-        } catch (Exception e){
-          OptiSoinsLogger.printError("Erreur sur la feuille " + feuilleSoinsXls.getInformations() + ", le nom '" + nomChamp + "' n'est pas géré");
-          OptiSoinsLogger.printError("Voici la liste des champs autorisés : " + FeuilleSoinsXls.getNomsChampsAutorises());
-          throw e;
-        }
+    for (String nomChamp : mapLine.keySet()) {
+      try {
+        ReflectUtils.setFieldValue(feuilleSoinsXls, nomChamp, mapLine.get(nomChamp));
+      } catch (Exception e) {
+        logger.error("Erreur sur la feuille {}, le nom '{}' n'est pas géré", feuilleSoinsXls.getInformations(), nomChamp);
+        logger.error("Voici la liste des champs autorisés : {}", FeuilleSoinsXls.getNomsChampsAutorises());
+        throw e;
       }
+    }
     return feuilleSoinsXls;
   }
 

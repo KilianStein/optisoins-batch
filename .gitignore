@@ -1,29 +1,31 @@
-# IDE #
-#######
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+### STS ###
+.apt_generated
 .classpath
+.factorypath
 .project
 .settings
+.springBeans
+
+### IntelliJ IDEA ###
 .idea
-.metadata
+*.iws
 *.iml
 *.ipr
 
-# Rapport #
-###########
-.surefire*
-*.log
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
 
-# Fichier generes #
-###################
-**/target/*
-/target/
-
-**/fichiersGeneres/*
-/fichiersGeneres/
-/donnees/*
-/conf/*
-
-*.exe
-
-*.jasper
-
+#optisoins
+conf
+donnees
+fichiersGeneres
+out

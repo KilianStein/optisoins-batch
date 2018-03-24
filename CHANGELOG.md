@@ -3,7 +3,11 @@
 Tous les changements notables du projet seront documentés dans ce fichier.
 La nomenclature de ce fichier se base sur [KeepAChangelog](http://keepachangelog.com/).
 
-## [Non livré]
+## [2.0.0]
+### Ajout
+- Gestion de la gestion des états d'aide medicale
+
+## [1.3.7]
 ### Ajout
 - Gestion du ticket moderateur pour l'aide médicale sud : 
 	* affichage de texte explicatif sur la feuille de soins
@@ -36,14 +40,14 @@ La nomenclature de ce fichier se base sur [KeepAChangelog](http://keepachangelog
 
 ### Changement
 - Non-génération des pdfs si la colonne "nomEtPrenomMalade" n'est pas renseigné dans le xls.
-- Mise à jour du fichier de données xls par defaut.
-- Séparation de l'onglet aide médical nord et sud avec la mise à jour des colonnes.
+- Mise Ã  jour du fichier de données xls par defaut.
+- Séparation de l'onglet aide médical nord et sud avec la mise Ã  jour des colonnes.
 
 ### Suppression
 - Suppression du parametre "UN_DOSSIER_PAR_EXCEL" qui est realisé automatiquement lorsque deux excels sont présents.
 
 ### Correction
-- Correction de la date des états à la date du jour.
+- Correction de la date des états Ã  la date du jour.
 - Correction technique:  génération des lignes vides de l'etat du nord, si les dates ne sont pas remplis.
 - Correction de l'utilitaire sur la conversion de nombres en mots.
 
@@ -95,7 +99,7 @@ La nomenclature de ce fichier se base sur [KeepAChangelog](http://keepachangelog
 - Gestion des feuilles de soins.
 - Ajout de la gestion des onglets dans le fichiers de données xls.
 - Il est possible d'avoir plusieurs fichiers xls.
-- Adaptation des fichiers générés à l'imprimante.
+- Adaptation des fichiers générés Ã  l'imprimante.
 - Gestion de la génération des pdf pour plusieurs lignes d'excel.
-- Gestion des cases à cocher.
+- Gestion des cases Ã  cocher.
 - Création d'un .exe au lieu d'un jar.

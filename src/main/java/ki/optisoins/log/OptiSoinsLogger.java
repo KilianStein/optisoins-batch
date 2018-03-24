@@ -1,72 +1,34 @@
 package ki.optisoins.log;
 
 import ki.optisoins.OptiSoins;
-import ki.optisoins.properties.ConfigurationProperties;
-import ki.optisoins.properties.ConfigurationPropertiesValue;
-import org.apache.log4j.*;
-
-import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class OptiSoinsLogger {
-  private static Logger logger = getLogger();
+  private static Logger logger = LoggerFactory.getLogger(OptiSoins.class);
 
-  private static Logger getLogger() {
-    Logger logger = Logger.getLogger(OptiSoins.class);
-    try {
-      logger.addAppender(new FileAppender(new SimpleLayout(), "optisoins.log", false));
-      logger.addAppender(getConsoleAppender());
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-    logger.setLevel(getLevel());
-    return logger;
-  }
 
-  private static ConsoleAppender getConsoleAppender() {
-    ConsoleAppender ca = new ConsoleAppender();
-    ca.setName("console");
-    ca.setLayout(new SimpleLayout());
-    ca.activateOptions();
-    return ca;
-  }
-
-  private static Level getLevel() {
-    String level = ConfigurationProperties.getConfiguration(ConfigurationPropertiesValue.LOGGER_LEVEL);
-    switch (level != null ? level : "") {
-      case "ERROR":
-        return Level.ERROR;
-      case "WARNING":
-        return Level.WARN;
-      case "DEBUG":
-        return Level.DEBUG;
-      case "TRACE":
-        return Level.TRACE;
-      default:
-        return Level.TRACE;
-    }
-  }
-
-  public static void printError(Object message) {
+  public static void printError(String message) {
     logger.error(message);
   }
 
-  public static void printError(Object message, Throwable t) {
+  public static void printError(String message, Throwable t) {
     logger.error(message, t);
   }
 
-  public static void printWarning(Object message, Throwable t) {
+  public static void printWarning(String message, Throwable t) {
     logger.warn(message, t);
   }
 
-  public static void printWarning(Object message) {
+  public static void printWarning(String message) {
     logger.warn(message);
   }
 
-  public static void printDebug(Object message) {
+  public static void printDebug(String message) {
     logger.debug(message);
   }
 
-  public static void printTrace(Object message) {
+  public static void printTrace(String message) {
     logger.trace(message);
   }
 }

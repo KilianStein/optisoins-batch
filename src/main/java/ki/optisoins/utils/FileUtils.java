@@ -1,18 +1,19 @@
 package ki.optisoins.utils;
 
-import ki.optisoins.OptiSoinsConfiguration;
-import ki.optisoins.log.OptiSoinsLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 
 public class FileUtils {
+  private static Logger logger = LoggerFactory.getLogger(FileUtils.class);
 
   public static String deleteDir(String dir) throws IOException {
     Path path = Paths.get(dir);
     if (Files.isReadable(path) && Files.isDirectory(path)) {
-      OptiSoinsLogger.printTrace("Suppression du dossier '" + dir + "'");
+      logger.trace("Suppression du dossier '{}'", dir);
       removeRecursive(path);
     }
     return dir;
@@ -47,11 +48,11 @@ public class FileUtils {
   public static Path createDirIfNotExist(String dir) {
     Path path = Paths.get(dir);
     if (!Files.isReadable(path) || !Files.isDirectory(path)) {
-      OptiSoinsLogger.printTrace("Création du dossier '" + dir + "'");
+      logger.trace("Création du dossier '{}'", dir);
       try {
         Files.createDirectory(path);
       } catch (IOException e) {
-        OptiSoinsLogger.printError("Erreur lors de la création du dossier '" + dir + "'");
+        logger.error("Erreur lors de la création du dossier '{}'", dir);
         throw new RuntimeException(e);
       }
     }
@@ -66,7 +67,7 @@ public class FileUtils {
 
   public static void copyRessourceIfNotExist(String fichier, String target) throws IOException {
     if (!Files.exists(Paths.get(target))) {
-      OptiSoinsLogger.printTrace("Copie de la ressource " + fichier);
+      logger.trace("Copie de la ressource {}", fichier);
       Files.copy(Thread.currentThread().getContextClassLoader().getResourceAsStream(fichier), Paths.get(target));
     }
   }
