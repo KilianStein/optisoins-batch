@@ -8,10 +8,5 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
-
 install:
 - gradle build
