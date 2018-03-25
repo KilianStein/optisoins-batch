@@ -75,6 +75,14 @@ task createZipLivrable(type: Zip) {
 createZipLivrable.dependsOn createExe
 
 
+task udpateDescriptor {
+    doLast {
+        File descriptorFile = projectDir.toPath().resolve("descriptor.json").toFile()
+        descriptorFile.text = descriptorFile.text.replace("[VERSION]", version.toString())
+    }
+}
+udpateDescriptor.dependsOn createExe
+
 dependencies {
     compile('org.springframework.boot:spring-boot-starter')
 

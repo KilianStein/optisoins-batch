@@ -22,7 +22,7 @@
        In case the version already exists on Bintray, only the name fields is mandatory. */
 
     "version": {
-        "name": "2.0.0"
+        "name": "[VERSION]"
     },
 
     /* Configure the files you would like to upload to Bintray and their upload path.
@@ -43,7 +43,7 @@
 
     "files":
         [
-        {"includePattern": "build/launch4j/(.*)", "excludePattern": "", "uploadPattern": "/$1"}
+        {"includePattern": "build/livrable/(.*)", "excludePattern": "target/.*.zip$", "uploadPattern": "/$1"}
         ],
     "publish": true
 }
