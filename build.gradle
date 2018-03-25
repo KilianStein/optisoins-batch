@@ -56,7 +56,7 @@ launch4j {
 
 task versionTxt {
     doLast {
-        new File("$projectDir/build/launch4J/version.txt").text = """
+        createExe.getOutputDirectory().toPath().resolve('version.txt').toFile().text = """
         Version: $version
         Buildtime: ${LocalDateTime.now()}
         Application-name: optisoins-batch
