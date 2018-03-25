@@ -1,3 +1,5 @@
+import java.time.LocalDateTime
+
 buildscript {
     ext {
         springBootVersion = '2.0.0.RELEASE'
@@ -9,7 +11,6 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath 'edu.sc.seis.gradle:launch4j:2.4.3'
-        classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
     }
 }
 
@@ -18,8 +19,6 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'edu.sc.seis.launch4j'
-apply plugin: 'eu.appsatori.fatjar'
-
 
 group = 'nc.ki.optisoins'
 version = '2.0.0-SNAPSHOT'
@@ -32,20 +31,9 @@ repositories {
     }
 }
 
-
-
 jar {
     enabled = true
 }
-
-fatJar {
-    classifier 'fat'
-    with jar
-    manifest {
-        attributes 'Main-Class': 'ki.optisoins.OptisoinsBatchApplication'
-    }
-}
-fatJarPrepareFiles.dependsOn jar
 
 bootJar {
     launchScript()
@@ -66,6 +54,22 @@ launch4j {
     dontWrapJar = true
 }
 
+task versionTxt()  {
+    new File("$projectDir/build/launch4J/version.txt").text = """
+    Version: $version
+    Buildtime: ${LocalDateTime.now()}
+    Application-name: optisoins-batch
+    """
+}
+
+task createZipLivrable(type: Zip) {
+    from createExe.getOutputDirectory()
+    include '*'
+    include '*/*'
+    archiveName 'optisoins-batch-' + version +'.zip'
+    destinationDir(file('./build/livrable'))
+}
+
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter')
@@ -76,5 +80,4 @@ dependencies {
     compile group: 'org.apache.poi', name: 'poi', version: '3.17'
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
-
 }
