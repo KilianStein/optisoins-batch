@@ -54,21 +54,25 @@ launch4j {
     dontWrapJar = true
 }
 
-task versionTxt()  {
-    new File("$projectDir/build/launch4J/version.txt").text = """
-    Version: $version
-    Buildtime: ${LocalDateTime.now()}
-    Application-name: optisoins-batch
-    """
+task versionTxt {
+    doLast {
+        new File("$projectDir/build/launch4J/version.txt").text = """
+        Version: $version
+        Buildtime: ${LocalDateTime.now()}
+        Application-name: optisoins-batch
+        """
+    }
 }
+versionTxt.dependsOn createExe
 
 task createZipLivrable(type: Zip) {
     from createExe.getOutputDirectory()
     include '*'
     include '*/*'
-    archiveName 'optisoins-batch-' + version +'.zip'
+    archiveName 'optisoins-batch-' + version + '.zip'
     destinationDir(file('./build/livrable'))
 }
+createZipLivrable.dependsOn createExe
 
 
 dependencies {
