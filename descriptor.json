@@ -7,7 +7,7 @@
         "name": "optisoins-batch", // Bintray package name
         "repo": "optisoins", // Bintray repository name
         "subject": "kilian", // Bintray subject (user or organization)
-        "desc": "I was pushed completely automatically",
+        "desc": "Outil l'aide au remplissage des feuilles de soins et d'états pour les Orthophinistes de Nouvelle-Calédonie",
         "website_url": "https://github.com/KilianStein",
         "issue_tracker_url": "https://github.com/KilianStein/optisoins-batch/issues",
         "vcs_url": "https://github.com/KilianStein/optisoins-batch.git",
@@ -22,7 +22,10 @@
        In case the version already exists on Bintray, only the name fields is mandatory. */
 
     "version": {
-        "name": "[VERSION]"
+        "name": "[VERSION_NAME]",
+        "released": "[VERSION_DATE]",
+        "vcs_tag": "[VERSION_VCS_TAG]",
+        "attributes": [{"name": "revision", "values" : ["[VERSION_REVISION]"], "type": "string"}]
     },
 
     /* Configure the files you would like to upload to Bintray and their upload path.
@@ -42,8 +45,8 @@
     Note: Regular expressions defined as part of the includePattern property must be wrapped with brackets. */
 
     "files":
-        [
+    [
         {"includePattern": "build/livrable/(.*)", "excludePattern": "target/.*.zip$", "uploadPattern": "/$1"}
-        ],
+    ],
     "publish": true
 }

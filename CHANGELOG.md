@@ -3,11 +3,15 @@
 Tous les changements notables du projet seront documentés dans ce fichier.
 La nomenclature de ce fichier se base sur [KeepAChangelog](http://keepachangelog.com/).
 
-## [2.0.0]
+## [X.X.X] - Non livré
+### Changement
+- Mise à jour du readme, des informations (id du commit) dans l'artifact livré
+
+## [2.0.0] - 2018-03-26
 ### Ajout
 - Gestion de la gestion des états d'aide medicale
 
-## [1.3.7]
+## [1.3.7] - 2017-03-01
 ### Ajout
 - Gestion du ticket moderateur pour l'aide médicale sud : 
 	* affichage de texte explicatif sur la feuille de soins
